@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP DVMN — Subway Series | Damn Pigeon</title>
+<meta name="description" content="Shop the Subway Series — custom garments, hoodies, denim, hats and accessories. Cut and sewn by hand on Slauson Ave.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Crect width='64' height='34' fill='%230A0A0A'/%3E%3Cpath d='M32 18 C24 6 12 2 0 0 C12 8 18 14 26 18 C18 20 10 24 4 32 C14 26 24 22 32 20 Z' fill='%231E63FF'/%3E%3Cpath d='M32 18 C40 6 52 2 64 0 C52 8 46 14 38 18 C46 20 54 24 60 32 C50 26 40 22 32 20 Z' fill='%23F4F2ED'/%3E%3C/svg%3E">
+
+<meta property="og:title" content="SHOP DVMN — Subway Series | Damn Pigeon">
+<meta property="og:description" content="Shop the Subway Series. Custom garments, cut and sewn by hand.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://YOUR-DOMAIN.vercel.app/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.vercel.app/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;--concrete:#161616;--concrete-2:#1E1E1E;
+    --bone:#F4F2ED;--pigeon:#9A9CA1;--cobalt:#1E63FF;--heat:#FF5A1F;
+    --line:rgba(244,242,237,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--bone);font-family:'Raleway',system-ui,sans-serif;
+    font-weight:500;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace}
+  .wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 28px}
+  .v{color:var(--cobalt)}
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* promo bar */
+  .promo{background:var(--cobalt);color:#fff;text-align:center;font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:.16em;padding:9px 40px 9px 16px;position:relative;text-transform:uppercase}
+  .promo b{font-weight:700}
+  .promo .x{position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;opacity:.8;font-size:16px;border:0;background:none;color:#fff}
+
+  /* top bar */
+  .bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line)}
+  .mark{display:flex;flex-direction:column;line-height:.82}
+  .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+  .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+  nav.links{display:flex;gap:32px;align-items:center}
+  nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+  nav.links a:hover,nav.links a.active{opacity:1;color:var(--cobalt)}
+  .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;
+    padding:8px 13px;color:var(--bone);cursor:pointer;transition:.2s;display:flex;gap:8px;align-items:center}
+  .bag:hover{border-color:var(--cobalt)}
+  .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+  .menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+
+  /* collection hero */
+  .chero{position:relative;padding:64px 0 44px;border-bottom:1px solid var(--line);overflow:hidden}
+  .chero::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 90% at 88% 0%,rgba(30,99,255,.18),transparent 55%);pointer-events:none}
+  .chero .wrap{position:relative;z-index:2}
+  .chero .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.26em;color:var(--cobalt);text-transform:uppercase}
+  .chero h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(52px,10vw,132px);line-height:.84;
+    text-transform:uppercase;letter-spacing:-1px;margin:14px 0 0}
+  .chero .blurb{max-width:560px;margin-top:20px;color:#cdccc6;font-size:16px}
+  .chero .count{font-family:'Space Mono',monospace;font-size:12px;color:var(--pigeon);margin-top:18px;letter-spacing:.1em}
+
+  /* filter bar */
+  .filters{position:sticky;top:65px;z-index:90;background:rgba(10,10,10,.94);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);padding:14px 0}
+  .filters .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .fbtn{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    padding:9px 15px;border:1px solid var(--line);border-radius:2px;color:var(--pigeon);background:none;cursor:pointer;transition:.2s;white-space:nowrap}
+  .fbtn:hover{color:var(--bone);border-color:var(--pigeon)}
+  .fbtn.active{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:700}
+  .filters .spacer{flex:1}
+  .search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:2px;padding:7px 12px;background:var(--concrete)}
+  .search input{background:none;border:0;color:var(--bone);font-family:'Space Mono',monospace;font-size:12px;width:150px;outline:none}
+  .search input::placeholder{color:#6c6c6c}
+  select.sort{font-family:'Space Mono',monospace;font-size:12px;background:var(--concrete);color:var(--bone);
+    border:1px solid var(--line);border-radius:2px;padding:9px 10px;cursor:pointer;outline:none}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+    border-bottom:1px solid var(--line)}
+  .card{background:var(--ink);display:flex;flex-direction:column;position:relative;transition:background .3s}
+  .card:hover{background:var(--concrete)}
+  .card-media{position:relative;aspect-ratio:4/5;background:var(--concrete);background-size:cover;background-position:center;overflow:hidden}
+  .card-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#141414,#1c1c1c);overflow:hidden}
+  .card-ph .ini{font-family:'Anton',sans-serif;font-size:56px;color:rgba(244,242,237,.13);letter-spacing:1px;z-index:1}
+  .card-ph .pg{position:absolute;right:-14px;bottom:-14px;width:96px;opacity:.05}
+  .card-ph.tint{background:linear-gradient(135deg,rgba(30,99,255,.16),#161616)}
+  .card-tag{position:absolute;top:10px;left:10px;font-family:'Space Mono',monospace;font-size:9.5px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--bone);background:rgba(10,10,10,.6);
+    padding:4px 8px;border-radius:2px;z-index:2}
+  .soldout-badge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,10,10,.62);z-index:3}
+  .soldout-badge span{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:2px;color:var(--bone);
+    border:2px solid var(--bone);padding:6px 14px;transform:rotate(-6deg);text-transform:uppercase}
+  .add{position:absolute;left:10px;right:10px;bottom:10px;z-index:2;opacity:0;transform:translateY(8px);
+    transition:.22s;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;
+    font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px;border-radius:2px;cursor:pointer}
+  .card:hover .add{opacity:1;transform:translateY(0)}
+  .add:hover{background:#3b78ff}
+  .card-body{padding:16px 16px 20px}
+  .card-body h3{font-size:14px;font-weight:800;line-height:1.25;margin-bottom:6px;min-height:2.4em}
+  .card-body .price{font-family:'Space Mono',monospace;font-size:13px;color:var(--cobalt)}
+  .card-body .price.oos{color:var(--pigeon)}
+  .card.oos .card-media{filter:grayscale(.6) brightness(.7)}
+  .empty{grid-column:1/-1;background:var(--ink);padding:80px 20px;text-align:center;color:var(--pigeon);font-family:'Space Mono',monospace}
+
+  /* cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;opacity:0;pointer-events:none;transition:.3s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:90vw;background:var(--concrete);
+    z-index:201;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--line)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+  .drawer-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:26px;text-transform:uppercase}
+  .drawer-head .x{background:none;border:0;color:var(--bone);font-size:26px;cursor:pointer;line-height:1}
+  .cart-items{flex:1;overflow-y:auto;padding:8px 24px}
+  .citem{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .citem-img{width:60px;height:74px;background:var(--concrete-2);background-size:cover;background-position:center;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;color:rgba(244,242,237,.2);font-size:20px}
+  .citem-info{flex:1;min-width:0}
+  .citem-info h4{font-size:13px;font-weight:800;margin-bottom:4px}
+  .citem-info .cp{font-family:'Space Mono',monospace;font-size:12px;color:var(--pigeon)}
+  .qty{display:flex;align-items:center;gap:0;margin-top:10px;border:1px solid var(--line);border-radius:2px;width:fit-content}
+  .qty button{background:none;border:0;color:var(--bone);width:26px;height:26px;cursor:pointer;font-size:15px}
+  .qty span{font-family:'Space Mono',monospace;font-size:12px;min-width:26px;text-align:center}
+  .citem .rm{background:none;border:0;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;margin-left:auto;align-self:flex-start}
+  .citem .rm:hover{color:var(--heat)}
+  .cart-empty{padding:60px 20px;text-align:center;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:13px}
+  .drawer-foot{border-top:1px solid var(--line);padding:22px 24px}
+  .subtotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .subtotal .l{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--pigeon);text-transform:uppercase}
+  .subtotal .a{font-family:'Anton',sans-serif;font-size:30px}
+  .drawer-foot .note{font-family:'Space Mono',monospace;font-size:10.5px;color:#6c6c6c;margin-bottom:16px;line-height:1.5}
+  .checkout{width:100%;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;font-size:13px;padding:17px;border-radius:2px;cursor:pointer;transition:.2s}
+  .checkout:hover{background:#3b78ff}
+
+  /* toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:300;
+    background:var(--bone);color:var(--ink);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+    padding:14px 22px;border-radius:3px;opacity:0;pointer-events:none;transition:.28s;max-width:88vw;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:56px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+  .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+  .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);text-transform:uppercase;margin-bottom:14px}
+  .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+  .foot-col a:hover{opacity:1;color:var(--cobalt)}
+  .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:760px){
+    nav.links{display:none}.menu-btn{display:block}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .filters{top:61px}
+    .search{display:none}
+  }
+  @media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.card-body h3{font-size:12.5px}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="promo" id="promo">
+  <span><b>50% OFF</b> &nbsp;EVERYTHING&nbsp; — CODE <b>DVMN50</b> — ENDS SUNDAY MIDNIGHT</span>
+  <button class="x" onclick="document.getElementById('promo').style.display='none'" aria-label="Dismiss">×</button>
+</div>
+
+<header class="bar">
+  <a href="index.html" class="mark" aria-label="Damn Pigeon home">
+    <span class="top">D<span class="v">V</span>MNPIGEON</span>
+    <span class="sub">NEW&nbsp;YORK</span>
+  </a>
+  <nav class="links">
+    <a href="shop.html" class="active">Shop</a>
+    <a href="index.html#doors">Sampling</a>
+    <a href="learn.html">Learn</a>
+    <a href="index.html#studio">Studio</a>
+  </nav>
+  <div style="display:flex;gap:12px;align-items:center">
+    <button class="bag" onclick="openCart()">BAG <span class="cnt" id="bagcount">0</span></button>
+    <button class="menu-btn" aria-label="Menu">≡</button>
+  </div>
+</header>
+
+<section class="chero">
+  <div class="wrap">
+    <span class="eyebrow">// The full collection</span>
+    <h1>Subway<br>Series</h1>
+    <p class="blurb">Every piece in the house — hoodies, denim, fitteds, and accessories. Cut and sewn by hand, dropped in limited runs. No restocks.</p>
+    <p class="count" id="hcount"></p>
+  </div>
+</section>
+
+<div class="filters">
+  <div class="wrap">
+    <button class="fbtn active" data-cat="all">All</button>
+    <button class="fbtn" data-cat="GYNE 2025">GYNE 2025</button>
+    <button class="fbtn" data-cat="Hoodies">Hoodies</button>
+    <button class="fbtn" data-cat="T-Shirts">T-Shirts</button>
+    <button class="fbtn" data-cat="Good Pants">Good Pants</button>
+    <button class="fbtn" data-cat="Hats & Accessories">Hats & Access.</button>
+    <button class="fbtn" data-cat="Blanks I Use">Blanks I Use</button>
+    <span class="spacer"></span>
+    <div class="search"><span class="mono" style="color:#6c6c6c">⌕</span><input id="search" placeholder="search" aria-label="Search products"></div>
+    <select class="sort" id="sort" aria-label="Sort">
+      <option value="featured">Featured</option>
+      <option value="low">Price: Low → High</option>
+      <option value="high">Price: High → Low</option>
+    </select>
+  </div>
+</div>
+
+<main>
+  <div class="grid wrap" id="grid" style="max-width:1320px;margin:0 auto"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img alt="damnpigeon" src="assets/logo-graffiti.png"></div>
+      <div class="foot-cols">
+        <div class="foot-col"><h4>Shop</h4>
+          <a href="#" data-cat="GYNE 2025">GYNE 2025</a><a href="#" data-cat="Hoodies">Hoodies</a><a href="#" data-cat="T-Shirts">T-Shirts</a><a href="#" data-cat="Good Pants">Good Pants</a><a href="#" data-cat="Hats & Accessories">Hats & Accessories</a>
+        </div>
+        <div class="foot-col"><h4>Build</h4>
+          <a href="learn.html">Learn the craft</a><a href="index.html#doors">Start your brand</a>
+        </div>
+        <div class="foot-col"><h4>Info</h4>
+          <a href="index.html">Home</a><a href="mailto:damnpcs@gmail.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© DAMNPIGEON LLC · D<span class="v">V</span>MNPCS@GMAIL.COM</span>
+      <span>MADE ON SLAUSON AVE · CALIFORNIA · USA</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="drawer-head">
+    <h2>Your Bag</h2>
+    <button class="x" onclick="closeCart()" aria-label="Close">×</button>
+  </div>
+  <div class="cart-items" id="cartitems"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span class="l">Subtotal</span><span class="a" id="subtotal">$0</span></div>
+    <p class="note">Shipping &amp; taxes calculated at checkout. Checkout is handled securely on Wix — inventory, payment, and shipping labels stay on her existing back office.</p>
+    <button class="checkout" onclick="checkout()">Secure checkout →</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = [{"name": "JORT V2", "slug": "jort-v2", "url": "https://www.damnpigeon.nyc/product-page/jort-v2", "price": 104.0, "price_display": "$104.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Sample Qzips.", "slug": "sample-qzips", "url": "https://www.damnpigeon.nyc/product-page/sample-qzips", "price": 40.0, "price_display": "$40.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Friends & Family NY or Nowhere", "slug": "friends-family-ny-or-nowhere", "url": "https://www.damnpigeon.nyc/product-page/friends-family-ny-or-nowhere", "price": 68.0, "price_display": "$68.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "1911 pop and lock holster keychain", "slug": "1911-pop-and-lock-holster-keychain", "url": "https://www.damnpigeon.nyc/product-page/1911-pop-and-lock-holster-keychain", "price": 21.99, "price_display": "$21.99", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Duutty Rose Cargos", "slug": "duutty-rose-cargos", "url": "https://www.damnpigeon.nyc/product-page/duutty-rose-cargos", "price": 129.0, "price_display": "$129.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Knicks Double Dove", "slug": "knicks-double-dove", "url": "https://www.damnpigeon.nyc/product-page/knicks-double-dove", "price": 165.0, "price_display": "$165.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "NY or NOWHERE Crown", "slug": "ny-or-nowhere-crown", "url": "https://www.damnpigeon.nyc/product-page/ny-or-nowhere-crown", "price": null, "price_display": "Out of stock", "in_stock": false, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Neoprene 139 Baggy", "slug": "neoprene-139-baggy", "url": "https://www.damnpigeon.nyc/product-page/neoprene-139-baggy", "price": 139.0, "price_display": "$139.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Cotton candy uni vintage tee", "slug": "cotton-candy-uni-vintage-tee", "url": "https://www.damnpigeon.nyc/product-page/cotton-candy-uni-vintage-tee", "price": 36.0, "price_display": "$36.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DPNY-LA 5 panel .", "slug": "dpny-la-5-panel", "url": "https://www.damnpigeon.nyc/product-page/dpny-la-5-panel", "price": 36.0, "price_display": "$36.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Thermmie NYDPLA", "slug": "thermmie-nydpla", "url": "https://www.damnpigeon.nyc/product-page/thermmie-nydpla", "price": 48.0, "price_display": "$48.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "lightweight '1987 blank", "slug": "24-pcs-lightweight-blank", "url": "https://www.damnpigeon.nyc/product-page/24-pcs-lightweight-blank", "price": 28.0, "price_display": "$28.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "LA DVMN Double Dove", "slug": "la-dvmn-double-dove", "url": "https://www.damnpigeon.nyc/product-page/la-dvmn-double-dove", "price": 159.0, "price_display": "$159.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Tanjie Sunset Zip up", "slug": "tanjie-sunset-zip-up", "url": "https://www.damnpigeon.nyc/product-page/tanjie-sunset-zip-up", "price": 138.0, "price_display": "$138.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Daily Bread Crown x New Era", "slug": "copy-of-dvmn-double-dove-fitted", "url": "https://www.damnpigeon.nyc/product-page/copy-of-dvmn-double-dove-fitted", "price": 109.0, "price_display": "$109.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "73 bronx thermal", "slug": "78-bronx-thermal", "url": "https://www.damnpigeon.nyc/product-page/78-bronx-thermal", "price": 68.0, "price_display": "$68.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DVMN Double Dove Fitted", "slug": "dvmn-double-dove-fitted", "url": "https://www.damnpigeon.nyc/product-page/dvmn-double-dove-fitted", "price": 179.0, "price_display": "$179.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Dear Summer Fitted Hat", "slug": "dear-summer-fitted-hat", "url": "https://www.damnpigeon.nyc/product-page/dear-summer-fitted-hat", "price": 209.0, "price_display": "$209.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Peter NYC custom", "slug": "macaw-yankee-no-1", "url": "https://www.damnpigeon.nyc/product-page/macaw-yankee-no-1", "price": 280.0, "price_display": "$280.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DVMN Yankee", "slug": "dvmn-yankee", "url": "https://www.damnpigeon.nyc/product-page/dvmn-yankee", "price": 149.0, "price_display": "$149.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "Cupid double dove tee", "slug": "viral-3d-tee", "url": "https://www.damnpigeon.nyc/product-page/viral-3d-tee", "price": 88.0, "price_display": "$88.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DVMN DREVMERS tee", "slug": "dvmn-drevmers-tee", "url": "https://www.damnpigeon.nyc/product-page/dvmn-drevmers-tee", "price": 44.0, "price_display": "$44.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Electric leopard 3/4 short", "slug": "electric-leopard-3-4-short", "url": "https://www.damnpigeon.nyc/product-page/electric-leopard-3-4-short", "price": 74.0, "price_display": "$74.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Neoprene BL short", "slug": "easteregg-ringer-tee", "url": "https://www.damnpigeon.nyc/product-page/easteregg-ringer-tee", "price": 134.0, "price_display": "$134.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "70s Spring Beanie", "slug": "70s-spring-beanie", "url": "https://www.damnpigeon.nyc/product-page/70s-spring-beanie", "price": 29.0, "price_display": "$29.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "100 % cotton beanie 1DOZEN", "slug": "100-cotton-beanie-1dozen", "url": "https://www.damnpigeon.nyc/product-page/100-cotton-beanie-1dozen", "price": 12.0, "price_display": "$12.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Gardens of DVMN pant", "slug": "gardens-of-dvmn-pant", "url": "https://www.damnpigeon.nyc/product-page/gardens-of-dvmn-pant", "price": 320.0, "price_display": "$320.00", "in_stock": true, "categories": ["GYNE 2025", "Good Pants"], "image": "https://static.wixstatic.com/media/5b3366_622156c6a24e41c5831ad69113b58428~mv2.png/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "NEW YORK series split bomber", "slug": "new-york-series-split-bomber", "url": "https://www.damnpigeon.nyc/product-page/new-york-series-split-bomber", "price": 284.0, "price_display": "$284.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Ira unk short", "slug": "new-york-leather", "url": "https://www.damnpigeon.nyc/product-page/new-york-leather", "price": 350.0, "price_display": "$350.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_754795a9d892421db5b4514c90b35c3f~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "03 Bomber", "slug": "03-bomber", "url": "https://www.damnpigeon.nyc/product-page/03-bomber", "price": 354.0, "price_display": "$354.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies"], "image": null, "variants": [], "description": null}, {"name": "Gibran B", "slug": "gibran-b", "url": "https://www.damnpigeon.nyc/product-page/gibran-b", "price": 494.0, "price_display": "$494.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_666c2a80a88e4182b6ffb739a5869b4f~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "Complex Exclusive gyne", "slug": "complex-exclusive-gyne", "url": "https://www.damnpigeon.nyc/product-page/complex-exclusive-gyne", "price": 514.0, "price_display": "$514.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_df8c3d6346cf49f48136c739fb362f3b~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "ACG leather laces", "slug": "acg-leather-laces", "url": "https://www.damnpigeon.nyc/product-page/acg-leather-laces", "price": 28.0, "price_display": "$28.00", "in_stock": true, "categories": ["GYNE 2025", "Hats & Accessories", "Blanks I Use"], "image": null, "variants": [], "description": null}, {"name": "DP Hard Hat box", "slug": "dp-hard-hat-box", "url": "https://www.damnpigeon.nyc/product-page/dp-hard-hat-box", "price": 6.69, "price_display": "$6.69", "in_stock": true, "categories": ["Blanks I Use"], "image": null, "variants": [], "description": null}, {"name": "VIRTUAL HOODIE COURSE", "slug": "virtual-hoodie-class", "url": "https://www.damnpigeon.nyc/product-page/virtual-hoodie-class", "price": 120.0, "price_display": "$120.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "05 Hoodie", "slug": "04-hoodie", "url": "https://www.damnpigeon.nyc/product-page/04-hoodie", "price": 184.0, "price_display": "$184.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies"], "image": null, "variants": [], "description": null}, {"name": "16 oz Terry inside out Jacket", "slug": "cousin-ron", "url": "https://www.damnpigeon.nyc/product-page/cousin-ron", "price": 284.0, "price_display": "$284.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_ed45a2e4adf9420895fa76cd3b87668c~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "01 Hoodie j kozy 100 pcs bundle", "slug": "what-the-hoodie", "url": "https://www.damnpigeon.nyc/product-page/what-the-hoodie", "price": 3528.0, "price_display": "$3528.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies"], "image": null, "variants": [], "description": null}, {"name": "Tribecca blouse", "slug": "camo-reverse-weave-jort", "url": "https://www.damnpigeon.nyc/product-page/camo-reverse-weave-jort", "price": 184.0, "price_display": "$184.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_5605301c54aa420ebc5c884349b10d0c~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "Classic omerte lambskin javket", "slug": "classic-omerte-lambskin-javket", "url": "https://www.damnpigeon.nyc/product-page/classic-omerte-lambskin-javket", "price": 1214.0, "price_display": "$1214.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "Reverse Raw Hoodie", "slug": "dvmn-patch-hat", "url": "https://www.damnpigeon.nyc/product-page/dvmn-patch-hat", "price": 204.0, "price_display": "$204.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_d2d610fb7e894d5292bda482a9229740~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "NEOPRENE jacket", "slug": "nyc-letterman", "url": "https://www.damnpigeon.nyc/product-page/nyc-letterman", "price": 304.0, "price_display": "$304.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_81f2c59cb7354a2d8250c67d32a9a8b2~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "GYNE stamp hoodie", "slug": "disney-x-dvmn-juneteenth-collab", "url": "https://www.damnpigeon.nyc/product-page/disney-x-dvmn-juneteenth-collab", "price": 184.0, "price_display": "$184.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies"], "image": null, "variants": [], "description": null}, {"name": "GYNE thermal", "slug": "j-kozy-jacket", "url": "https://www.damnpigeon.nyc/product-page/j-kozy-jacket", "price": 109.0, "price_display": "$109.00", "in_stock": true, "categories": ["T-Shirts"], "image": null, "variants": [], "description": null}, {"name": "GYNE Basic Denim Jacket", "slug": "sports-division-cut-off", "url": "https://www.damnpigeon.nyc/product-page/sports-division-cut-off", "price": 344.0, "price_display": "$344.00", "in_stock": true, "categories": ["GYNE 2025"], "image": "https://static.wixstatic.com/media/5b3366_0fef345adac5446fb6518d4d5b42d906~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "Heavy Grey Tee", "slug": "moma-x-dvmn-yankee-collab", "url": "https://www.damnpigeon.nyc/product-page/moma-x-dvmn-yankee-collab", "price": 74.0, "price_display": "$74.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "16 oz Terry Sweatpant", "slug": "leg-latch-bag", "url": "https://www.damnpigeon.nyc/product-page/leg-latch-bag", "price": 159.0, "price_display": "$159.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "GY Selvedged Denim", "slug": "mike-shewit", "url": "https://www.damnpigeon.nyc/product-page/mike-shewit", "price": 319.0, "price_display": "$319.00", "in_stock": true, "categories": ["Good Pants"], "image": null, "variants": [], "description": null}, {"name": "Stone Raw 2 tone Denim", "slug": "beyonce-usa-prxblem", "url": "https://www.damnpigeon.nyc/product-page/beyonce-usa-prxblem", "price": 224.0, "price_display": "$224.00", "in_stock": true, "categories": ["GYNE 2025", "Good Pants"], "image": "https://static.wixstatic.com/media/5b3366_dea4b117fa5b45dbaca35470e8ef3557~mv2.jpg/v1/fill/w_600,h_750,al_c,q_85,enc_auto/file.jpg", "variants": [], "description": null}, {"name": "Reverse Raw Black Jogger", "slug": "art-and-design-short", "url": "https://www.damnpigeon.nyc/product-page/art-and-design-short", "price": 179.0, "price_display": "$179.00", "in_stock": true, "categories": ["Good Pants"], "image": null, "variants": [], "description": null}, {"name": "neoprene pant", "slug": "terry-martini-lounge-short", "url": "https://www.damnpigeon.nyc/product-page/terry-martini-lounge-short", "price": 214.0, "price_display": "$214.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "PANTS OF THE YEAR", "slug": "pants-of-the-year", "url": "https://www.damnpigeon.nyc/product-page/pants-of-the-year", "price": 283.0, "price_display": "$283.00", "in_stock": true, "categories": ["Good Pants"], "image": null, "variants": [], "description": null}, {"name": "Cotton GYNE cap", "slug": "cotton-gyne-cap", "url": "https://www.damnpigeon.nyc/product-page/cotton-gyne-cap", "price": 54.0, "price_display": "$54.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "The fuket hat.", "slug": "the-fuket-hat", "url": "https://www.damnpigeon.nyc/product-page/the-fuket-hat", "price": 144.0, "price_display": "$144.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "GYNE cap", "slug": "leather-gyne-cap", "url": "https://www.damnpigeon.nyc/product-page/leather-gyne-cap", "price": 44.0, "price_display": "$44.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "Monochrome suede hat", "slug": "suede-gyne-cap", "url": "https://www.damnpigeon.nyc/product-page/suede-gyne-cap", "price": 64.0, "price_display": "$64.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "MSK classic zip up", "slug": "msk-classic-zip-up", "url": "https://www.damnpigeon.nyc/product-page/msk-classic-zip-up", "price": 160.0, "price_display": "$160.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies", "Blanks I Use"], "image": null, "variants": [], "description": null}, {"name": "T2 DROP SHOULDER", "slug": "t2-drop-shoulder", "url": "https://www.damnpigeon.nyc/product-page/t2-drop-shoulder", "price": 24.0, "price_display": "$24.00", "in_stock": true, "categories": ["T-Shirts", "Blanks I Use"], "image": null, "variants": [], "description": null}, {"name": "pleat baggy pant", "slug": "sports-division-rugby-sock", "url": "https://www.damnpigeon.nyc/product-page/sports-division-rugby-sock", "price": 184.0, "price_display": "$184.00", "in_stock": true, "categories": ["Good Pants"], "image": null, "variants": [], "description": null}, {"name": "Blank Woven Tags", "slug": "blank-woven-tags", "url": "https://www.damnpigeon.nyc/product-page/blank-woven-tags", "price": 1.5, "price_display": "$1.50", "in_stock": true, "categories": ["Blanks I Use"], "image": null, "variants": [], "description": null}, {"name": "CROWN Classic Hoodie", "slug": "crown-classic-hoodie", "url": "https://www.damnpigeon.nyc/product-page/crown-classic-hoodie", "price": 144.0, "price_display": "$144.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies"], "image": null, "variants": [], "description": null}, {"name": "Sports Division Hat", "slug": "sports-division-hat", "url": "https://www.damnpigeon.nyc/product-page/sports-division-hat", "price": 142.0, "price_display": "$142.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "RUBGY sports division", "slug": "rubgy-sports-division", "url": "https://www.damnpigeon.nyc/product-page/rubgy-sports-division", "price": 614.0, "price_display": "$614.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DVMN 3-pak T-shirt bag", "slug": "dvmn-t-shirt-pack", "url": "https://www.damnpigeon.nyc/product-page/dvmn-t-shirt-pack", "price": 84.0, "price_display": "$84.00", "in_stock": true, "categories": ["T-Shirts", "Blanks I Use"], "image": null, "variants": [], "description": null}, {"name": "DVMN T shirt holders", "slug": "dvmn-t-shirt-holders", "url": "https://www.damnpigeon.nyc/product-page/dvmn-t-shirt-holders", "price": 90.0, "price_display": "$90.00", "in_stock": true, "categories": ["Hats & Accessories"], "image": null, "variants": [], "description": null}, {"name": "2 Way Flannel T-shirt", "slug": "2-way-flannel-t-shirt", "url": "https://www.damnpigeon.nyc/product-page/2-way-flannel-t-shirt", "price": 168.0, "price_display": "$168.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "BE WHO Hoodie", "slug": "be-who-hoodie", "url": "https://www.damnpigeon.nyc/product-page/be-who-hoodie", "price": 169.0, "price_display": "$169.00", "in_stock": true, "categories": ["GYNE 2025", "Hoodies"], "image": null, "variants": [], "description": null}, {"name": "FEMALE Designers T-shirt", "slug": "female-designers-t-shirt", "url": "https://www.damnpigeon.nyc/product-page/female-designers-t-shirt", "price": 64.0, "price_display": "$64.00", "in_stock": true, "categories": ["T-Shirts"], "image": null, "variants": [], "description": null}, {"name": "\"MAKE RACISM\"", "slug": "make-racism", "url": "https://www.damnpigeon.nyc/product-page/make-racism", "price": 48.0, "price_display": "$48.00", "in_stock": true, "categories": ["T-Shirts"], "image": null, "variants": [], "description": null}, {"name": "Cedarwood Flannel", "slug": "cedarwood-flannel", "url": "https://www.damnpigeon.nyc/product-page/cedarwood-flannel", "price": null, "price_display": "Out of stock", "in_stock": false, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DVMN sherpa jacket", "slug": "blm-2020-leather-varsity-jacket", "url": "https://www.damnpigeon.nyc/product-page/blm-2020-leather-varsity-jacket", "price": 190.0, "price_display": "$190.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}, {"name": "DVMN DREVMERS JOGGERS classics", "slug": "rain-jacket-1", "url": "https://www.damnpigeon.nyc/product-page/rain-jacket-1", "price": 149.0, "price_display": "$149.00", "in_stock": true, "categories": ["Good Pants"], "image": null, "variants": [], "description": null}, {"name": "1989 Track Suit", "slug": "1989-dvmndiadora-track-suit", "url": "https://www.damnpigeon.nyc/product-page/1989-dvmndiadora-track-suit", "price": 189.0, "price_display": "$189.00", "in_stock": true, "categories": [], "image": null, "variants": [], "description": null}];
+
+/* --- data source ---------------------------------------------------------
+   Currently seeded from the live-site scrape (73 products).
+   To go live on Wix Headless, replace loadProducts() with a call to the
+   Wix Stores API (products.queryProducts) using the store's client ID.
+   Card fields map 1:1: name, price, inventory status, options -> variants.
+-------------------------------------------------------------------------- */
+function loadProducts(){ return PRODUCTS; }
+
+let state = { cat:'all', q:'', sort:'featured' };
+let cart = {};   // slug -> qty
+const catalog = loadProducts();
+const money = n => '$'+n.toLocaleString('en-US',{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2});
+
+function initials(name){
+  const clean = name.replace(/["'.]/g,'').trim().split(/\s+/);
+  if(clean.length>=2) return (clean[0][0]+clean[1][0]).toUpperCase();
+  return clean[0].slice(0,2).toUpperCase();
+}
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+
+const BIRD = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34' fill='%23F4F2ED'%3E%3Cpath d='M32 18C24 6 12 2 0 0c12 8 18 14 26 18-8 2-16 6-22 14 10-6 20-10 28-12z'/%3E%3Cpath d='M32 18c8-12 20-16 32-18-12 8-18 14-26 18 8 2 16 6 22 14-10-6-20-10-28-12z'/%3E%3C/svg%3E";
+
+function tile(p){
+  if(p.image){
+    return `<div class="card-media" style="background-image:url('${p.image}')"></div>`;
+  }
+  const tint = hash(p.slug)%3===0 ? ' tint':'';
+  return `<div class="card-media"><div class="card-ph${tint}">
+      <span class="ini">${initials(p.name)}</span>
+      <img class="pg" src="${BIRD}" alt="">
+    </div></div>`;
+}
+
+function render(){
+  let list = catalog.slice();
+  if(state.cat!=='all') list = list.filter(p=>p.categories.includes(state.cat));
+  if(state.q){ const q=state.q.toLowerCase(); list = list.filter(p=>p.name.toLowerCase().includes(q)); }
+  if(state.sort==='low') list.sort((a,b)=>(a.price||1e9)-(b.price||1e9));
+  if(state.sort==='high') list.sort((a,b)=>(b.price||-1)-(a.price||-1));
+
+  const grid = document.getElementById('grid');
+  document.getElementById('hcount').textContent =
+    '// '+list.length+' pieces'+(state.cat!=='all'?' in '+state.cat:'')+(state.q?' matching "'+state.q+'"':'');
+
+  if(!list.length){ grid.innerHTML = '<div class="empty">// nothing here yet. try another filter.</div>'; return; }
+
+  grid.innerHTML = list.map(p=>{
+    const tag = p.categories[0] || 'DVMN';
+    const oos = !p.in_stock;
+    return `<div class="card ${oos?'oos':''}">
+      <div style="position:relative">
+        ${tile(p)}
+        <span class="card-tag">${tag}</span>
+        ${oos?'<div class="soldout-badge"><span>Sold Out</span></div>':
+          `<button class="add" onclick="add('${p.slug}')">Add to bag</button>`}
+      </div>
+      <a class="card-body" href="${p.url}" target="_blank" rel="noopener">
+        <h3>${p.name}</h3>
+        <span class="price ${oos?'oos':''}">${oos?'Sold out':money(p.price)}</span>
+      </a>
+    </div>`;
+  }).join('');
+}
+
+/* cart */
+function add(slug){
+  cart[slug]=(cart[slug]||0)+1;
+  updateCart(); toast('Added to bag'); openCart();
+}
+function setQty(slug,d){
+  cart[slug]=(cart[slug]||0)+d;
+  if(cart[slug]<=0) delete cart[slug];
+  updateCart();
+}
+function removeItem(slug){ delete cart[slug]; updateCart(); }
+
+function updateCart(){
+  const count = Object.values(cart).reduce((a,b)=>a+b,0);
+  document.getElementById('bagcount').textContent = count;
+  const box = document.getElementById('cartitems');
+  const slugs = Object.keys(cart);
+  if(!slugs.length){ box.innerHTML='<div class="cart-empty">// your bag is empty</div>'; document.getElementById('subtotal').textContent='$0'; return; }
+  let sub=0;
+  box.innerHTML = slugs.map(s=>{
+    const p = catalog.find(x=>x.slug===s); const q=cart[s]; sub += (p.price||0)*q;
+    const img = p.image ? `style="background-image:url('${p.image}')"` : '';
+    return `<div class="citem">
+      <div class="citem-img" ${img}>${p.image?'':initials(p.name)}</div>
+      <div class="citem-info">
+        <h4>${p.name}</h4>
+        <span class="cp">${money(p.price)}</span>
+        <div class="qty">
+          <button onclick="setQty('${s}',-1)" aria-label="Decrease">−</button>
+          <span>${q}</span>
+          <button onclick="setQty('${s}',1)" aria-label="Increase">+</button>
+        </div>
+      </div>
+      <button class="rm" onclick="removeItem('${s}')">Remove</button>
+    </div>`;
+  }).join('');
+  document.getElementById('subtotal').textContent = money(sub);
+}
+
+function openCart(){ document.getElementById('drawer').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeCart(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+function checkout(){
+  if(!Object.keys(cart).length){ toast('Your bag is empty'); return; }
+  toast('Demo — live version hands off to Wix checkout');
+}
+
+let tt;
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+/* controls */
+document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); state.cat=b.dataset.cat; render();
+}));
+document.querySelectorAll('.foot-col a[data-cat]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault(); const c=a.dataset.cat;
+  document.querySelectorAll('.fbtn').forEach(x=>x.classList.toggle('active',x.dataset.cat===c));
+  state.cat=c; render(); window.scrollTo({top:0,behavior:'smooth'});
+}));
+document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value;render();});
+document.getElementById('sort').addEventListener('change',e=>{state.sort=e.target.value;render();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart();});
+
+render(); updateCart();
+</script>
+</body>
+</html>
