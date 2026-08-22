@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP DVMN — Subway Series | Damn Pigeon</title>
+<meta name="description" content="Shop the Subway Series — custom garments, hoodies, denim, hats and accessories. Cut and sewn by hand on Slauson Ave.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Crect width='64' height='34' fill='%230A0A0A'/%3E%3Cpath d='M32 18 C24 6 12 2 0 0 C12 8 18 14 26 18 C18 20 10 24 4 32 C14 26 24 22 32 20 Z' fill='%231E63FF'/%3E%3Cpath d='M32 18 C40 6 52 2 64 0 C52 8 46 14 38 18 C46 20 54 24 60 32 C50 26 40 22 32 20 Z' fill='%23F4F2ED'/%3E%3C/svg%3E">
+
+<meta property="og:title" content="SHOP DVMN — Subway Series | Damn Pigeon">
+<meta property="og:description" content="Shop the Subway Series. Custom garments, cut and sewn by hand.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://YOUR-DOMAIN.vercel.app/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.vercel.app/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;--concrete:#161616;--concrete-2:#1E1E1E;
+    --bone:#F4F2ED;--pigeon:#9A9CA1;--cobalt:#1E63FF;--heat:#FF5A1F;
+    --line:rgba(244,242,237,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--bone);font-family:'Raleway',system-ui,sans-serif;
+    font-weight:500;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace}
+  .wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 28px}
+  .v{color:var(--cobalt)}
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* promo bar */
+  .promo{background:var(--cobalt);color:#fff;text-align:center;font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:.16em;padding:9px 40px 9px 16px;position:relative;text-transform:uppercase}
+  .promo b{font-weight:700}
+  .promo .x{position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;opacity:.8;font-size:16px;border:0;background:none;color:#fff}
+
+  /* top bar */
+  .bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line)}
+  .mark{display:flex;flex-direction:column;line-height:.82}
+  .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+  .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+  nav.links{display:flex;gap:32px;align-items:center}
+  nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+  nav.links a:hover,nav.links a.active{opacity:1;color:var(--cobalt)}
+  .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;
+    padding:8px 13px;color:var(--bone);cursor:pointer;transition:.2s;display:flex;gap:8px;align-items:center}
+  .bag:hover{border-color:var(--cobalt)}
+  .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+  .menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+
+  /* collection hero */
+  .chero{position:relative;padding:64px 0 44px;border-bottom:1px solid var(--line);overflow:hidden}
+  .chero::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 90% at 88% 0%,rgba(30,99,255,.18),transparent 55%);pointer-events:none}
+  .chero .wrap{position:relative;z-index:2}
+  .chero .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.26em;color:var(--cobalt);text-transform:uppercase}
+  .chero h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(52px,10vw,132px);line-height:.84;
+    text-transform:uppercase;letter-spacing:-1px;margin:14px 0 0}
+  .chero .blurb{max-width:560px;margin-top:20px;color:#cdccc6;font-size:16px}
+  .chero .count{font-family:'Space Mono',monospace;font-size:12px;color:var(--pigeon);margin-top:18px;letter-spacing:.1em}
+
+  /* filter bar */
+  .filters{position:sticky;top:65px;z-index:90;background:rgba(10,10,10,.94);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);padding:14px 0}
+  .filters .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .fbtn{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    padding:9px 15px;border:1px solid var(--line);border-radius:2px;color:var(--pigeon);background:none;cursor:pointer;transition:.2s;white-space:nowrap}
+  .fbtn:hover{color:var(--bone);border-color:var(--pigeon)}
+  .fbtn.active{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:700}
+  .filters .spacer{flex:1}
+  .search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:2px;padding:7px 12px;background:var(--concrete)}
+  .search input{background:none;border:0;color:var(--bone);font-family:'Space Mono',monospace;font-size:12px;width:150px;outline:none}
+  .search input::placeholder{color:#6c6c6c}
+  select.sort{font-family:'Space Mono',monospace;font-size:12px;background:var(--concrete);color:var(--bone);
+    border:1px solid var(--line);border-radius:2px;padding:9px 10px;cursor:pointer;outline:none}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+    border-bottom:1px solid var(--line)}
+  .card{background:var(--ink);display:flex;flex-direction:column;position:relative;transition:background .3s}
+  .card:hover{background:var(--concrete)}
+  .card-media{position:relative;aspect-ratio:4/5;background:var(--concrete);background-size:cover;background-position:center;overflow:hidden}
+  .card-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#141414,#1c1c1c);overflow:hidden}
+  .card-ph .ini{font-family:'Anton',sans-serif;font-size:56px;color:rgba(244,242,237,.13);letter-spacing:1px;z-index:1}
+  .card-ph .pg{position:absolute;right:-14px;bottom:-14px;width:96px;opacity:.05}
+  .card-ph.tint{background:linear-gradient(135deg,rgba(30,99,255,.16),#161616)}
+  .card-tag{position:absolute;top:10px;left:10px;font-family:'Space Mono',monospace;font-size:9.5px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--bone);background:rgba(10,10,10,.6);
+    padding:4px 8px;border-radius:2px;z-index:2}
+  .soldout-badge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,10,10,.62);z-index:3}
+  .soldout-badge span{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:2px;color:var(--bone);
+    border:2px solid var(--bone);padding:6px 14px;transform:rotate(-6deg);text-transform:uppercase}
+  .add{position:absolute;left:10px;right:10px;bottom:10px;z-index:2;opacity:0;transform:translateY(8px);
+    transition:.22s;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;
+    font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px;border-radius:2px;cursor:pointer}
+  .card:hover .add{opacity:1;transform:translateY(0)}
+  .add:hover{background:#3b78ff}
+  .card-body{padding:16px 16px 20px}
+  .card-body h3{font-size:14px;font-weight:800;line-height:1.25;margin-bottom:6px;min-height:2.4em}
+  .card-body .price{font-family:'Space Mono',monospace;font-size:13px;color:var(--cobalt)}
+  .card-body .price.oos{color:var(--pigeon)}
+  .card.oos .card-media{filter:grayscale(.6) brightness(.7)}
+  .empty{grid-column:1/-1;background:var(--ink);padding:80px 20px;text-align:center;color:var(--pigeon);font-family:'Space Mono',monospace}
+
+  /* cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;opacity:0;pointer-events:none;transition:.3s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:90vw;background:var(--concrete);
+    z-index:201;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--line)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+  .drawer-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:26px;text-transform:uppercase}
+  .drawer-head .x{background:none;border:0;color:var(--bone);font-size:26px;cursor:pointer;line-height:1}
+  .cart-items{flex:1;overflow-y:auto;padding:8px 24px}
+  .citem{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .citem-img{width:60px;height:74px;background:var(--concrete-2);background-size:cover;background-position:center;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;color:rgba(244,242,237,.2);font-size:20px}
+  .citem-info{flex:1;min-width:0}
+  .citem-info h4{font-size:13px;font-weight:800;margin-bottom:4px}
+  .citem-info .cp{font-family:'Space Mono',monospace;font-size:12px;color:var(--pigeon)}
+  .qty{display:flex;align-items:center;gap:0;margin-top:10px;border:1px solid var(--line);border-radius:2px;width:fit-content}
+  .qty button{background:none;border:0;color:var(--bone);width:26px;height:26px;cursor:pointer;font-size:15px}
+  .qty span{font-family:'Space Mono',monospace;font-size:12px;min-width:26px;text-align:center}
+  .citem .rm{background:none;border:0;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;margin-left:auto;align-self:flex-start}
+  .citem .rm:hover{color:var(--heat)}
+  .cart-empty{padding:60px 20px;text-align:center;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:13px}
+  .drawer-foot{border-top:1px solid var(--line);padding:22px 24px}
+  .subtotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .subtotal .l{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--pigeon);text-transform:uppercase}
+  .subtotal .a{font-family:'Anton',sans-serif;font-size:30px}
+  .drawer-foot .note{font-family:'Space Mono',monospace;font-size:10.5px;color:#6c6c6c;margin-bottom:16px;line-height:1.5}
+  .checkout{width:100%;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;font-size:13px;padding:17px;border-radius:2px;cursor:pointer;transition:.2s}
+  .checkout:hover{background:#3b78ff}
+
+  /* toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:300;
+    background:var(--bone);color:var(--ink);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+    padding:14px 22px;border-radius:3px;opacity:0;pointer-events:none;transition:.28s;max-width:88vw;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:56px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+  .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+  .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);text-transform:uppercase;margin-bottom:14px}
+  .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+  .foot-col a:hover{opacity:1;color:var(--cobalt)}
+  .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:760px){
+    nav.links{display:none}.menu-btn{display:block}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .filters{top:61px}
+    .search{display:none}
+  }
+  @media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.card-body h3{font-size:12.5px}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+/* ---- shared chrome (nav/footer) ---- */
+.bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line);transition:background .3s}
+.bar .mark{display:flex;flex-direction:column;line-height:.82}
+.bar .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+.bar .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+.bar nav.links{display:flex;gap:30px;align-items:center}
+.bar nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+.bar nav.links a:hover,.bar nav.links a.active{opacity:1;color:var(--cobalt)}
+.bar .navright{display:flex;gap:12px;align-items:center}
+.bar .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;
+  padding:8px 13px;color:var(--bone);cursor:pointer;background:none;transition:.2s;display:flex;gap:8px;align-items:center}
+.bar .bag:hover{border-color:var(--cobalt)}
+.bar .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+.menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer;line-height:1}
+#mobilenav{display:none;position:sticky;top:64px;z-index:99;background:rgba(10,10,10,.98);
+  border-bottom:1px solid var(--line);padding:6px 20px 14px}
+#mobilenav.open{display:block}
+#mobilenav a{display:block;padding:13px 4px;font-size:13px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;border-bottom:1px solid rgba(244,242,237,.07)}
+#mobilenav a:last-child{border-bottom:0}
+footer{border-top:1px solid var(--line);padding:56px 0 40px;margin-top:0}
+footer .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+footer .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+footer .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+footer .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);
+  text-transform:uppercase;margin-bottom:14px}
+footer .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+footer .foot-col a:hover{opacity:1;color:var(--cobalt)}
+footer .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+@media(max-width:880px){.bar nav.links{display:none}.menu-btn{display:block}}
+
+
+/* ---- quick view ---- */
+.qv{position:fixed;top:50%;left:50%;transform:translate(-50%,-46%) scale(.98);width:760px;max-width:94vw;
+  max-height:88vh;overflow-y:auto;background:var(--concrete);border:1px solid var(--line);border-radius:5px;
+  z-index:202;opacity:0;pointer-events:none;transition:.25s}
+.qv.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.qv-x{position:absolute;top:12px;right:14px;background:none;border:0;color:var(--bone);font-size:28px;cursor:pointer;z-index:3;line-height:1}
+#qv-body{display:grid;grid-template-columns:1fr 1fr}
+.qv-img{background-size:cover;background-position:center;min-height:420px;background-color:var(--concrete-2)}
+.qv-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141414,#1c1c1c)}
+.qv-ph span{font-family:'Anton',sans-serif;font-size:64px;color:rgba(244,242,237,.13)}
+.qv-info{padding:34px 30px}
+.qv-info h3{font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;line-height:1;margin-bottom:10px}
+.qv-price{font-family:'Space Mono',monospace;font-size:18px;color:var(--cobalt);margin-bottom:16px}
+.qv-desc{color:var(--pigeon);font-size:14px;margin-bottom:20px;line-height:1.6}
+.qv-note{font-family:'Space Mono',monospace;font-size:11.5px;color:#6c6c6c;margin-bottom:18px}
+.ogroup{margin-bottom:20px}
+.olabel{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--pigeon);margin-bottom:10px}
+.ochips{display:flex;flex-wrap:wrap;gap:8px}
+.ochip{font-family:'Space Mono',monospace;font-size:12.5px;padding:10px 16px;border:1px solid var(--line);
+  border-radius:2px;background:var(--concrete-2);color:var(--bone);cursor:pointer;transition:.15s}
+.ochip:hover{border-color:var(--pigeon)}
+.ochip.on{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:700}
+.ochip.oos{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.qv-add{width:100%;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;font-size:13px;padding:16px;border-radius:2px;cursor:pointer;transition:.2s}
+.qv-add:hover{background:#3b78ff}
+.qv-link{display:block;text-align:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--pigeon)}
+.qv-link:hover{color:var(--cobalt)}
+@media(max-width:700px){#qv-body{grid-template-columns:1fr}.qv-img{min-height:240px}.qv-info{padding:24px 20px}}
+
+
+.customcta{padding:86px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
+.customcta::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 20% 0%,rgba(30,99,255,.14),transparent 60%)}
+.customcta .wrap{position:relative;z-index:1}
+.customcta h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(32px,5vw,58px);
+  text-transform:uppercase;line-height:.92;margin:12px 0 14px}
+.customcta p{color:var(--pigeon);max-width:46ch;font-size:16px;margin-bottom:26px}
+.ccta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--cobalt);color:#fff;font-weight:800;
+  font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:.2s}
+.ccta-btn:hover{background:#3b78ff;transform:translateY(-2px)}
+
+
+.card-ribbon{position:absolute;top:10px;right:10px;font-family:'Space Mono',monospace;font-size:9.5px;
+  letter-spacing:.1em;text-transform:uppercase;background:var(--heat);color:#fff;padding:4px 8px;border-radius:2px;z-index:2}
+.qv-media{display:flex;flex-direction:column}
+.qv-media .qv-img{flex:1;min-height:360px}
+.qv-thumbs{display:flex;gap:5px;padding:8px;background:var(--concrete-2)}
+.qvt{width:52px;height:64px;border:1px solid var(--line);border-radius:2px;background-size:cover;
+  background-position:center;cursor:pointer;transition:.15s;flex-shrink:0}
+.qvt.on{border-color:var(--cobalt)}
+.qvt:hover{border-color:var(--pigeon)}
+
+</style>
+</head>
+<body>
+
+<div class="promo" id="promo">
+  <span><b>50% OFF</b> &nbsp;EVERYTHING&nbsp; — CODE <b>DVMN50</b> — ENDS SUNDAY MIDNIGHT</span>
+  <button class="x" onclick="document.getElementById('promo').style.display='none'" aria-label="Dismiss">×</button>
+</div>
+
+<header class="bar">
+  <a href="index.html" class="mark" aria-label="Damn Pigeon home">
+    <span class="top">D<span class="v">V</span>MNPIGEON</span>
+    <span class="sub">NEW&nbsp;YORK</span>
+  </a>
+  <nav class="links">
+    <a href="shop.html" class="active">Shop</a>
+    <a href="build.html">Custom</a>
+    <a href="learn.html">Learn</a>
+    <a href="index.html#studio">Studio</a>
+  </nav>
+  <div class="navright">
+    <button class="bag" onclick="dpBag()">BAG <span class="cnt" data-bagcount>0</span></button>
+    <button class="menu-btn" aria-label="Menu">&#8801;</button>
+  </div>
+</header>
+<div id="mobilenav">
+  <a href="shop.html">Shop</a>
+  <a href="build.html">Custom</a>
+  <a href="learn.html">Learn</a>
+  <a href="index.html#studio">Studio</a>
+  <a href="index.html">Home</a>
+</div>
+
+<section class="chero">
+  <div class="wrap">
+    <span class="eyebrow">// The full collection</span>
+    <h1>Subway<br>Series</h1>
+    <p class="blurb">Every piece in the house — hoodies, denim, fitteds, and accessories. Cut and sewn by hand, dropped in limited runs. No restocks.</p>
+    <p class="count" id="hcount"></p>
+  </div>
+</section>
+
+<div class="filters">
+  <div class="wrap">
+    <span id="fbtns" style="display:contents"></span>
+    <span class="spacer"></span>
+    <div class="search"><span class="mono" style="color:#6c6c6c">⌕</span><input id="search" placeholder="search" aria-label="Search products"></div>
+    <select class="sort" id="sort" aria-label="Sort">
+      <option value="featured">Featured</option>
+      <option value="low">Price: Low → High</option>
+      <option value="high">Price: High → Low</option>
+    </select>
+  </div>
+</div>
+
+<main>
+  <div class="grid wrap" id="grid" style="max-width:1320px;margin:0 auto"></div>
+</main>
+
+
+<section class="customcta">
+  <div class="wrap">
+    <span class="kicker" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;color:var(--cobalt);text-transform:uppercase">// Made to order</span>
+    <h2>Don't see it?<br>Build it.</h2>
+    <p>Pick the fabric for every panel and have it cut and sewn by hand. One of one.</p>
+    <a href="build.html" class="ccta-btn">Build your own &rarr;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img alt="damnpigeon" src="assets/logo-graffiti.png"></div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Shop</h4>
+          <a href="shop.html">All pieces</a>
+          <a href="build.html">Build your own</a>
+          <a href="shop.html">New drop</a>
+        </div>
+        <div class="foot-col">
+          <h4>Build</h4>
+          <a href="learn.html">Learn the craft</a>
+          <a href="learn.html#m01">Hoodie class</a>
+          <a href="index.html#sampling">Start your brand</a>
+        </div>
+        <div class="foot-col">
+          <h4>Info</h4>
+          <a href="index.html">Home</a>
+          <a href="index.html#studio">The studio</a>
+          <a href="mailto:damnpcs@gmail.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; DAMNPIGEON LLC &middot; D<span class="v">V</span>MNPCS@GMAIL.COM</span>
+      <span>MADE ON SLAUSON AVE &middot; CALIFORNIA &middot; USA</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="drawer-head">
+    <h2>Your Bag</h2>
+    <button class="x" onclick="closeCart()" aria-label="Close">×</button>
+  </div>
+  <div class="cart-items" id="cartitems"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span class="l">Subtotal</span><span class="a" id="subtotal">$0</span></div>
+    <p class="note">Shipping &amp; taxes calculated at checkout. Checkout is handled securely on Wix — inventory, payment, and shipping labels stay on her existing back office.</p>
+    <button class="checkout" onclick="checkout()">Secure checkout →</button>
+  </div>
+</aside>
+
+
+<aside class="qv" id="qv" aria-label="Product quick view">
+  <button class="qv-x" onclick="closeQV()" aria-label="Close">&times;</button>
+  <div id="qv-body"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = [{"id": "product_95002497-1b6b-cafd-548d-271a567e4b2a", "name": "01 Hoodie j kozy 100 pcs bundle", "slug": "01-hoodie-j-kozy-100-pcs-bundle", "url": "https://www.damnpigeon.nyc/product-page/01-hoodie-j-kozy-100-pcs-bundle", "price": 3528.0, "price_display": "$3528", "in_stock": true, "categories": ["Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_c733ca3b47234822bbed6cc3fe08194b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_c733ca3b47234822bbed6cc3fe08194b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_7e2b943dc86f4629ac54ce824cd08539~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_53c6d49aaa1e4b2883c4c6a99e2dc6d5~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_f5250cbebac94259ac5733663a22fece~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_fb832bf0d4a340f8a578fb50ad492103~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "MD", "inStock": true}, {"value": "LG", "inStock": true}]}, {"name": "Color", "choices": [{"value": "grey and white", "inStock": true}, {"value": "and cream", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Discover \"what the hoodie,\" an exclusive creation from dpny that stands out in both style and sustainability. Each hoodie is made from small scraps I've saved for months, with new custom pieces crafted every three months. Be confident knowing you're the only one with this unique hoodie. At dpny, we value individuality and innovation, ensuring each piece not only reflects your distinct personality "}, {"id": "product_894b4036-d17e-dbef-856c-3a345bb052a2", "name": "Classic omerte lambskin javket", "slug": "classic-omerte-lambskin-javket", "url": "https://www.damnpigeon.nyc/product-page/classic-omerte-lambskin-javket", "price": 1214.0, "price_display": "$1214", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_3d2c85e106a94bbbac2ab11845e7fe47~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_3d2c85e106a94bbbac2ab11845e7fe47~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b39898d5cc594865a21223f296508521~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_4a561d7ab54b454080380310ed0b222b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_278e4d6b00ad45ebb4876f5bc256f887~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "xx-large", "inStock": true}, {"value": "X large", "inStock": true}, {"value": "large", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_dafc7ade-922a-a2d4-feb0-2755454d32a0", "name": "RUBGY sports division", "slug": "rubgy-sports-division", "url": "https://www.damnpigeon.nyc/product-page/rubgy-sports-division", "price": 614.0, "price_display": "$614", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_ce3c09176a3e4d029e2c493bc3406a66~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_ce3c09176a3e4d029e2c493bc3406a66~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8e487ae710b14ac4a00e86b1dde9f39d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b4fab6beba1e4c91bfccc1a05320dad0~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_ecce7404a556424b82e23a0562cd8eb8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8a3c7ea7ea15465a86a095e442ef977c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XL", "inStock": true}]}], "sku": null, "ribbon": null, "description": "This is a pre-order item. Items ships in 3 to 4 weeks. I RARELY DO THESE BUT ON THIS ITEM I HAVE TO. This rugby is a knitted embroidered process. So it will take me a little longer. Thank You for copping and supporting us. DRY CLEAN ONLY. On all DVMNPIGEON garments. -KNOXX"}, {"id": "product_e5a2a17f-6324-582d-44ae-33b813f357b0", "name": "Complex Exclusive gyne", "slug": "complex-exclusive-gyne", "url": "https://www.damnpigeon.nyc/product-page/complex-exclusive-gyne", "price": 514.0, "price_display": "$514", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_486f54bdc1bd4ad4b3117c22f4e81a3f~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_486f54bdc1bd4ad4b3117c22f4e81a3f~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b446f6e84b914ce7a5a7cf6f5925d4fd~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_22c3bf070e144904b653ffd4e771d2ec~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_df8c3d6346cf49f48136c739fb362f3b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_c327b408-4bcc-1e8c-f984-48dd59a8084e", "name": "Gibran B", "slug": "gibran-b", "url": "https://www.damnpigeon.nyc/product-page/gibran-b", "price": 494.0, "price_display": "$494", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_8b585f754eb14fb384bf7c3ecd06213d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_8b585f754eb14fb384bf7c3ecd06213d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_e3595c0b073d4390897f568dd12387ba~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_265d92afc48848b385c363a69f2339dc~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_666c2a80a88e4182b6ffb739a5869b4f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c54f2749b6e049ebb9b786b8fb3c1c15~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Custom yankee hoodie with fuket hat."}, {"id": "product_b424d48b-770a-6b10-6f6a-9e82859fe0d3", "name": "03 Bomber", "slug": "03-bomber", "url": "https://www.damnpigeon.nyc/product-page/03-bomber", "price": 354.0, "price_display": "$354", "in_stock": true, "categories": ["Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_f4f1715dcdf04cd5b4ecc7082e7988f3~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_f4f1715dcdf04cd5b4ecc7082e7988f3~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "MD", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "Sm", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "XXL", "inStock": true}]}], "sku": null, "ribbon": null, "description": "An exclusive creation from dpny that stands out in both style and sustainability. Each hoodie is made from small scraps I've saved for months, with new custom pieces crafted every three months. Be confident knowing you're the only one with this unique hoodie. At dpny, we value individuality and innovation, ensuring each piece not only reflects your distinct personality but also supports eco-friend"}, {"id": "product_81c75d3b-c6a1-4105-2a4b-875c90326e35", "name": "Ira unk short", "slug": "ira-unk-short", "url": "https://www.damnpigeon.nyc/product-page/ira-unk-short", "price": 350.0, "price_display": "$350", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_65ba2fa191284a6e9ba2a1f4a40a5340~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_65ba2fa191284a6e9ba2a1f4a40a5340~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_1c73566cb7d4412abd4102953d8b61af~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_754795a9d892421db5b4514c90b35c3f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_37d72c7ce78f4cea870e97c7fcea2a85~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": null}, {"id": "product_cff97502-eca6-5af8-4c05-ba52fbe25ae2", "name": "GYNE Basic Denim Jacket", "slug": "gyne-basic-denim-jacket", "url": "https://www.damnpigeon.nyc/product-page/gyne-basic-denim-jacket", "price": 344.0, "price_display": "$344", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_3c634d49a4e04677854056dc0841e0c6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_3c634d49a4e04677854056dc0841e0c6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_60dcc40d48c243928475eef67ab77710~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cd90bc62a54147829c67c34e5298d4f5~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_820938833f694b60843f1c7cc928c480~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c2cb938b71a044c797c5067a8694abc6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_2a638b87-d888-5a78-7b1e-9e4c906f81cb", "name": "Gardens of DVMN pant", "slug": "gardens-of-dvmn-pant", "url": "https://www.damnpigeon.nyc/product-page/gardens-of-dvmn-pant", "price": 320.0, "price_display": "$320", "in_stock": true, "categories": ["GYNE", "Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_6163240f7e9e4618b26304911aeaf293~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_6163240f7e9e4618b26304911aeaf293~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_f9bd4a91ebff493bbd444626f6a669d9~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8e97f827c9af4979b3088dae82181900~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "large", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_311bb5b7-dfc0-683d-68bb-2373fd17533e", "name": "GY Selvedged Denim", "slug": "gy-selvedged-denim", "url": "https://www.damnpigeon.nyc/product-page/gy-selvedged-denim", "price": 319.0, "price_display": "$319", "in_stock": true, "categories": ["GYNE", "Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_c83b9c2fd7e947bdb9e9e6f02fc6d61c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_c83b9c2fd7e947bdb9e9e6f02fc6d61c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_89c625d8763f44f797192f0b6e82a886~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cd9fe3f75b9b429287d156e695c35bfc~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "100 pcs", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_29879440-896a-50c4-7158-9facc60277b7", "name": "NEOPRENE jacket", "slug": "neoprene-jacket", "url": "https://www.damnpigeon.nyc/product-page/neoprene-jacket", "price": 304.0, "price_display": "$304", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_bf375f054e1c491cafcae82182026b07~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_bf375f054e1c491cafcae82182026b07~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_89573875a592454f9520ff2088c66941~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_81f2c59cb7354a2d8250c67d32a9a8b2~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "X large", "inStock": true}, {"value": "large", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}, {"value": "XXL", "inStock": true}, {"value": "XS", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_665ac4c9-a3b8-9045-c980-7a4b6fb3504b", "name": "NEW YORK series split bomber", "slug": "new-york-series-split-bomber", "url": "https://www.damnpigeon.nyc/product-page/new-york-series-split-bomber", "price": 284.0, "price_display": "$284", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_8311c0bd3c78442ebed2c9e54c8c41f2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_8311c0bd3c78442ebed2c9e54c8c41f2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_5ddd2c27ca5e478aafe2f090cb8395c6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cbd834e97b6743deb0e0c424683318e2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_4482680d-5d1c-57ef-a37c-b09f78c7cdae", "name": "16 oz Terry inside out Jacket", "slug": "16-oz-terry-inside-out-jacket", "url": "https://www.damnpigeon.nyc/product-page/16-oz-terry-inside-out-jacket", "price": 284.0, "price_display": "$284", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_f422e2ba2c0340c289012d146306c15b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_f422e2ba2c0340c289012d146306c15b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_474eb415054a400bbc96d1ad791e8c68~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_7cbe4e9936364b36bae6336309e31871~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "#0000ff:blue", "inStock": true}, {"value": "#000000:black", "inStock": true}]}, {"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Experience the ultimate fusion of style and comfort with our 16 oz Terry Inside Out Jacket. This unique piece features perfect Terry fabric combined with denim accents—yes, we literally took a jacket and flipped it inside out for that effortlessly cool look. Ideal for fashion-forward individuals who appreciate creative designs, this jacket embodies dpny's commitment to innovation and quality. Embr"}, {"id": "product_fd011210-3ca5-e93d-6b7f-f2fafdc52718", "name": "PANTS OF THE YEAR", "slug": "pants-of-the-year", "url": "https://www.damnpigeon.nyc/product-page/pants-of-the-year", "price": 283.0, "price_display": "$283", "in_stock": true, "categories": ["GYNE", "Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_110d6f712c5143eb91d1bf3f3347e439~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_110d6f712c5143eb91d1bf3f3347e439~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_54631db83b544f399033e88e4d500921~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8d6b899025d745bf9567753eb13cebf7~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b20eb63066504663bc0c7aa931d32fd8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_56663727f7474106a3239782f4e256f0~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "X large", "inStock": true}, {"value": "L", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_a36b669e-24c9-704b-16ca-acd4113e0947", "name": "Peter NYC custom", "slug": "peter-nyc-custom", "url": "https://www.damnpigeon.nyc/product-page/peter-nyc-custom", "price": 280.0, "price_display": "$280", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_85a9b9eebe6e49cc8b30e9f9f5232734~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_85a9b9eebe6e49cc8b30e9f9f5232734~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_913bce5f10a8448189258e68eec608d1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_dfca811f0c964fca99d3fba8c4d0755e~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_20eb8c5a8140494b845d51491daf5ba2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "Snapback", "inStock": true}, {"value": "8", "inStock": true}, {"value": "7 7/8", "inStock": true}, {"value": "7 3/4", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}, {"value": "6 7/8", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_2ecdf9d3-bf12-d2b9-78bd-16c6791e48d3", "name": "Stone Raw 2 tone Denim", "slug": "stone-raw-2-tone-denim", "url": "https://www.damnpigeon.nyc/product-page/stone-raw-2-tone-denim", "price": 224.0, "price_display": "$224", "in_stock": true, "categories": ["GYNE", "Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_2f2b6d857b334873839e3cb7ee1a881e~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_2f2b6d857b334873839e3cb7ee1a881e~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_e4117f9669ff4c95a9aadd762338f39a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_937b373766194d08b5e7abc1160abb20~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_92b3881ef42247cfb0b04d8ebe517fe9~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "2xl", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_92bac9b0-f611-5e28-836c-1c44f4326441", "name": "neoprene pant", "slug": "neoprene-pant", "url": "https://www.damnpigeon.nyc/product-page/neoprene-pant", "price": 214.0, "price_display": "$214", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_b88c2191372e4560a149cbe91de8185c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_b88c2191372e4560a149cbe91de8185c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_478057d7b3d64584bd6e218f430ad5bc~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cc69f97c68584788bfa7d0d8226655f9~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b2d23676f0914062b189cd9ba6a4c85d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "rgb(142,140,113):Cream", "inStock": true}, {"value": "rgb(0, 0, 0):BLACK", "inStock": true}]}, {"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "SM", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_3c65a840-b4f8-dfaa-676b-24e85384bc32", "name": "Dear Summer Fitted Hat", "slug": "dear-summer-fitted-hat", "url": "https://www.damnpigeon.nyc/product-page/dear-summer-fitted-hat", "price": 209.0, "price_display": "$209", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_a280ecd22d504a45a7b899c23918a8eb~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_a280ecd22d504a45a7b899c23918a8eb~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_bd85efa369d24b89af2f7364711d227a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_da4b7ca210f44097ada9f7e582a6ea1d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "8", "inStock": true}, {"value": "7 3/4", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Every hat is one of one. No two are the same. Each flower, each patch, every detail on the brim is individually placed and hand-embroidered—no shortcuts, no mass production. What you’re wearing isn’t just a hat, it’s a piece that was built by hand, with intention, stitch by stitch."}, {"id": "product_4e3af0b3-ba05-6575-cf41-55a7a53c3dcd", "name": "Reverse Raw Hoodie", "slug": "reverse-raw-hoodie", "url": "https://www.damnpigeon.nyc/product-page/reverse-raw-hoodie", "price": 204.0, "price_display": "$204", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_60f9a10361424bc3861588748984b49a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_60f9a10361424bc3861588748984b49a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_537150e0aa5044b8ace49fa80927f47d~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c4c49ab5d7db4efd830aed0f26d11dbc~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_1e24a7db-72cf-3c6d-d260-1ea825b23d72", "name": "DVMN sherpa jacket", "slug": "dvmn-sherpa-jacket", "url": "https://www.damnpigeon.nyc/product-page/dvmn-sherpa-jacket", "price": 190.0, "price_display": "$190", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_7551737fd0574deea300cae7afa36a8b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_7551737fd0574deea300cae7afa36a8b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_3d6646eb17fb4f9897c38c940e6048bf~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_298524d3e77a432f9f90a8321f086d8b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_f5667e5ad8f04c709d5ef4db39429c0b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_9642f439b58a42b8937e96e99b41ad37~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "2xl", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "PICK your custom color and write it in the notes. thank you•••Model is 5'11 wearing a Medium.100% Polyester Lining Full ZipZippered Chest PocketStandard Zippered PocketsRegular Fit- Order True to Size"}, {"id": "product_11a35b18-b92a-251b-868b-dbefffb59a47", "name": "1989 Track Suit", "slug": "1989-track-suit", "url": "https://www.damnpigeon.nyc/product-page/1989-track-suit", "price": 189.0, "price_display": "$189", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_578ff3e9db194eea99ce86eccce68b61~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_578ff3e9db194eea99ce86eccce68b61~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_0b7f93e0345247d3b49763aba4027898~mv2_d_2048_1365_s_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_1f29317fa3a84da785c374d00a58ab44~mv2_d_1365_2048_s_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_46ad9d111ea44e53983526188ec6cfec~mv2_d_1365_2048_s_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_79749891eed24547be502c1f027d8295~mv2_d_1365_2048_s_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}, {"value": "xxxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_ae455490-1fbe-b1b5-c00e-254cc6ad04e4", "name": "05 Hoodie", "slug": "05-hoodie", "url": "https://www.damnpigeon.nyc/product-page/05-hoodie", "price": 184.0, "price_display": "$184", "in_stock": true, "categories": ["Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_f1570d814643463c9c453814e3ad1cf4~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_f1570d814643463c9c453814e3ad1cf4~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_d5f14ad2773840c99101e09f983335f1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_91c79641b8e74411950932665758e4e8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XL", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "LG", "inStock": true}]}], "sku": null, "ribbon": null, "description": "An exclusive creation from dpny that stands out in both style and sustainability. Each hoodie is made from small scraps I've saved for months, with new custom pieces crafted every three months. Be confident knowing you're the only one with this unique hoodie. At dpny, we value individuality and innovation, ensuring each piece not only reflects your distinct personality but also supports eco-friend"}, {"id": "product_27dc4b9a-d76d-115e-9558-9f73e4aa36bd", "name": "Tribecca blouse", "slug": "tribecca-blouse", "url": "https://www.damnpigeon.nyc/product-page/tribecca-blouse", "price": 184.0, "price_display": "$184", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_d240922760d2454d9fb1b2fd4d8ecc98~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_d240922760d2454d9fb1b2fd4d8ecc98~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_5605301c54aa420ebc5c884349b10d0c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "x-large", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_c13bfbeb-72d0-b20d-b715-57c3ae9985c8", "name": "GYNE stamp hoodie", "slug": "gyne-stamp-hoodie", "url": "https://www.damnpigeon.nyc/product-page/gyne-stamp-hoodie", "price": 184.0, "price_display": "$184", "in_stock": true, "categories": ["GYNE", "Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_ed2c12db26f04b058609dabb240be31f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_ed2c12db26f04b058609dabb240be31f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_61a6568543b8403a8be0d887e714663a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "2xl", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "16oz Terry,"}, {"id": "product_d273a893-1144-1e96-10bf-719c2222390a", "name": "pleat baggy pant", "slug": "pleat-baggy-pant", "url": "https://www.damnpigeon.nyc/product-page/pleat-baggy-pant", "price": 184.0, "price_display": "$184", "in_stock": true, "categories": ["GYNE", "Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_689f6c84492f4350acd4b5dbba521a21~mv2.webp/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_689f6c84492f4350acd4b5dbba521a21~mv2.webp/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_de5f60ee4c9242279dbf25302f2fe59f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c2d339add4ed43aab2daa5e2667c9c09~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": null}, {"id": "product_02cbce3f-fe4e-3270-3d02-ab4794962d7f", "name": "DVMN Double Dove Fitted", "slug": "dvmn-double-dove-fitted", "url": "https://www.damnpigeon.nyc/product-page/dvmn-double-dove-fitted", "price": 179.0, "price_display": "$179", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_95a75fcaee894dff964f5badc682ef0b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_95a75fcaee894dff964f5badc682ef0b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b4bdef512bbc4e529f9e732b4504e7fd~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8e0fff705438459f9eb36fbf0fbd88cd~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_69fa05b1a9924a5e8ad9809f3b5dfe8d~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8e750933fdb24d1498ae86d34c719f4e~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "8", "inStock": true}, {"value": "7 7/8", "inStock": true}, {"value": "7 3/4", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}, {"value": "6 7/8", "inStock": true}]}], "sku": null, "ribbon": null, "description": "The product is an authentic New Era Double Dove NY Yankees fitted baseball cap . The cap is part of the 59fifty product line . Brims vary from pink, black, and grey bottoms due to the limited inventory . Crown is branded with 2 dvmn signature embroidered doves."}, {"id": "product_af23acee-2035-5928-13cc-c9e822e092ec", "name": "Reverse Raw Black Jogger", "slug": "reverse-raw-black-jogger", "url": "https://www.damnpigeon.nyc/product-page/reverse-raw-black-jogger", "price": 179.0, "price_display": "$179", "in_stock": true, "categories": ["GYNE", "Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_ad8fc47e5c90410a9d9c5a15f0e47d70~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_ad8fc47e5c90410a9d9c5a15f0e47d70~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_5f0f9f3ea0c34d55a29bce76d12566ac~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_14c6d5ac59134644bc228b855e1e42b9~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_a23ee85fe4a54938a400e6c500065a14~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "xx-large", "inStock": true}, {"value": "X large", "inStock": true}, {"value": "L", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Experience ultimate comfort and style with our Reverse Raw Black Jogger, exclusively available at dpny. Crafted from 14 oz French Terry, these pre-shrunk joggers are made to cut, allowing you to customize the raw edge to your perfect length. Our designer’s advice is to keep them a little baggy at first; when they get dirty, just cut them again for a refreshed look. Embrace a laid-back, versatile f"}, {"id": "product_2233aa61-60c2-f8db-4da8-667bbed0b0eb", "name": "BE WHO Hoodie", "slug": "be-who-hoodie", "url": "https://www.damnpigeon.nyc/product-page/be-who-hoodie", "price": 169.0, "price_display": "$169", "in_stock": true, "categories": ["Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_1b906533aa7147b8bd71c337b7211689~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_1b906533aa7147b8bd71c337b7211689~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_babcfdc9da054d9a8e20dd6647b7099a~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_e2ed58519bab4a1f8a9612d20123ce33~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "large", "inStock": true}, {"value": "M", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "14 oz hoodie. White damnpigeon ny front font. Light grey back font."}, {"id": "product_bf7b2087-31d1-dc73-e56c-3825365a3f09", "name": "2 Way Flannel T-shirt", "slug": "2-way-flannel-t-shirt", "url": "https://www.damnpigeon.nyc/product-page/2-way-flannel-t-shirt", "price": 168.0, "price_display": "$168", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_bfed1def875d4c3cb8729dcf8a2bd288~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_bfed1def875d4c3cb8729dcf8a2bd288~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_ebfa89dfa3fe443084a2f4a58ba3e2b9~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_7f5b183bb3ce47468c6af189ba6557b8~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_6b029faf5955426394f6fefb502aed8b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_bf93886ba8034752b25ba13b71ad730b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": "EACH FLANNEL IS DIFFERENT, KNOXX HAND PICKS EACH FLANNEL SO EVERY SHIRT IS A 1 of 1. Introducing the versatile 2 Way Flannel T-shirt, exclusively at dpny. This unique piece combines the comfort of a high-quality cotton t-shirt with a stylish long sleeve flannel attached, all proudly bearing the iconic DVMN logo. Perfect for any casual or semi-formal event, it effortlessly blends casual ease with p"}, {"id": "product_2a5f15dc-dbcf-ae3e-815d-682cafd6724e", "name": "Knicks Double Dove", "slug": "knicks-double-dove", "url": "https://www.damnpigeon.nyc/product-page/knicks-double-dove", "price": 165.0, "price_display": "$165", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_bb0d0f652dbb4a639b9aee94aa9bd4a2~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_bb0d0f652dbb4a639b9aee94aa9bd4a2~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_6e254dfa988146a3a25013c5a5a381e7~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_a09a815f99da46a598cd01b0cd5e20eb~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "SNAPBACK", "inStock": true}, {"value": "8", "inStock": true}, {"value": "7 3/4", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_10e91d1a-e5dd-a1b3-7c13-656f6e2ec1cc", "name": "MSK classic zip up", "slug": "msk-classic-zip-up", "url": "https://www.damnpigeon.nyc/product-page/msk-classic-zip-up", "price": 160.0, "price_display": "$160", "in_stock": true, "categories": ["Blanks", "Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_82d5bae297b34de2b573d9cfd1c452de~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_82d5bae297b34de2b573d9cfd1c452de~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_b2b85a73-6c01-e776-79fd-726f6db5af9f", "name": "LA DVMN Double Dove", "slug": "la-dvmn-double-dove", "url": "https://www.damnpigeon.nyc/product-page/la-dvmn-double-dove", "price": 159.0, "price_display": "$159", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_4b6726a321784837b798743e84eec7f6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_4b6726a321784837b798743e84eec7f6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_2a93d7df21a44cd9a3f12ffb97ce7a1d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "8", "inStock": true}, {"value": "7 7/8", "inStock": true}, {"value": "7 3/4", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}, {"value": "6 7/8", "inStock": true}]}], "sku": null, "ribbon": null, "description": "The product is an authentic New Era Double Dove NY Yankees fitted baseball cap . The cap is part of the 59fifty product line . Brims vary from pink, black, and grey bottoms due to the limited inventory . Crown is branded with 2 dvmn signature embroidered doves."}, {"id": "product_12973140-40d0-2e65-2bfd-f6e1718bbd62", "name": "16 oz Terry Sweatpant", "slug": "16-oz-terry-sweatpant", "url": "https://www.damnpigeon.nyc/product-page/16-oz-terry-sweatpant", "price": 159.0, "price_display": "$159", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_3f0ecbf8a59d49bc87f33bc479e1b88f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_3f0ecbf8a59d49bc87f33bc479e1b88f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_eb146116180f4349822e0ed8833a69e7~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_61e6a5f222ee4cf28dc1b148fc4ebf34~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_d5a76f90b59b4b4a9888b9e139af175e~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_d7e59253-4900-2ded-ba12-088a456826e5", "name": "DVMN Yankee", "slug": "dvmn-yankee", "url": "https://www.damnpigeon.nyc/product-page/dvmn-yankee", "price": 149.0, "price_display": "$149", "in_stock": true, "categories": ["Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_d4569577b05c4b9288347da8f63f5f9b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_d4569577b05c4b9288347da8f63f5f9b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_e95f37a7c6054e46a74a0ac441dc9c6c~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_377dcc559b4c410fa261d71c216e19a4~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_d941c351ad5f491db62706e633cca2bc~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "8", "inStock": true}, {"value": "7 7/8", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}]}, {"name": "Count", "choices": [{"value": "Single dove", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_d96d548a-4b1d-4bb8-edba-16c087e79584", "name": "DVMN DREVMERS JOGGERS classics", "slug": "dvmn-drevmers-joggers-classics", "url": "https://www.damnpigeon.nyc/product-page/dvmn-drevmers-joggers-classics", "price": 149.0, "price_display": "$149", "in_stock": true, "categories": ["Bottoms"], "image": "https://static.wixstatic.com/media/5b3366_45575c98d40345f9993fc2b108e68245~mv2_d_2894_3455_s_4_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_45575c98d40345f9993fc2b108e68245~mv2_d_2894_3455_s_4_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_3a759a810a3c477eb2c3538f053ccde8~mv2_d_2510_4447_s_4_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_5aecc36e59944fed8cde87f37c8c2c8e~mv2_d_2860_4760_s_4_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_88bd2c5a322b41b8a64c20a656b1c7ab~mv2_d_3356_3541_s_4_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_9934bc5597404028857d62ab973d0d29~mv2_d_2679_4297_s_4_2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_d478d224-bf85-6e00-a469-d24a37d73c19", "name": "The fuket hat.", "slug": "the-fuket-hat", "url": "https://www.damnpigeon.nyc/product-page/the-fuket-hat", "price": 144.0, "price_display": "$144", "in_stock": true, "categories": ["GYNE", "Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_f6db211aa1a74a25afb4fdd9d1d43b7f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_f6db211aa1a74a25afb4fdd9d1d43b7f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_39fb7ed992b7474e9c23460a9d5924c8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Team", "choices": [{"value": "Dodgers", "inStock": true}, {"value": "YANKEE", "inStock": true}]}, {"name": "Size", "choices": [{"value": "7 3/4", "inStock": true}, {"value": "7 7/7", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_bf0a0837-10a6-304c-c816-d301f4db0ec0", "name": "CROWN Classic Hoodie", "slug": "crown-classic-hoodie", "url": "https://www.damnpigeon.nyc/product-page/crown-classic-hoodie", "price": 144.0, "price_display": "$144", "in_stock": true, "categories": ["Hoodies"], "image": "https://static.wixstatic.com/media/5b3366_3d5c77bff65f41a5aed1141b9482a530~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_3d5c77bff65f41a5aed1141b9482a530~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c3454e5c01f24780854ca6af9c4d257c/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXXL", "inStock": true}, {"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "large", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_d7f6fcf5-1f65-4db1-1771-e27dd2ae852f", "name": "Sports Division Hat", "slug": "sports-division-hat", "url": "https://www.damnpigeon.nyc/product-page/sports-division-hat", "price": 142.0, "price_display": "$142", "in_stock": true, "categories": ["Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_45f90cee4c994d869dabba7e5c19ef1f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_45f90cee4c994d869dabba7e5c19ef1f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_f83f2219ca4a403a9ad08b998fc2043d~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_9df5a2e9067644d1a3811d23079da1e8~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_1c7a97bfba4f490eb815b70d156d01fb~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_e8e971a1a44240c7a75b587b0a3af197~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "rgb(0,0,128):Navy", "inStock": true}, {"value": "#000000:BLACK", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_3a058bfc-25dd-3884-0572-a580a1ba8eab", "name": "Neoprene 139 Baggy", "slug": "neoprene-139-baggy", "url": "https://www.damnpigeon.nyc/product-page/neoprene-139-baggy", "price": 139.0, "price_display": "$139", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_82ac5da859b84529a302506beeea2060~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_82ac5da859b84529a302506beeea2060~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_1be7fd1f7aa54894b22c50376f7d5f0b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_09e43a70ba1c483780b93ddda743e823~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_eeb861e5-3b95-71d6-0628-0942fb041e00", "name": "Neoprene BL short", "slug": "neoprene-bl-short", "url": "https://www.damnpigeon.nyc/product-page/neoprene-bl-short", "price": 134.0, "price_display": "$134", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_680bbe0483294103a20f7e3175769da2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_680bbe0483294103a20f7e3175769da2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_5ab6de1d417047f7a3f2a1ded71bc7e6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "xx-large", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "large", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_fb12636f-fa37-40f2-e037-f20fbbaa494d", "name": "Duutty Rose Cargos", "slug": "duutty-rose-cargos", "url": "https://www.damnpigeon.nyc/product-page/duutty-rose-cargos", "price": 129.0, "price_display": "$129", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_ad1e4efacc65460a8e595854fb9408dc~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_ad1e4efacc65460a8e595854fb9408dc~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_bafc542a541245d683ea180796e32b83~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_743cc1bdb99f493295d1339cd8f79e66~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XL", "inStock": true}, {"value": "XXL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_e1d8fc74-3dee-b1c3-77e6-c20586c2f4c1", "name": "Daily Bread Crown x New Era", "slug": "daily-bread-crown-x-new-era", "url": "https://www.damnpigeon.nyc/product-page/daily-bread-crown-x-new-era", "price": 109.0, "price_display": "$109", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_e622dbf13c0748598942b4ac07f98ae8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_e622dbf13c0748598942b4ac07f98ae8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_d814e3aa6b4b43368a5291e0e67f5612~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "8", "inStock": true}, {"value": "7 7/8", "inStock": true}, {"value": "7 3/4", "inStock": true}, {"value": "7 5/8", "inStock": true}, {"value": "7 1/2", "inStock": true}, {"value": "7 3/8", "inStock": true}, {"value": "7 1/4", "inStock": true}, {"value": "7 1/8", "inStock": true}, {"value": "7", "inStock": true}, {"value": "6 7/8", "inStock": true}]}], "sku": null, "ribbon": null, "description": "The product is an authentic New Era Double Dove NY Yankees fitted baseball cap . The cap is part of the 59fifty product line . Brims vary from pink, black, and grey bottoms due to the limited inventory . Crown is branded with 2 dvmn signature embroidered doves."}, {"id": "product_2cd69736-f818-6a9e-3a9f-b80f0385019f", "name": "GYNE thermal", "slug": "gyne-thermal", "url": "https://www.damnpigeon.nyc/product-page/gyne-thermal", "price": 109.0, "price_display": "$109", "in_stock": true, "categories": ["GYNE", "T-Shirts"], "image": "https://static.wixstatic.com/media/5b3366_64dd82e568504d2eaa5bd3fa789c43ae~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_64dd82e568504d2eaa5bd3fa789c43ae~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_42ba720a811242b1893cf8117298ab57~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_0fd6a66d01544d6d8a4d59007bfeb063~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_4efb026cd5b4403292e31ba61a9715f7~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Experience unparalleled comfort and style with the GYNE thermal, the perfect NY thermal. Crafted for chic city living, it features an extended rib cuff for added warmth and an innovative covert itched binder collar for a seamless, polished look. Perfect for layering or wearing solo, this thermal embodies the high-quality standards and sophisticated design that dpny is known for. Elevate your wardr"}, {"id": "product_5b452195-01d5-7046-1720-c19dd290e87e", "name": "JORT V2", "slug": "jort-v2", "url": "https://www.damnpigeon.nyc/product-page/jort-v2", "price": 104.0, "price_display": "$104", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_90f8c05c04f941d5b47c687fd66e6f36~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_90f8c05c04f941d5b47c687fd66e6f36~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_4ae2854cefdb47aea0389745b2fe01e3~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_73d19cd396d84f37801509bcd61f0a0c~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "large", "inStock": true}, {"value": "M", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_5fb2f2ea-b402-4a96-9749-cea7dd5abd41", "name": "DVMN T shirt holders", "slug": "dvmn-t-shirt-holders", "url": "https://www.damnpigeon.nyc/product-page/dvmn-t-shirt-holders", "price": 90.0, "price_display": "$90", "in_stock": true, "categories": ["Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_34d6166dca3c4fc38d0cd9e76b119cf5~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_34d6166dca3c4fc38d0cd9e76b119cf5~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_e4151a1f1ce446ac84c4896e6f7b324b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b39f1764915c46358e2fdd8d37777198~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c552805e63914b10b766fbc4208651ce~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_a5fc7b2e687e45f79cb077f65afd5eff~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Bundle", "choices": [{"value": "25 pack", "inStock": true}, {"value": "100 pack", "inStock": true}]}], "sku": null, "ribbon": null, "description": "THESE TSHIRT HOLDERS ARE SOLD BY THE DOZEN. 12 pcs for $29 or 100 for $199"}, {"id": "product_abfbc4fb-032d-4bcf-76ed-e234e5d741df", "name": "Cupid double dove tee", "slug": "cupid-double-dove-tee", "url": "https://www.damnpigeon.nyc/product-page/cupid-double-dove-tee", "price": 88.0, "price_display": "$88", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_6cb970d5156c4772a800f940a0a336d3~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_6cb970d5156c4772a800f940a0a336d3~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_297efc1219d44f3b9e65f5c9915a521d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "X large", "inStock": true}, {"value": "L", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "290 gsm"}, {"id": "product_b5d8a04e-2897-b9e1-e2fa-ad63c174f192", "name": "DVMN 3-pak T-shirt bag", "slug": "dvmn-3-pak-t-shirt-bag", "url": "https://www.damnpigeon.nyc/product-page/dvmn-3-pak-t-shirt-bag", "price": 84.0, "price_display": "$84", "in_stock": true, "categories": ["T-Shirts", "Blanks"], "image": "https://static.wixstatic.com/media/5b3366_3bfb946c493b4adf99ea22141905f5e1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_3bfb946c493b4adf99ea22141905f5e1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_681949bfbd634ae4b175a461fa38659a.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_520097ead664453b86ab755e982c8747.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "sm", "inStock": true}, {"value": "md", "inStock": true}, {"value": "lg", "inStock": true}, {"value": "xl", "inStock": true}, {"value": "xxl", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Tri-blend, super soft and durable. Holds weight after serval washes. OK to dry.::Stay fresh with DVMN White T-shirt pak. Comes with 2 small and one grey. ••• ALL TSHIRTS ARE DIFF LOGOS. Each tshirt has a DAMNPIGEON NY insignia. So your actual pack might differ from the picture shown above•••THANK YOU,-TEAM DVMN"}, {"id": "product_8b9fca1a-b965-6bb3-bb38-078deef02376", "name": "Electric leopard 3/4 short", "slug": "electric-leopard-3-4-short", "url": "https://www.damnpigeon.nyc/product-page/electric-leopard-3-4-short", "price": 74.0, "price_display": "$74", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_3502ab849ec5496abb9a5f6769e1c17b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_3502ab849ec5496abb9a5f6769e1c17b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_ac7452e0-90b8-58ad-6c85-75dee7674494", "name": "Heavy Grey Tee", "slug": "heavy-grey-tee", "url": "https://www.damnpigeon.nyc/product-page/heavy-grey-tee", "price": 74.0, "price_display": "$74", "in_stock": true, "categories": ["GYNE"], "image": "https://static.wixstatic.com/media/5b3366_330d523f18cc4de6b604b3a3d0579da1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_330d523f18cc4de6b604b3a3d0579da1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cb7406e1fe064622888b8cbb15de971b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_c2d339add4ed43aab2daa5e2667c9c09~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "2xl", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}, {"name": "Team", "choices": [{"value": "LA", "inStock": true}, {"value": "SF BAY AREA", "inStock": true}, {"value": "KNICKS", "inStock": true}, {"value": "CHI TOWN", "inStock": true}, {"value": "YANKEE", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_3959a36b-01bf-2830-af36-f563d09c4a29", "name": "Friends & Family NY or Nowhere", "slug": "friends-family-ny-or-nowhere", "url": "https://www.damnpigeon.nyc/product-page/friends-family-ny-or-nowhere", "price": 68.0, "price_display": "$68", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_84f707db10624ce999d66f98345b9133~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_84f707db10624ce999d66f98345b9133~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_06e33b85ff9a40eca837d10186e5128a~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": "Hat comes with flat brim. Feel free to curve that brim. - Knoxx"}, {"id": "product_1e767f31-8ee1-ca20-3240-ed8e2e34fd39", "name": "73 bronx thermal", "slug": "73-bronx-thermal", "url": "https://www.damnpigeon.nyc/product-page/73-bronx-thermal", "price": 68.0, "price_display": "$68", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_34fcd192550545288a3072fb97835fd6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_34fcd192550545288a3072fb97835fd6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_f2a14d6dde3a42ef917be99a94de963b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "x-large", "inStock": true}, {"value": "XXL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_96d69ba8-217a-b772-d8b2-497b9d3660bb", "name": "Monochrome suede hat", "slug": "monochrome-suede-hat", "url": "https://www.damnpigeon.nyc/product-page/monochrome-suede-hat", "price": 64.0, "price_display": "$64", "in_stock": true, "categories": ["GYNE", "Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_348cf31997ff4731acc21e71ac80ba6e~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_348cf31997ff4731acc21e71ac80ba6e~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_bcc91f3000014ba3bbade57f9f3a7d7f~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_43e7987618f54b8fbea62f4f5c9ce756~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_2c4e30e7920747f68abb8474f6d3a6ad~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_4a8cf61185ad454f9b0201adef7d36bb~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "Baby blue", "inStock": true}, {"value": "Navy", "inStock": true}, {"value": "Pink", "inStock": true}, {"value": "Black", "inStock": true}, {"value": "Olive", "inStock": true}, {"value": "Wine", "inStock": true}, {"value": "Sand Tan", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_8ea614cd-45d7-f7aa-125c-fbe064664d29", "name": "FEMALE Designers T-shirt", "slug": "female-designers-t-shirt", "url": "https://www.damnpigeon.nyc/product-page/female-designers-t-shirt", "price": 64.0, "price_display": "$64", "in_stock": true, "categories": ["T-Shirts"], "image": "https://static.wixstatic.com/media/5b3366_a38e9a8e0f2e4df6a5ecf77c2602e12a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_a38e9a8e0f2e4df6a5ecf77c2602e12a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_f24fc49c435747b48a3c6c959cae3dc9~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "SM", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "XXL", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_f3e6cc2c-09d2-d17e-0bc3-312ac23af7b5", "name": "DVMN widestrap B1", "slug": "dvmn-widestrap-b1", "url": "https://www.damnpigeon.nyc/product-page/dvmn-widestrap-b1", "price": 62.0, "price_display": "$62", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_e5674630bc9443c68a2234ac69488607~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_e5674630bc9443c68a2234ac69488607~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_91b0296d7b9d4c2f9f3a6d01e264315a~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "2x-large", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "large", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Sizing is as follows ladies XS * US Size: 0–2 * Bust: 32.5” * Under Bust: 26” * Cup: 30 A–C * S * US Size: 4–6 * Bust: 34.5” * Under Bust: 28.5” * Cup: 32 A–C / 30 D–DD * M * US Size: 8–10 * Bust: 36.5” * Under Bust: 30” * Cup: 34 A–C / 32 D–DD * L * US Size: 12 * Bust: 38.5” * Under Bust: 31” * Cup: 36 A–C / 34 D–DD * XL * US Size: 14 * Bust: 40.5” * Under Bust: 33” * Cup: 38 A–C / 36 D–DD * XXL "}, {"id": "product_724dd185-4fde-bcc9-e171-601dd10b04ca", "name": "Cotton GYNE cap", "slug": "cotton-gyne-cap", "url": "https://www.damnpigeon.nyc/product-page/cotton-gyne-cap", "price": 54.0, "price_display": "$54", "in_stock": true, "categories": ["GYNE", "Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_c4b30201c09642d3bccbe14b0f8035aa~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_c4b30201c09642d3bccbe14b0f8035aa~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_391932821f3141d9b556f90f1f23a2e1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_dd9c5d08165d481ebe216d0e13f4940d~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_67265e30e6254805ad316bb08f843bd2~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b989111d171c421798dcf474b75d5ff7~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "Black / wine", "inStock": true}, {"value": "Black / baby blue", "inStock": true}, {"value": "Navy / orange", "inStock": true}, {"value": "Olive / orange", "inStock": true}, {"value": "Olive / tan", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_21297173-c756-65bc-63b3-348ef2189332", "name": "Thermmie NYDPLA", "slug": "thermmie-nydpla", "url": "https://www.damnpigeon.nyc/product-page/thermmie-nydpla", "price": 48.0, "price_display": "$48", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_9f54333947a540eb83794fa7369748ca~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_9f54333947a540eb83794fa7369748ca~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_b2c4e05473484862b14394142b213319~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_a089da560fc34f59b738e3f8aa66275f~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_fe3728a18ab4496a97d750e65b86a869~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "rgb(0,0,0):XXL", "inStock": true}, {"value": "rgb(0,0,0):XL", "inStock": true}, {"value": "rgb(0,0,0):LG", "inStock": true}, {"value": "rgb(0,0,0):MD", "inStock": true}, {"value": "rgb(0,0,0):SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_d592463c-898f-2e1a-b8a8-d12a75f356d5", "name": "“MAKE RACISM”", "slug": "make-racism", "url": "https://www.damnpigeon.nyc/product-page/make-racism", "price": 48.0, "price_display": "$48", "in_stock": true, "categories": ["T-Shirts"], "image": "https://static.wixstatic.com/media/5b3366_dc5b3f5123b544718e0152e2a893f899~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_dc5b3f5123b544718e0152e2a893f899~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "xx-large", "inStock": true}, {"value": "X large", "inStock": true}, {"value": "large", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_b7667345-8a6c-670b-ad16-af8180973077", "name": "DVMN DREVMERS tee", "slug": "dvmn-drevmers-tee", "url": "https://www.damnpigeon.nyc/product-page/dvmn-drevmers-tee", "price": 44.0, "price_display": "$44", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_9f11f3d917234f1ba4552827c738dc7b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_9f11f3d917234f1ba4552827c738dc7b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_1258bf8411864579a3db36ed1f5b7b15~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": null}, {"id": "product_8a556f28-c15c-5339-80b9-b45adda23bcd", "name": "GYNE cap", "slug": "gyne-cap", "url": "https://www.damnpigeon.nyc/product-page/gyne-cap", "price": 44.0, "price_display": "$44", "in_stock": true, "categories": ["GYNE", "Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_faad1bdd415b4207a27a483ff3a58602~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_faad1bdd415b4207a27a483ff3a58602~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "Black", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_a74ec43d-ae3a-413d-2d32-51d72993c3db", "name": "Sample Qzips.", "slug": "sample-qzips", "url": "https://www.damnpigeon.nyc/product-page/sample-qzips", "price": 40.0, "price_display": "$40", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_a3f6729069b34f19b5975d23bbd6a5ce~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_a3f6729069b34f19b5975d23bbd6a5ce~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_ad975f15364148ebbedcdd10896da3e0~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_ce8b94b5a4e743708f5ab9e868809eaf~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}, {"name": "Color", "choices": [{"value": "Grey", "inStock": true}, {"value": "Black", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_bbe4855d-5b78-3974-505d-fe38fc05e35e", "name": "Cotton candy uni vintage tee", "slug": "cotton-candy-uni-vintage-tee", "url": "https://www.damnpigeon.nyc/product-page/cotton-candy-uni-vintage-tee", "price": 36.0, "price_display": "$36", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_d4ad6df5616e4b39ae6c103ecd3cc1b8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_d4ad6df5616e4b39ae6c103ecd3cc1b8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "rgb(252,252,252):Large", "inStock": true}, {"value": "rgb(255,255,250):Medium", "inStock": true}, {"value": "rgb(255,254,250):Small", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_da3eedda-9c74-a4cd-3b63-1443c6ba02e6", "name": "DPNY-LA  5 panel .", "slug": "dpny-la-5-panel", "url": "https://www.damnpigeon.nyc/product-page/dpny-la-5-panel", "price": 36.0, "price_display": "$36", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_1358d17b65f9457993e38e35ea6112d3~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_1358d17b65f9457993e38e35ea6112d3~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cfd9f35bb15a4bc2afec0c52d285658e~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_9a7ac25bc14748679644f23fccb221c8~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_582425c2aa1743afbe3babf34734ab9b~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_3ae5470392e8439ba7d6b29f01f92216~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "Black canvas", "inStock": true}, {"value": "Brown canvas", "inStock": true}, {"value": "Black corduroy", "inStock": true}, {"value": "Navy corduroy", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_ca4116a1-0652-7da5-564f-45f6e438ce98", "name": "70s Spring Beanie", "slug": "70s-spring-beanie", "url": "https://www.damnpigeon.nyc/product-page/70s-spring-beanie", "price": 29.0, "price_display": "$29", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_fc2a6d04d77547f8ae912dd4cd1628ea~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_fc2a6d04d77547f8ae912dd4cd1628ea~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_9b189a4ad6ab4c9281ee6fa2e9797cc6~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_1ce47ec77410432682bf50928169d683~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": null}, {"id": "product_79804311-097f-724f-7e1e-7e335159cb5a", "name": "lightweight ‘1987 blank", "slug": "lightweight-1987-blank", "url": "https://www.damnpigeon.nyc/product-page/lightweight-1987-blank", "price": 28.0, "price_display": "$28", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_5f598d0da6694eb3a53ea37b4eddf659~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_5f598d0da6694eb3a53ea37b4eddf659~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "X large", "inStock": true}, {"value": "XXL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "large", "inStock": true}, {"value": "med", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_65b5be41-6bc1-7786-8d08-e5f4e1ffcd3a", "name": "ACG leather laces", "slug": "acg-leather-laces", "url": "https://www.damnpigeon.nyc/product-page/acg-leather-laces", "price": 28.0, "price_display": "$28", "in_stock": true, "categories": ["GYNE", "Blanks", "Hats & Access."], "image": "https://static.wixstatic.com/media/5b3366_d1cd3b5620964932ad13b7bb11ad58af~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_d1cd3b5620964932ad13b7bb11ad58af~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_039557f548ff4ecea260c728aa7e2cc1~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Color", "choices": [{"value": "Grey", "inStock": true}, {"value": "Brown", "inStock": true}, {"value": "Black", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_999b3e2e-ccbe-bbca-bc51-39e76c53f65b", "name": "T2 DROP SHOULDER", "slug": "t2-drop-shoulder", "url": "https://www.damnpigeon.nyc/product-page/t2-drop-shoulder", "price": 24.0, "price_display": "$24", "in_stock": true, "categories": ["Blanks", "T-Shirts"], "image": "https://static.wixstatic.com/media/5b3366_388aae02e98348a58015b6118f803769~mv2.webp/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_388aae02e98348a58015b6118f803769~mv2.webp/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_7a4c7ab69cc84795981b9af97e2ca1ee~mv2.webp/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "2xl", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}, {"name": "Color", "choices": [{"value": "Blue", "inStock": true}, {"value": "Grey", "inStock": true}, {"value": "Black", "inStock": true}, {"value": "White", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_2cddc3a6-10ee-267b-eb10-cfe94259e79e", "name": "1911 pop and lock holster keychain", "slug": "1911-pop-and-lock-holster-keychain", "url": "https://www.damnpigeon.nyc/product-page/1911-pop-and-lock-holster-keychain", "price": 21.99, "price_display": "$21.99", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_9103fce810e5474cbf0d4d107d9357c2~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_9103fce810e5474cbf0d4d107d9357c2~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": null}, {"id": "product_7562aec2-80f8-c801-1434-a128f8946adb", "name": "Issue 06 perfect tee", "slug": "issue-06-perfect-tee", "url": "https://www.damnpigeon.nyc/product-page/issue-06-perfect-tee", "price": 14.0, "price_display": "$14", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_d5db7aa380c64ffeadb1331871e1121a~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_d5db7aa380c64ffeadb1331871e1121a~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "SM", "inStock": true}]}, {"name": "Color", "choices": [{"value": "#ffffff:white", "inStock": true}, {"value": "#000000:BLACK", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_1c8121fc-735a-340b-6575-3c9e25d4ff4c", "name": "100 % cotton beanie 1DOZEN", "slug": "100-cotton-beanie-1dozen", "url": "https://www.damnpigeon.nyc/product-page/100-cotton-beanie-1dozen", "price": 12.0, "price_display": "$12", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_8357fbf451a544f38411b8f4dffca6f4~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_8357fbf451a544f38411b8f4dffca6f4~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_261329dcba5f4cf1ad44d7769b5a48ab~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_04698fffc114404d8bfe7b5f77c81ec3~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Amount", "choices": [{"value": "1 dozen", "inStock": true}, {"value": "Single", "inStock": true}]}, {"name": "Color", "choices": [{"value": "Forrest", "inStock": true}, {"value": "Blue", "inStock": true}, {"value": "Pink", "inStock": true}, {"value": "White", "inStock": true}, {"value": "Black", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_cf774995-050e-9349-37e2-28f5648fb8bc", "name": "DP Hard Hat box", "slug": "dp-hard-hat-box", "url": "https://www.damnpigeon.nyc/product-page/dp-hard-hat-box", "price": 6.69, "price_display": "$6.69", "in_stock": true, "categories": ["Blanks"], "image": "https://static.wixstatic.com/media/5b3366_4a6a9563aa634e43ae5e8e2ba60ca52c~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_4a6a9563aa634e43ae5e8e2ba60ca52c~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_258bc3afb396489abdfd8a68c5454d10~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_cc5d156328a1414c86b660ae4a792f97~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Style", "choices": [{"value": "10 PCS", "inStock": true}, {"value": "ONE HOLDER", "inStock": true}]}], "sku": null, "ribbon": null, "description": "These cases ship immediately"}, {"id": "product_c3c2cb48-c1d3-2f7c-3401-07a8e07cd518", "name": "Blank Woven Tags", "slug": "blank-woven-tags", "url": "https://www.damnpigeon.nyc/product-page/blank-woven-tags", "price": 1.5, "price_display": "$1.5", "in_stock": true, "categories": ["Blanks"], "image": "https://static.wixstatic.com/media/5b3366_2ccf31f1c4ef4c75b96e687a4100d2e7~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_2ccf31f1c4ef4c75b96e687a4100d2e7~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_3eb46eae41214c90af850db00c53c838~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "Custom logo.", "inStock": true}, {"value": "small", "inStock": true}, {"value": "Big", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Ive created the perfect blank woven tags. Use dtf prints to create a woven tag for your brand without breaking the bank."}, {"id": "product_afa41bab-9b0c-400e-d8a1-121190603df9", "name": "Off Duty unclaimed", "slug": "off-duty-unclaimed", "url": "https://www.damnpigeon.nyc/product-page/off-duty-unclaimed", "price": 1.0, "price_display": "$1", "in_stock": true, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_a14fabf4062d446caa689f62c2b20041~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_a14fabf4062d446caa689f62c2b20041~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": "Only 1 per client yall , lol"}, {"id": "product_309246db-587c-ae0f-09bc-5cb0e1127489", "name": "Lock to JACK", "slug": "lock-to-jack", "url": "https://www.damnpigeon.nyc/product-page/lock-to-jack", "price": null, "price_display": "Out of stock", "in_stock": false, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_b9d50563b6004f9d83cb1de41d14d413~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_b9d50563b6004f9d83cb1de41d14d413~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Deadstock 2014 tshirt fabric made in 2026. Only 1 per client yall lol"}, {"id": "product_a3a50722-47af-ce68-c2c5-ab98888fb7ed", "name": "NY or NOWHERE Crown", "slug": "ny-or-nowhere-crown", "url": "https://www.damnpigeon.nyc/product-page/ny-or-nowhere-crown", "price": null, "price_display": "Out of stock", "in_stock": false, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_d3cfd5b9bfe84a38a8ed841cf035a90e~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_d3cfd5b9bfe84a38a8ed841cf035a90e~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_4880b36740ca42049d137eafdfd2cc6c~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [], "sku": null, "ribbon": null, "description": null}, {"id": "product_65bca720-9753-b60a-d62d-437d87648ec3", "name": "Tanjie Sunset Zip up", "slug": "tanjie-sunset-zip-up", "url": "https://www.damnpigeon.nyc/product-page/tanjie-sunset-zip-up", "price": null, "price_display": "Out of stock", "in_stock": false, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_6bc722d706ac42f3beb0fbfc9979f8a7~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_6bc722d706ac42f3beb0fbfc9979f8a7~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_7d7e0dd8360141128cb684a952cd7702~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "L", "inStock": true}]}, {"name": "Wholesale", "choices": [{"value": "Leo bundle", "inStock": true}, {"value": "50 PCS", "inStock": true}, {"value": "30 PCS", "inStock": true}, {"value": "SINGLE 1 PC", "inStock": true}]}], "sku": null, "ribbon": null, "description": null}, {"id": "product_8da7624e-66cc-1fbc-2748-3ac27b037bfe", "name": "Cedarwood Flannel", "slug": "cedarwood-flannel", "url": "https://www.damnpigeon.nyc/product-page/cedarwood-flannel", "price": null, "price_display": "Out of stock", "in_stock": false, "categories": [], "image": "https://static.wixstatic.com/media/5b3366_76932c7bed6141099f9c094533f6984c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "gallery": ["https://static.wixstatic.com/media/5b3366_76932c7bed6141099f9c094533f6984c~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_a3c95ad9bd47477bba7813f6d0605776~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg", "https://static.wixstatic.com/media/5b3366_8f2bf7dafc2942fba58d784486189e2d~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg"], "options": [{"name": "Size", "choices": [{"value": "XXXL", "inStock": true}, {"value": "XXL", "inStock": true}, {"value": "XL", "inStock": true}, {"value": "LG", "inStock": true}, {"value": "MD", "inStock": true}, {"value": "SM", "inStock": true}]}], "sku": null, "ribbon": null, "description": "Combination Shirt Jacket Order True to Size Chest Pocket Button Closure"}];
+
+/* --- data source ---------------------------------------------------------
+   Currently seeded from the live-site scrape (73 products).
+   To go live on Wix Headless, replace loadProducts() with a call to the
+   Wix Stores API (products.queryProducts) using the store's client ID.
+   Card fields map 1:1: name, price, inventory status, options -> variants.
+-------------------------------------------------------------------------- */
+function loadProducts(){ return PRODUCTS; }
+
+let state = { cat:'all', q:'', sort:'featured' };
+let cart = {};   // slug -> qty
+let catalog = loadProducts();
+window.__SEED_PRODUCTS = catalog;
+const money = n => '$'+n.toLocaleString('en-US',{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2});
+
+function initials(name){
+  const clean = name.replace(/["'.]/g,'').trim().split(/\s+/);
+  if(clean.length>=2) return (clean[0][0]+clean[1][0]).toUpperCase();
+  return clean[0].slice(0,2).toUpperCase();
+}
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+
+const BIRD = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34' fill='%23F4F2ED'%3E%3Cpath d='M32 18C24 6 12 2 0 0c12 8 18 14 26 18-8 2-16 6-22 14 10-6 20-10 28-12z'/%3E%3Cpath d='M32 18c8-12 20-16 32-18-12 8-18 14-26 18 8 2 16 6 22 14-10-6-20-10-28-12z'/%3E%3C/svg%3E";
+
+function tile(p){
+  if(p.image){
+    return `<div class="card-media" style="background-image:url('${p.image}')"></div>`;
+  }
+  const tint = hash(p.slug)%3===0 ? ' tint':'';
+  return `<div class="card-media"><div class="card-ph${tint}">
+      <span class="ini">${initials(p.name)}</span>
+      <img class="pg" src="${BIRD}" alt="">
+    </div></div>`;
+}
+
+function renderFilters(){
+  const seen=[];
+  catalog.forEach(p=>(p.categories||[]).forEach(c=>{ if(c && !seen.includes(c)) seen.push(c); }));
+  seen.sort((a,b)=>a.localeCompare(b));
+  const cats=['all'].concat(seen);
+  if(state.cat!=='all' && !seen.includes(state.cat)) state.cat='all';
+  document.getElementById('fbtns').innerHTML = cats.map(c=>
+    `<button class="fbtn ${c===state.cat?'active':''}" data-cat="${c.replace(/"/g,'&quot;')}">${c==='all'?'All':c}</button>`
+  ).join('');
+  document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{
+    state.cat=b.dataset.cat; renderFilters(); render();
+  }));
+}
+
+function render(){
+  let list = catalog.slice();
+  if(state.cat!=='all') list = list.filter(p=>p.categories.includes(state.cat));
+  if(state.q){ const q=state.q.toLowerCase(); list = list.filter(p=>p.name.toLowerCase().includes(q)); }
+  if(state.sort==='low') list.sort((a,b)=>(a.price||1e9)-(b.price||1e9));
+  if(state.sort==='high') list.sort((a,b)=>(b.price||-1)-(a.price||-1));
+
+  const grid = document.getElementById('grid');
+  document.getElementById('hcount').textContent =
+    '// '+list.length+' pieces'+(state.cat!=='all'?' in '+state.cat:'')+(state.q?' matching "'+state.q+'"':'');
+
+  if(!list.length){ grid.innerHTML = '<div class="empty">// nothing here yet. try another filter.</div>'; return; }
+
+  grid.innerHTML = list.map(p=>{
+    const tag = p.categories[0] || 'DVMN';
+    const oos = !p.in_stock;
+    return `<div class="card ${oos?'oos':''}">
+      <div style="position:relative">
+        ${tile(p)}
+        <span class="card-tag">${tag}</span>
+        ${p.ribbon?`<span class="card-ribbon">${p.ribbon}</span>`:''}
+        ${oos?'<div class="soldout-badge"><span>Sold Out</span></div>':
+          `<button class="add" onclick="quickView('${p.slug}')">${(p.options&&p.options.length)?'Select size':'Add to bag'}</button>`}
+      </div>
+      <a class="card-body" href="${p.url}" target="_blank" rel="noopener">
+        <h3>${p.name}</h3>
+        <span class="price ${oos?'oos':''}">${oos?'Sold out':money(p.price)}</span>
+      </a>
+    </div>`;
+  }).join('');
+}
+
+/* cart — backed by DPBag so it survives moving between pages */
+function keyOf(slug, opts){
+  const o = Object.keys(opts||{}).sort().map(k=>k+':'+opts[k]).join('|');
+  return o ? slug+'::'+o : slug;
+}
+function add(slug, opts, qty){
+  const p = catalog.find(x=>x.slug===slug); if(!p) return;
+  opts = opts || {}; qty = qty || 1;
+  DPBag.add(keyOf(slug,opts), {slug:slug, id:p.id||null, name:p.name, price:p.price,
+                               image:p.image||null, options:opts, qty:qty});
+  updateCart(); toast('Added to bag'); openCart();
+}
+function setQty(key,d){ DPBag.setQty(key,d); updateCart(); }
+function removeItem(key){ DPBag.remove(key); updateCart(); }
+
+function optLine(o){
+  const k = Object.keys(o||{});
+  return k.length ? k.map(x=>o[x]).join(' · ') : '';
+}
+
+function updateCart(){
+  const bag = DPBag.all();
+  const keys = Object.keys(bag);
+  DPBag.paintCount();
+  const box = document.getElementById('cartitems');
+  if(!keys.length){
+    box.innerHTML='<div class="cart-empty">// your bag is empty</div>';
+    document.getElementById('subtotal').textContent='$0'; return;
+  }
+  let sub=0;
+  box.innerHTML = keys.map(k=>{
+    const it=bag[k]; sub += (it.price||0)*it.qty;
+    const img = it.image ? `style="background-image:url('${it.image}')"` : '';
+    const ol = optLine(it.options);
+    return `<div class="citem">
+      <div class="citem-img" ${img}>${it.image?'':initials(it.name)}</div>
+      <div class="citem-info">
+        <h4>${it.name}</h4>
+        ${ol?`<span class="cp" style="color:var(--cobalt)">${ol}</span><br>`:''}
+        <span class="cp">${money(it.price)}</span>
+        <div class="qty">
+          <button onclick="setQty('${k}',-1)" aria-label="Decrease">&minus;</button>
+          <span>${it.qty}</span>
+          <button onclick="setQty('${k}',1)" aria-label="Increase">+</button>
+        </div>
+      </div>
+      <button class="rm" onclick="removeItem('${k}')">Remove</button>
+    </div>`;
+  }).join('');
+  document.getElementById('subtotal').textContent = money(sub);
+}
+
+function openCart(){ document.getElementById('drawer').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeCart(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+
+/* ---- quick view (size / option picker) ---- */
+let qvSlug=null, qvOpts={}, qvQty=1, qvImg=0;
+function qvPick(i){ qvImg=i; renderQV(); }
+function quickView(slug){
+  const p=catalog.find(x=>x.slug===slug); if(!p) return;
+  qvSlug=slug; qvOpts={}; qvQty=1; qvImg=0;
+  (p.options||[]).forEach(o=>{
+    const choices=(o.choices||[]).filter(c=>c.inStock!==false);
+    if(choices.length) qvOpts[o.name]= choices[0].description || choices[0].value;
+  });
+  renderQV();
+  document.getElementById('qv').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeQV(){ document.getElementById('qv').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+function pickOpt(name,val){ qvOpts[name]=val; renderQV(); }
+function qvSetQty(d){ qvQty=Math.max(1,qvQty+d); renderQV(); }
+function renderQV(){
+  const p=catalog.find(x=>x.slug===qvSlug); if(!p) return;
+  const g = p.gallery && p.gallery.length ? p.gallery : (p.image?[p.image]:[]);
+  const media = g.length
+    ? `<div class="qv-media">
+         <div class="qv-img" id="qv-main" style="background-image:url('${g[qvImg]||g[0]}')"></div>
+         ${g.length>1?`<div class="qv-thumbs">${g.map((u,i)=>`<button class="qvt ${i===qvImg?'on':''}" onclick="qvPick(${i})" style="background-image:url('${u}')"></button>`).join('')}</div>`:''}
+       </div>`
+    : `<div class="qv-img qv-ph"><span>${initials(p.name)}</span></div>`;
+  const opts=(p.options||[]).map(o=>{
+    const chips=(o.choices||[]).map(c=>{
+      const val=c.value||c.description;
+      const oos=c.inStock===false;
+      return `<button class="ochip ${qvOpts[o.name]===val?'on':''} ${oos?'oos':''}"
+        ${oos?'disabled':`onclick="pickOpt('${o.name.replace(/'/g,"\'")}','${String(val).replace(/'/g,"\'")}')"`}>${val}</button>`;
+    }).join('');
+    return `<div class="ogroup"><div class="olabel">${o.name}</div><div class="ochips">${chips}</div></div>`;
+  }).join('');
+  const needsOpts = (p.options||[]).length>0;
+  document.getElementById('qv-body').innerHTML = `
+    ${media}
+    <div class="qv-info">
+      <h3>${p.name}</h3>
+      <div class="qv-price">${p.in_stock?money(p.price):'Sold out'}</div>
+      ${p.description?`<p class="qv-desc">${p.description.slice(0,260)}${p.description.length>260?'…':''}</p>`:''}
+      ${opts || (needsOpts?'':'<p class="qv-note">// one size · no options</p>')}
+      <div class="ogroup"><div class="olabel">Quantity</div>
+        <div class="qty" style="margin-top:0">
+          <button onclick="qvSetQty(-1)">&minus;</button><span>${qvQty}</span><button onclick="qvSetQty(1)">+</button>
+        </div>
+      </div>
+      <button class="qv-add" onclick="add(qvSlug,qvOpts,qvQty);closeQV();">Add to bag &rarr;</button>
+      <a class="qv-link" href="${p.url}" target="_blank" rel="noopener">View full details &rarr;</a>
+    </div>`;
+}
+
+async function checkout(){
+  const bag=DPBag.all(); const keys=Object.keys(bag);
+  if(!keys.length){ toast('Your bag is empty'); return; }
+  if(!(window.DPWix && window.DPWix.ready)){
+    toast('Live catalog not connected — deploy & approve the URL to enable checkout'); return;
+  }
+  const missingIds = keys.filter(k=>!bag[k].id);
+  if(missingIds.length){ toast('Reload the page so live products load, then checkout'); return; }
+  try{
+    toast('Taking you to secure checkout…');
+    await window.DPWix.goToWixCheckout(keys.map(k=>({
+      id: bag[k].id, quantity: bag[k].qty, options: bag[k].options
+    })));
+  }catch(err){ console.error('Wix checkout error:',err); toast('Checkout error — see console'); }
+}
+
+let tt;
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+/* controls */
+document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value;render();});
+document.getElementById('sort').addEventListener('change',e=>{state.sort=e.target.value;render();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeQV();}});
+
+window.__dpnyApply=function(list){
+  catalog=list; renderFilters(); render(); updateCart();
+  toast('Live catalog loaded — '+list.length+' products');
+};
+
+renderFilters(); render(); updateCart();
+if(location.hash==='#bag') openCart();
+</script>
+<script type="module">
+  // Live Wix Headless connection (shared module in assets/wix.js)
+  import { client, loadCollections, loadLiveProducts, goToWixCheckout, STORES_APP_ID } from './assets/wix.js';
+  window.DPWix = { client, goToWixCheckout, STORES_APP_ID, ready:false };
+
+  (async () => {
+    try{
+      const colById = await loadCollections();          // her live collections
+      const live    = await loadLiveProducts(colById);  // products tagged with them
+      if(!live.length) return;                          // keep the CSV snapshot
+      window.DPWix.ready = true;
+      window.__dpnyApply(live);
+    }catch(err){
+      console.warn('Wix live catalog unavailable — showing last known catalog. Details:', err);
+    }
+  })();
+</script>
+<script>
+function dpBag(){
+  if(typeof openCart==='function'){ openCart(); }
+  else { window.location.href='shop.html#bag'; }
+}
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

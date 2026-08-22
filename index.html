@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAMNPIGEON — NEW YORK</title>
+<meta name="description" content="Custom garments, sampling, and the blueprint to start your own brand — cut and sewn by hand on Slauson Ave.">
+
+<!-- Favicon (pigeon silhouette) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Crect width='64' height='34' fill='%230A0A0A'/%3E%3Cpath d='M32 18 C24 6 12 2 0 0 C12 8 18 14 26 18 C18 20 10 24 4 32 C14 26 24 22 32 20 Z' fill='%231E63FF'/%3E%3Cpath d='M32 18 C40 6 52 2 64 0 C52 8 46 14 38 18 C46 20 54 24 60 32 C50 26 40 22 32 20 Z' fill='%23F4F2ED'/%3E%3C/svg%3E">
+
+<!-- Social share — replace YOUR-DOMAIN with your live Vercel/custom domain -->
+<meta property="og:title" content="DAMNPIGEON — NEW YORK">
+<meta property="og:description" content="Custom garments, sampling, and the blueprint to start your own brand.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://YOUR-DOMAIN.vercel.app/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.vercel.app/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --concrete:#161616;
+    --concrete-2:#1E1E1E;
+    --bone:#F4F2ED;
+    --pigeon:#9A9CA1;
+    --cobalt:#1E63FF;
+    --heat:#FF5A1F;
+    --line:rgba(244,242,237,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Raleway',system-ui,sans-serif;
+    font-weight:500;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace}
+  .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 28px}
+
+  /* ---------- grain overlay ---------- */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- top bar ---------- */
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    background:linear-gradient(to bottom,rgba(10,10,10,.92),rgba(10,10,10,0));
+    transition:background .3s ease;
+  }
+  .bar.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--line)}
+  .mark{display:flex;flex-direction:column;line-height:.82}
+  .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+  .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+  .mark .v{color:var(--cobalt)}
+  nav.links{display:flex;gap:34px;align-items:center}
+  nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);opacity:.8;transition:opacity .2s,color .2s}
+  nav.links a:hover{opacity:1;color:var(--cobalt)}
+  .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;padding:7px 12px;color:var(--pigeon);transition:.2s}
+  .bag:hover{border-color:var(--cobalt);color:var(--bone)}
+  .menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.1) 40%,rgba(10,10,10,.85) 100%),
+      radial-gradient(120% 90% at 80% 20%,rgba(30,99,255,.28),transparent 55%);
+  }
+  .hero-fallback{position:absolute;inset:0;z-index:-1;background:
+    radial-gradient(120% 90% at 75% 25%,rgba(30,99,255,.35),transparent 60%),var(--concrete)}
+  .hero-copy{position:relative;z-index:2;padding-bottom:7vh;width:100%}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:.22em;color:var(--bone);margin-bottom:22px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--heat);box-shadow:0 0 0 0 rgba(255,90,31,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,31,.6)}70%{box-shadow:0 0 0 9px rgba(255,90,31,0)}100%{box-shadow:0 0 0 0 rgba(255,90,31,0)}}
+  h1.hero-h{
+    font-family:'Anton',sans-serif;font-weight:400;
+    font-size:clamp(58px,12vw,168px);line-height:.86;letter-spacing:-.5px;text-transform:uppercase;
+    text-shadow:0 6px 40px rgba(0,0,0,.4);
+  }
+  h1.hero-h .v{color:var(--cobalt)}
+  .hero-sub{max-width:540px;margin:26px 0 34px;font-size:17px;color:#d9d8d2;line-height:1.55}
+  .hero-sub b{color:var(--bone);font-weight:800}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.12em;
+    text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .15s,background .2s,color .2s}
+  .btn-primary{background:var(--cobalt);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:#3b78ff}
+  .btn-ghost{border:1px solid var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--bone);transform:translateY(-2px)}
+
+  .drop-chip{position:absolute;right:28px;bottom:7vh;z-index:2;text-align:right;font-family:'Space Mono',monospace}
+  .drop-chip .lbl{font-size:10px;letter-spacing:.3em;color:var(--pigeon)}
+  .drop-chip .date{font-size:14px;color:var(--bone);margin-top:4px}
+
+  /* ---------- three doors ---------- */
+  .section{padding:104px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px;flex-wrap:wrap}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;color:var(--cobalt);text-transform:uppercase}
+  .sec-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(34px,5vw,64px);
+    line-height:.92;text-transform:uppercase;letter-spacing:-.5px;margin-top:12px}
+  .sec-head p{max-width:360px;color:var(--pigeon);font-size:15px}
+
+  .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+  .door{position:relative;background:var(--concrete);padding:36px 30px 30px;min-height:340px;
+    display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+    transition:background .35s ease}
+  .door:hover{background:var(--concrete-2)}
+  .door .num{font-family:'Space Mono',monospace;font-size:13px;color:var(--pigeon);letter-spacing:.1em}
+  .door h3{font-family:'Anton',sans-serif;font-weight:400;font-size:34px;text-transform:uppercase;
+    line-height:.95;margin:auto 0 10px}
+  .door h3 .v{color:var(--cobalt)}
+  .door p{color:var(--pigeon);font-size:14.5px;margin-bottom:22px;max-width:30ch}
+  .door .go{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
+  .door .go .arr{transition:transform .25s ease}
+  .door:hover .go .arr{transform:translateX(6px)}
+  .door .ix{position:absolute;right:-10px;top:-26px;font-family:'Anton',sans-serif;font-size:150px;
+    color:rgba(244,242,237,.035);line-height:1;pointer-events:none;transition:color .35s}
+  .door:hover .ix{color:rgba(30,99,255,.10)}
+  .door .go:hover{color:var(--cobalt)}
+
+  /* ---------- studio strip ---------- */
+  .studio{display:grid;grid-template-columns:1.05fr 1fr;gap:0;align-items:stretch;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .studio-img{min-height:420px;background-size:cover;background-position:center;filter:grayscale(.15) contrast(1.05)}
+  .studio-txt{padding:84px 60px;display:flex;flex-direction:column;justify-content:center}
+  .studio-txt .kicker{margin-bottom:18px}
+  .studio-txt h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,4vw,52px);
+    line-height:.95;text-transform:uppercase;margin-bottom:20px}
+  .studio-txt p{color:var(--pigeon);font-size:16px;max-width:46ch;margin-bottom:14px}
+  .studio-txt .stamp{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+    color:var(--bone);margin-top:18px;border-left:2px solid var(--cobalt);padding-left:14px}
+
+  /* ---------- newsletter ---------- */
+  .drop{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+  .drop::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 50% 0%,rgba(30,99,255,.16),transparent 60%)}
+  .drop .inner{position:relative;z-index:1}
+  .drop .kicker{display:block;margin-bottom:18px}
+  .drop h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,96px);
+    text-transform:uppercase;line-height:.88;letter-spacing:-1px}
+  .drop h2 .v{color:var(--cobalt)}
+  .drop p{color:var(--pigeon);margin:18px auto 34px;max-width:38ch;font-size:16px}
+  .signup{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .signup input{flex:1;min-width:220px;background:var(--concrete);border:1px solid var(--line);
+    color:var(--bone);padding:16px 18px;border-radius:2px;font-family:'Space Mono',monospace;font-size:14px}
+  .signup input::placeholder{color:#6c6c6c}
+  .signup input:focus{outline:none;border-color:var(--cobalt)}
+  .signup-status{margin-top:16px;font-size:13px;letter-spacing:.06em;min-height:18px;color:var(--cobalt)}
+  .signup-status.err{color:var(--heat)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:60px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  .foot-logo img{height:30px;filter:invert(1) brightness(1.6);opacity:.9}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);
+    text-transform:uppercase;margin-bottom:14px}
+  .foot-col a{display:block;font-size:13px;color:var(--bone);opacity:.75;margin-bottom:9px;transition:.2s}
+  .foot-col a:hover{opacity:1;color:var(--cobalt)}
+  .legal{margin-top:48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+  .legal .v{color:var(--cobalt)}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    nav.links{display:none}
+    .menu-btn{display:block}
+    .doors{grid-template-columns:1fr}
+    .studio{grid-template-columns:1fr}
+    .studio-img{min-height:280px}
+    .studio-txt{padding:54px 28px}
+    .drop-chip{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .dot{animation:none!important}
+    html{scroll-behavior:auto}
+  }
+
+/* ---- shared chrome (nav/footer) ---- */
+.bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line);transition:background .3s}
+.bar .mark{display:flex;flex-direction:column;line-height:.82}
+.bar .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+.bar .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+.bar nav.links{display:flex;gap:30px;align-items:center}
+.bar nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+.bar nav.links a:hover,.bar nav.links a.active{opacity:1;color:var(--cobalt)}
+.bar .navright{display:flex;gap:12px;align-items:center}
+.bar .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;
+  padding:8px 13px;color:var(--bone);cursor:pointer;background:none;transition:.2s;display:flex;gap:8px;align-items:center}
+.bar .bag:hover{border-color:var(--cobalt)}
+.bar .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+.menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer;line-height:1}
+#mobilenav{display:none;position:sticky;top:64px;z-index:99;background:rgba(10,10,10,.98);
+  border-bottom:1px solid var(--line);padding:6px 20px 14px}
+#mobilenav.open{display:block}
+#mobilenav a{display:block;padding:13px 4px;font-size:13px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;border-bottom:1px solid rgba(244,242,237,.07)}
+#mobilenav a:last-child{border-bottom:0}
+footer{border-top:1px solid var(--line);padding:56px 0 40px;margin-top:0}
+footer .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+footer .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+footer .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+footer .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);
+  text-transform:uppercase;margin-bottom:14px}
+footer .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+footer .foot-col a:hover{opacity:1;color:var(--cobalt)}
+footer .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+@media(max-width:880px){.bar nav.links{display:none}.menu-btn{display:block}}
+
+
+/* ---- live drop strip ---- */
+.dropstrip{padding:90px 0;border-top:1px solid var(--line)}
+.dropstrip .sec-head{margin-bottom:38px}
+.livegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
+.lcard{background:var(--ink);transition:background .3s;display:block}
+.lcard:hover{background:var(--concrete)}
+.lmedia{aspect-ratio:4/5;background:var(--concrete);background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center}
+.lmedia .ini{font-family:'Anton',sans-serif;font-size:44px;color:rgba(244,242,237,.12)}
+.lbody{padding:14px 14px 18px}
+.lbody h4{font-size:13px;font-weight:800;line-height:1.25;margin-bottom:5px}
+.lbody .lp{font-family:'Space Mono',monospace;font-size:12px;color:var(--cobalt)}
+.loading{grid-column:1/-1;background:var(--ink);padding:56px;text-align:center;
+  font-family:'Space Mono',monospace;font-size:12px;color:#6c6c6c}
+.seeall{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-weight:800;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
+.seeall:hover{color:var(--cobalt)}
+
+/* ---- custom band ---- */
+.custom{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.custom-txt{padding:84px 60px;display:flex;flex-direction:column;justify-content:center}
+.custom-txt h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,4vw,52px);
+  text-transform:uppercase;line-height:.95;margin:14px 0 18px}
+.custom-txt p{color:var(--pigeon);font-size:16px;max-width:46ch;margin-bottom:14px}
+.custom-art{background:var(--concrete);display:flex;align-items:center;justify-content:center;padding:40px;min-height:400px}
+.swatchwall{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:340px}
+.swatchwall div{aspect-ratio:1;border-radius:3px;border:1px solid rgba(255,255,255,.12)}
+
+/* ---- sampling ---- */
+.sampling{padding:100px 0;border-bottom:1px solid var(--line)}
+.samp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin-top:40px}
+.samp-cell{background:var(--concrete);padding:32px 26px}
+.samp-cell .n{font-family:'Space Mono',monospace;font-size:12px;color:var(--cobalt);letter-spacing:.16em}
+.samp-cell h4{font-family:'Anton',sans-serif;font-weight:400;font-size:24px;text-transform:uppercase;margin:12px 0 10px}
+.samp-cell p{color:var(--pigeon);font-size:14.5px}
+@media(max-width:900px){
+  .livegrid{grid-template-columns:repeat(2,1fr)}
+  .custom{grid-template-columns:1fr}
+  .custom-txt{padding:54px 28px}
+  .samp-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="bar">
+  <a href="index.html" class="mark" aria-label="Damn Pigeon home">
+    <span class="top">D<span class="v">V</span>MNPIGEON</span>
+    <span class="sub">NEW&nbsp;YORK</span>
+  </a>
+  <nav class="links">
+    <a href="shop.html">Shop</a>
+    <a href="build.html">Custom</a>
+    <a href="learn.html">Learn</a>
+    <a href="index.html#studio">Studio</a>
+  </nav>
+  <div class="navright">
+    <button class="bag" onclick="dpBag()">BAG <span class="cnt" data-bagcount>0</span></button>
+    <button class="menu-btn" aria-label="Menu">&#8801;</button>
+  </div>
+</header>
+<div id="mobilenav">
+  <a href="shop.html">Shop</a>
+  <a href="build.html">Custom</a>
+  <a href="learn.html">Learn</a>
+  <a href="index.html#studio">Studio</a>
+  <a href="index.html">Home</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-fallback"></div>
+  <div class="hero-media">
+    <video id="herovid" autoplay muted loop playsinline preload="auto"
+      disablepictureinpicture
+      poster="assets/hero-poster.jpg">
+      <!-- Local copy (drop the downloaded file at assets/file.mp4). -->
+      <source src="assets/file.mp4" type="video/mp4">
+      <!-- Fallback: her Wix CDN, in case the local file is missing. -->
+      <source src="https://video.wixstatic.com/video/5b3366_e06137b8b07c41b9833a7fec4b74da86/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="wrap hero-copy">
+    <span class="eyebrow"><span class="dot"></span> NEXT DROP — GYNE — 11.04.25</span>
+    <h1 class="hero-h">I SET<br>SHIT <span class="v">OFF</span></h1>
+    <p class="hero-sub">Custom garments, real sampling, and the blueprint to launch your own label — <b>cut and sewn by hand</b> on Slauson Ave.</p>
+    <div class="cta-row">
+      <a href="shop.html" class="btn btn-primary">Shop the drop →</a>
+      <a href="#doors" class="btn btn-ghost">Start your brand</a>
+    </div>
+  </div>
+
+  <div class="drop-chip">
+    <div class="lbl">DVMN × DEF · FALL</div>
+    <div class="date">11 · 04 · 2025</div>
+  </div>
+</section>
+
+<!-- THREE DOORS -->
+<section class="section" id="doors">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">// Three ways in</span>
+        <h2>Pick your<br>lane.</h2>
+      </div>
+      <p>One label, three doors. Cop the drop, sample your own pieces, or learn to build the whole thing yourself. Want it your way? Build a piece panel by panel.</p>
+    </div>
+
+    <div class="doors">
+      <a class="door" href="shop.html">
+        <span class="ix">01</span>
+        <span class="num">01 — STORE</span>
+        <div>
+          <h3>Shop<br>D<span class="v">V</span>MN</h3>
+          <p>Hoodies, tees, good pants, hats. Limited runs, no restocks.</p>
+        </div>
+        <span class="go">Enter the shop <span class="arr">→</span></span>
+      </a>
+
+      <a class="door" href="#sampling">
+        <span class="ix">02</span>
+        <span class="num">02 — SAMPLING</span>
+        <div>
+          <h3>Start your<br>brand</h3>
+          <p>From sketch to sample. Book a call and get your first pieces made right.</p>
+        </div>
+        <span class="go">Book a sample <span class="arr">→</span></span>
+      </a>
+
+      <a class="door" href="learn.html">
+        <span class="ix">03</span>
+        <span class="num">03 — LEARN</span>
+        <div>
+          <h3>Learn the<br>craft</h3>
+          <p>Hands-on classes and a full curriculum — from your first hoodie to your own brand.</p>
+        </div>
+        <span class="go">Enter the school <span class="arr">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- LIVE DROP STRIP -->
+<section class="dropstrip">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">// In the shop now</span>
+        <h2>Latest<br>pieces.</h2>
+      </div>
+      <p>Straight from the studio. Limited runs, no restocks.</p>
+    </div>
+    <div class="livegrid" id="livegrid"><a class="lcard" href="shop.html"><div class="lmedia" style="background-image:url('https://static.wixstatic.com/media/5b3366_f1570d814643463c9c453814e3ad1cf4~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg')"></div><div class="lbody"><h4>05 Hoodie</h4><span class="lp">$184</span></div></a><a class="lcard" href="shop.html"><div class="lmedia" style="background-image:url('https://static.wixstatic.com/media/5b3366_3c634d49a4e04677854056dc0841e0c6~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg')"></div><div class="lbody"><h4>GYNE Basic Denim Jacket</h4><span class="lp">$344</span></div></a><a class="lcard" href="shop.html"><div class="lmedia" style="background-image:url('https://static.wixstatic.com/media/5b3366_6163240f7e9e4618b26304911aeaf293~mv2.png/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg')"></div><div class="lbody"><h4>Gardens of DVMN pant</h4><span class="lp">$320</span></div></a><a class="lcard" href="shop.html"><div class="lmedia" style="background-image:url('https://static.wixstatic.com/media/5b3366_95a75fcaee894dff964f5badc682ef0b~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_auto/file.jpg')"></div><div class="lbody"><h4>DVMN Double Dove Fitted</h4><span class="lp">$179</span></div></a></div>
+    <a class="seeall" href="shop.html">See all pieces <span>&rarr;</span></a>
+  </div>
+</section>
+
+<!-- CUSTOM BAND -->
+<section class="custom" id="custom">
+  <div class="custom-txt">
+    <span class="kicker">// Made to order</span>
+    <h2>Build it panel<br>by panel.</h2>
+    <p>Pick the fabric for every panel — hood, body, sleeves, pocket, cuffs. Patchwork it however you want, and it gets cut and sewn by hand.</p>
+    <p>One of one. Nobody else has your pair.</p>
+    <div class="cta-row" style="margin-top:14px">
+      <a href="build.html" class="btn btn-primary">Build your own &rarr;</a>
+    </div>
+  </div>
+  <div class="custom-art">
+    <div class="swatchwall">
+      <div style="background:#17170f"></div><div style="background:#33415a"></div><div style="background:#6b7688"></div>
+      <div style="background:#e6e1d3"></div><div style="background:#1E63FF"></div><div style="background:#9a9ca1"></div>
+      <div style="background:#5a5f3e"></div><div style="background:#FF5A1F"></div><div style="background:#2a2723"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLING -->
+<section class="sampling" id="sampling">
+  <div class="wrap">
+    <span class="kicker">// Sampling</span>
+    <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(32px,5vw,58px);text-transform:uppercase;line-height:.92;margin-top:12px">Start your brand.</h2>
+    <p style="color:var(--pigeon);max-width:52ch;margin-top:16px;font-size:16px">Got an idea and no idea how to make it? I take you from sketch to a real sample you can hold, wear, and sell.</p>
+    <div class="samp-grid">
+      <div class="samp-cell"><span class="n">01 / CALL</span><h4>Talk it through</h4><p>Bring the idea, references, whatever you've got. We figure out what it actually takes to make it.</p></div>
+      <div class="samp-cell"><span class="n">02 / SAMPLE</span><h4>Make the first one</h4><p>Patterns, fabric, and a real sample cut and sewn in the studio.</p></div>
+      <div class="samp-cell"><span class="n">03 / RUN IT</span><h4>Take it to production</h4><p>Specs, blanks, and the plan to make more than one without getting burned.</p></div>
+    </div>
+    <div class="cta-row" style="margin-top:34px">
+      <a href="mailto:damnpcs@gmail.com?subject=Sampling%20enquiry" class="btn btn-primary">Book a call &rarr;</a>
+      <a href="learn.html" class="btn btn-ghost">Learn to do it yourself</a>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO STRIP -->
+<section class="studio" id="studio">
+  <div class="studio-img" style="background-image:url('assets/hero-poster.jpg')"></div>
+  <div class="studio-txt">
+    <span class="kicker">// Made by hand</span>
+    <h2>No factory.<br>Just the table.</h2>
+    <p>Every piece starts on the cutting table — sampled, sewn, and finished in-house. If it leaves here, it was made here.</p>
+    <p>Named for New York. Built on Slauson. The pigeon goes where it wants.</p>
+    <div class="stamp">MADE ON SLAUSON AVE · CALIFORNIA · USA</div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="drop" id="drop">
+  <div class="wrap inner">
+    <span class="kicker">// The list</span>
+    <h2>Be first when<br>I set it <span class="v">off</span>.</h2>
+    <p>Drops sell out before they hit the feed. Get the early word.</p>
+    <form class="signup" id="signup" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required>
+      <button class="btn btn-primary" type="submit">Notify me</button>
+    </form>
+    <p class="signup-status mono" id="signup-status" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img alt="damnpigeon" src="assets/logo-graffiti.png"></div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Shop</h4>
+          <a href="shop.html">All pieces</a>
+          <a href="build.html">Build your own</a>
+          <a href="shop.html">New drop</a>
+        </div>
+        <div class="foot-col">
+          <h4>Build</h4>
+          <a href="learn.html">Learn the craft</a>
+          <a href="learn.html#m01">Hoodie class</a>
+          <a href="index.html#sampling">Start your brand</a>
+        </div>
+        <div class="foot-col">
+          <h4>Info</h4>
+          <a href="index.html">Home</a>
+          <a href="index.html#studio">The studio</a>
+          <a href="mailto:damnpcs@gmail.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; DAMNPIGEON LLC &middot; D<span class="v">V</span>MNPCS@GMAIL.COM</span>
+      <span>MADE ON SLAUSON AVE &middot; CALIFORNIA &middot; USA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+  // solid bar on scroll
+  const bar=document.getElementById('bar');
+  const onScroll=()=>bar.classList.toggle('solid',window.scrollY>40);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // newsletter signup (Formspree)
+  const form=document.getElementById('signup');
+  const status=document.getElementById('signup-status');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    status.classList.remove('err');
+    if(form.action.includes('YOUR_FORM_ID')){
+      status.textContent='// form not connected yet — add your Formspree ID';
+      status.classList.add('err');return;
+    }
+    status.textContent='// sending...';
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+      if(res.ok){form.reset();status.textContent='// you\u2019re on the list.';}
+      else{status.textContent='// something broke — try again';status.classList.add('err');}
+    }catch(err){status.textContent='// network error — try again';status.classList.add('err');}
+  });
+</script>
+<script>
+function dpBag(){
+  if(typeof openCart==='function'){ openCart(); }
+  else { window.location.href='shop.html#bag'; }
+}
+</script>
+<script src="assets/site.js"></script>
+<script type="module">
+  // Live products for the homepage strip (same Wix backend as the shop)
+  import { loadLiveProducts } from './assets/wix.js';
+  const money = n => '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2});
+  const ini = n => n.replace(/["'.]/g,'').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  (async () => {
+    const grid = document.getElementById('livegrid');
+    try{
+      const all = await loadLiveProducts({});
+      const band = all.filter(p=>p.in_stock && p.image && p.price>=30 && p.price<=400);
+      const live = (band.length>=4 ? band : all.filter(p=>p.in_stock && p.image)).slice(0,4);
+      if(!live.length){ grid.innerHTML='<div class="loading">// shop is loading &mdash; <a href="shop.html" style="color:var(--cobalt)">browse everything</a></div>'; return; }
+      grid.innerHTML = live.map(p=>`
+        <a class="lcard" href="shop.html">
+          <div class="lmedia" ${p.image?`style="background-image:url('${p.image}')"`:''}>${p.image?'':`<span class="ini">${ini(p.name)}</span>`}</div>
+          <div class="lbody"><h4>${p.name}</h4><span class="lp">${money(p.price)}</span></div>
+        </a>`).join('');
+    }catch(err){
+      console.warn('Homepage live strip unavailable:', err);
+      grid.innerHTML='<div class="loading">// <a href="shop.html" style="color:var(--cobalt)">browse the shop &rarr;</a></div>';
+    }
+  })();
+</script>
+<script>
+/* Hero video: some browsers refuse autoplay until nudged. Retry on load and on
+   first interaction. If it genuinely can't play, the poster frame stays up. */
+(function(){
+  var v=document.getElementById('herovid'); if(!v) return;
+  function play(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+  v.addEventListener('loadeddata',function(){
+    console.log('Hero video source in use:', v.currentSrc);
+    play();
+  });
+  v.addEventListener('canplay',play);
+  v.addEventListener('error',function(){ console.warn('Hero video failed to load (blocked or offline) — showing poster frame.'); });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) play(); });
+  ['click','touchstart','scroll','keydown'].forEach(function(e){
+    window.addEventListener(e,play,{once:true,passive:true});
+  });
+  play();
+})();
+</script>
+</body>
+</html>
