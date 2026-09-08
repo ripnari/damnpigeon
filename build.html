@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Own Hoodie — DAMNPIGEON</title>
+<meta name="description" content="Design your own patchwork hoodie — pick a fabric for every panel. Cut and sewn by hand, made to order.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Crect width='64' height='34' fill='%230A0A0A'/%3E%3Cpath d='M32 18 C24 6 12 2 0 0 C12 8 18 14 26 18 C18 20 10 24 4 32 C14 26 24 22 32 20 Z' fill='%231E63FF'/%3E%3Cpath d='M32 18 C40 6 52 2 64 0 C52 8 46 14 38 18 C46 20 54 24 60 32 C50 26 40 22 32 20 Z' fill='%23F4F2ED'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;--concrete:#161616;--concrete-2:#1E1E1E;
+    --bone:#F4F2ED;--pigeon:#9A9CA1;--cobalt:#1E63FF;--heat:#FF5A1F;
+    --line:rgba(244,242,237,.14);--stage:#ECE7DB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--bone);font-family:'Raleway',system-ui,sans-serif;font-weight:500;
+    line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace}
+  .v{color:var(--cobalt)}
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line)}
+  .mark{display:flex;flex-direction:column;line-height:.82}
+  .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+  .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+  nav.links{display:flex;gap:30px;align-items:center}
+  nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+  nav.links a:hover,nav.links a.active{opacity:1;color:var(--cobalt)}
+
+  .head{text-align:center;padding:48px 20px 26px}
+  .head .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;color:var(--cobalt);text-transform:uppercase}
+  .head h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,84px);text-transform:uppercase;line-height:.9;margin-top:10px}
+  .head p{color:var(--pigeon);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;margin-top:14px;text-transform:uppercase}
+
+  .studio{max-width:1240px;margin:0 auto;padding:10px 28px 90px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+
+  /* preview stage */
+  .stage-wrap{position:sticky;top:92px}
+  .toggle{display:flex;gap:6px;background:var(--concrete);border:1px solid var(--line);border-radius:4px;padding:5px;width:fit-content;margin:0 auto 16px}
+  .toggle button{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    padding:9px 22px;border:0;border-radius:3px;background:none;color:var(--pigeon);cursor:pointer;transition:.2s}
+  .toggle button.on{background:var(--bone);color:var(--ink);font-weight:700}
+  .stage{background:var(--stage);border-radius:6px;padding:24px;position:relative;overflow:hidden}
+  .stage::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 30%,rgba(255,255,255,.5),transparent 70%);pointer-events:none}
+  .stage svg{display:block;width:100%;height:auto;position:relative;z-index:1}
+  .watermark{position:absolute;bottom:14px;right:18px;font-family:'Anton',sans-serif;font-size:13px;color:rgba(10,10,10,.16);letter-spacing:2px;z-index:2}
+  .hint{text-align:center;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;margin-top:14px}
+
+  .panel-shape{cursor:pointer;transition:opacity .15s;stroke:#0A0A0A;stroke-opacity:.28;stroke-width:2;stroke-linejoin:round}
+  .panel-shape:hover{opacity:.86}
+  .panel-shape.active{stroke:#1E63FF;stroke-opacity:1;stroke-width:4}
+  .stitch{fill:none;stroke:#0A0A0A;stroke-opacity:.22;stroke-width:1.4;stroke-dasharray:3 4}
+  .draw{fill:none;stroke:#0A0A0A;stroke-opacity:.3;stroke-width:3;stroke-linecap:round}
+
+  /* config panel */
+  .cfg{padding-top:6px}
+  .cfg .step{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--pigeon);text-transform:uppercase}
+  .cfg h2{font-family:'Anton',sans-serif;font-weight:400;font-size:38px;text-transform:uppercase;line-height:.95;margin:8px 0 6px}
+  .cfg .sub{color:var(--pigeon);font-size:14px;margin-bottom:22px}
+
+  .lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--pigeon);text-transform:uppercase;margin:22px 0 12px}
+  .panels{display:flex;flex-wrap:wrap;gap:8px}
+  .pchip{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:3px;padding:8px 12px 8px 8px;
+    background:var(--concrete);cursor:pointer;transition:.2s;font-size:13px;font-weight:700}
+  .pchip:hover{border-color:var(--pigeon)}
+  .pchip.active{border-color:var(--cobalt);background:var(--concrete-2)}
+  .pchip .sw{width:20px;height:20px;border-radius:3px;border:1px solid rgba(255,255,255,.25);flex-shrink:0}
+
+  .fabrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .fab{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:3px;padding:9px;background:var(--concrete);cursor:pointer;transition:.2s}
+  .fab:hover{border-color:var(--pigeon)}
+  .fab.sel{border-color:var(--bone)}
+  .fab .sw{width:30px;height:30px;border-radius:3px;flex-shrink:0;border:1px solid rgba(255,255,255,.22)}
+  .fab .fn{font-size:13px;font-weight:700;line-height:1.2}
+  .fab .fu{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--pigeon)}
+
+  .spec{margin-top:26px;border-top:1px solid var(--line);padding-top:20px}
+  .spec .lbl{margin-top:0}
+  .spec-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(244,242,237,.07);font-size:13.5px}
+  .spec-row .k{color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .spec-row .val{display:flex;align-items:center;gap:8px;font-weight:600}
+  .spec-row .val .sw{width:14px;height:14px;border-radius:2px;border:1px solid rgba(255,255,255,.25)}
+
+  .price{margin-top:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+  .price .amt{font-family:'Anton',sans-serif;font-size:46px;line-height:1}
+  .price .brk{font-family:'Space Mono',monospace;font-size:11px;color:var(--pigeon);text-align:right;line-height:1.7}
+  .addbtn{width:100%;margin-top:18px;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;font-size:14px;padding:18px;border-radius:3px;cursor:pointer;transition:.2s}
+  .addbtn:hover{background:#3b78ff}
+  .mto{font-family:'Space Mono',monospace;font-size:11px;color:#6c6c6c;text-align:center;margin-top:14px;line-height:1.6}
+  .reset{background:none;border:0;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;cursor:pointer;margin-top:14px;text-decoration:underline;display:block;margin-left:auto;margin-right:auto}
+  .reset:hover{color:var(--heat)}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:300;background:var(--bone);
+    color:var(--ink);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:14px 22px;border-radius:3px;
+    opacity:0;pointer-events:none;transition:.28s;max-width:88vw;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+  @media(max-width:880px){
+    .studio{grid-template-columns:1fr;gap:20px}
+    .stage-wrap{position:static}
+    nav.links{display:none}
+  }
+
+/* ---- shared chrome (nav/footer) ---- */
+.bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line);transition:background .3s}
+.bar .mark{display:flex;flex-direction:column;line-height:.82}
+.bar .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+.bar .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+.bar nav.links{display:flex;gap:30px;align-items:center}
+.bar nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+.bar nav.links a:hover,.bar nav.links a.active{opacity:1;color:var(--cobalt)}
+.bar .navright{display:flex;gap:12px;align-items:center}
+.bar .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;
+  padding:8px 13px;color:var(--bone);cursor:pointer;background:none;transition:.2s;display:flex;gap:8px;align-items:center}
+.bar .bag:hover{border-color:var(--cobalt)}
+.bar .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+.menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer;line-height:1}
+#mobilenav{display:none;position:sticky;top:64px;z-index:99;background:rgba(10,10,10,.98);
+  border-bottom:1px solid var(--line);padding:6px 20px 14px}
+#mobilenav.open{display:block}
+#mobilenav a{display:block;padding:13px 4px;font-size:13px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;border-bottom:1px solid rgba(244,242,237,.07)}
+#mobilenav a:last-child{border-bottom:0}
+footer{border-top:1px solid var(--line);padding:56px 0 40px;margin-top:0}
+footer .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+footer .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+footer .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+footer .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);
+  text-transform:uppercase;margin-bottom:14px}
+footer .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+footer .foot-col a:hover{opacity:1;color:var(--cobalt)}
+footer .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+@media(max-width:880px){.bar nav.links{display:none}.menu-btn{display:block}}
+
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a href="index.html" class="mark" aria-label="Damn Pigeon home">
+    <span class="top">D<span class="v">V</span>MNPIGEON</span>
+    <span class="sub">NEW&nbsp;YORK</span>
+  </a>
+  <nav class="links">
+    <a href="shop.html">Shop</a>
+    <a href="build.html" class="active">Custom</a>
+    <a href="classes.html">Classes</a>
+    <a href="index.html#brand">Start your brand</a>
+    <a href="index.html#studio">Studio</a>
+  </nav>
+  <div class="navright">
+    <button class="bag" onclick="dpBag()">BAG <span class="cnt" data-bagcount>0</span></button>
+    <button class="menu-btn" aria-label="Menu">&#8801;</button>
+  </div>
+</header>
+<div id="mobilenav"><a href="shop.html">Shop</a><a href="build.html">Custom</a><a href="classes.html">Classes</a><a href="index.html#brand">Start your brand</a><a href="index.html#studio">Studio</a><a href="index.html">Home</a></div>
+<div class="head">
+  <span class="eyebrow">// Made to order</span>
+  <h1>Build your<br>own hoodie</h1>
+  <p>My pattern. Your cloth. Cut and sewn in the studio · 4 to 6 weeks</p>
+</div>
+
+<div class="studio">
+  <!-- PREVIEW -->
+  <div class="stage-wrap">
+    <div class="toggle" role="tablist">
+      <button class="on" id="btn-front" onclick="setView('front')">Front</button>
+      <button id="btn-back" onclick="setView('back')">Back</button>
+    </div>
+    <div class="stage">
+      <div class="watermark">DVMN</div>
+      <svg id="hoodie" viewBox="0 0 560 640" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="fab-camo" width="70" height="70" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
+            <rect width="70" height="70" fill="#5a5f3e"/>
+            <path d="M6 10 q14 -8 26 0 q12 10 0 20 q-16 8 -28 -2 q-8 -12 2 -18z" fill="#3f4630"/>
+            <path d="M40 34 q14 -6 22 6 q6 14 -8 20 q-16 4 -22 -8 q-4 -12 8 -18z" fill="#767a54"/>
+            <path d="M14 46 q10 -4 16 6 q2 12 -10 14 q-12 0 -12 -10 q0 -8 6 -10z" fill="#2c3120"/>
+          </pattern>
+          <pattern id="fab-heather" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#8f9298"/>
+            <path d="M0 0 L6 6 M-1 5 L1 7 M5 -1 L7 1" stroke="#7c7f86" stroke-width="1.2"/>
+          </pattern>
+        </defs>
+
+        <!-- FRONT -->
+        <g id="front">
+          <!-- hood behind -->
+          <path class="panel-shape" data-panel="hood" d="M186 176 C176 78 226 40 280 40 C334 40 384 78 374 176 L332 176 C340 108 316 84 280 84 C244 84 220 108 228 176 Z"/>
+          <!-- sleeves -->
+          <path class="panel-shape" data-panel="sleeveL" d="M206 176 L120 214 L92 470 L158 480 L200 292 Z"/>
+          <path class="panel-shape" data-panel="sleeveR" d="M354 176 L440 214 L468 470 L402 480 L360 292 Z"/>
+          <!-- cuffs -->
+          <path d="M92 470 L158 480 L152 512 L86 500 Z" fill="#2a2a26" stroke="#0A0A0A" stroke-width="2"/>
+          <path d="M468 470 L402 480 L408 512 L474 500 Z" fill="#2a2a26" stroke="#0A0A0A" stroke-width="2"/>
+          <!-- body -->
+          <path class="panel-shape" data-panel="bodyFront" d="M206 176 C240 176 250 206 280 206 C310 206 320 176 354 176 L372 300 L360 556 L200 556 L188 300 Z"/>
+          <!-- pocket -->
+          <path class="panel-shape" data-panel="pocket" d="M214 396 L346 396 Q356 396 356 408 L356 474 L204 474 L204 408 Q204 396 214 396 Z"/>
+          <path class="stitch" d="M214 398 L204 430 M346 398 L356 430"/>
+          <!-- hem -->
+          <path d="M200 556 L360 556 L358 594 L202 594 Z" fill="#2a2a26" stroke="#0A0A0A" stroke-width="2"/>
+          <!-- details -->
+          <path class="draw" d="M262 208 L258 250 M298 208 L302 250"/>
+          <path class="stitch" d="M206 178 L192 300 M354 178 L368 300"/>
+        </g>
+
+        <!-- BACK -->
+        <g id="back" style="display:none">
+          <path class="panel-shape" data-panel="hood" d="M198 172 C196 74 236 44 280 44 C324 44 364 74 362 172 Z"/>
+          <path class="panel-shape" data-panel="sleeveL" d="M206 176 L120 214 L92 470 L158 480 L200 292 Z"/>
+          <path class="panel-shape" data-panel="sleeveR" d="M354 176 L440 214 L468 470 L402 480 L360 292 Z"/>
+          <path d="M92 470 L158 480 L152 512 L86 500 Z" fill="#2a2a26" stroke="#0A0A0A" stroke-width="2"/>
+          <path d="M468 470 L402 480 L408 512 L474 500 Z" fill="#2a2a26" stroke="#0A0A0A" stroke-width="2"/>
+          <path class="panel-shape" data-panel="bodyBack" d="M206 172 L354 172 L372 300 L360 556 L200 556 L188 300 Z"/>
+          <path class="stitch" d="M280 176 L280 556"/>
+          <path d="M200 556 L360 556 L358 594 L202 594 Z" fill="#2a2a26" stroke="#0A0A0A" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+    <p class="hint">Tap a panel on the hoodie to select it · Sizes XS to XXL, finished garment chart at checkout</p>
+  </div>
+
+  <!-- CONFIGURATOR -->
+  <div class="cfg">
+    <span class="step">Six panels</span>
+    <h2>Pick your panels</h2>
+    <p class="sub">Tap a panel, pick the cloth. Do it six times or once. Cuffs and waistband stay put, that's the construction.</p>
+
+    <div class="lbl">1 · Panel <span id="active-name" style="color:var(--cobalt)">— Body · Front</span></div>
+    <div class="panels" id="panels"></div>
+
+    <div class="lbl">2 · Fabric</div>
+    <div class="fabrics" id="fabrics"></div>
+
+    <div class="spec">
+      <div class="lbl">Your build so far</div>
+      <div id="specrows"></div>
+    </div>
+
+    <div class="price">
+      <div class="amt" id="price">$144</div>
+      <div class="brk" id="breakdown"></div>
+    </div>
+    <button class="addbtn" onclick="addBag()">Add to bag · made to order →</button>
+    <p class="mto">Paid in full at checkout. Once your combination is cut, that hoodie is yours.<br>4 to 6 weeks. Final sale unless I made it wrong.</p>
+    <button class="reset" onclick="resetBuild()">Reset build</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img alt="damnpigeon" src="assets/logo-graffiti.png"></div>
+      <div class="foot-cols">
+        <div class="foot-col"><h4>Shop</h4><a href="shop.html">All pieces</a><a href="build.html">Build your own</a></div>
+        <div class="foot-col"><h4>Studio</h4><a href="classes.html">Classes</a><a href="index.html#brand">Start your brand</a><a href="index.html#studio">About</a></div>
+        <div class="foot-col"><h4>Find us</h4><a href="https://www.instagram.com/dvmnpigeon" target="_blank" rel="noopener">@dvmnpigeon</a><a href="mailto:damnpcs@gmail.com">damnpcs@gmail.com</a><a href="https://maps.google.com/?q=112+W+9th+St+Los+Angeles" target="_blank" rel="noopener">112 W 9th, Los Angeles</a></div>
+      </div>
+    </div>
+    <div class="legal"><span>&copy; DAMNPIGEON LLC</span><span>NEW YORK ON THE LABEL · LOS ANGELES ON THE TABLE</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const FABRICS = [
+  {id:'hw-terry-black',  name:'Heavyweight French terry', note:'Black · 16 oz',     fill:'#141410', up:0},
+  {id:'hw-terry-cream',  name:'Heavyweight French terry', note:'Cream · 16 oz',     fill:'#E9E2D0', up:0},
+  {id:'mw-terry-grey',   name:'Midweight French terry',   note:'Heather · 14 oz',   fill:'#8f9296', up:0},
+  {id:'mw-terry-navy',   name:'Midweight French terry',   note:'Navy · 14 oz',      fill:'#1f2a4a', up:0},
+  {id:'thermal',         name:'Thermal',                  note:'Waffle · natural',  fill:'#d8cfbd', up:0},
+  {id:'jersey',          name:'Jersey',                   note:'Washed black',      fill:'#2b2b28', up:0},
+  {id:'fleece',          name:'Fleece',                   note:'Oatmeal',           fill:'#cbc4b3', up:0},
+  {id:'canvas-olive',    name:'Canvas / workwear',        note:'Olive · where construction allows', fill:'#5b5f47', up:40},
+  {id:'canvas-tan',      name:'Canvas / workwear',        note:'Tan · where construction allows',   fill:'#b09872', up:40},
+];
+// When swatch photos arrive: add  img:'assets/swatches/<file>.jpg'  to a fabric and it renders as the panel texture.
+const PANELS = [
+  {id:'hood',      name:'Hood'},
+  {id:'bodyFront', name:'Front body'},
+  {id:'bodyBack',  name:'Back body'},
+  {id:'sleeveL',   name:'Left sleeve'},
+  {id:'sleeveR',   name:'Right sleeve'},
+  {id:'pocket',    name:'Kangaroo pocket'},
+];
+const FIXED_FILL='#2a2a26'; // cuffs + waistband: fixed rib, not customisable
+const BASE = 350;
+function tierFee(n){ return n<=2?0 : n<=4?50 : 100; }
+
+// a tasteful default patchwork so the idea lands on load
+let build = {hood:'hw-terry-black', bodyFront:'hw-terry-cream', bodyBack:'hw-terry-cream',
+             sleeveL:'mw-terry-grey', sleeveR:'mw-terry-grey', pocket:'hw-terry-black'};
+let active = 'bodyFront';
+let view = 'front';
+
+const fabOf = id => FABRICS.find(f=>f.id===id);
+const swOf  = id => {const f=fabOf(id); return f.img?`url(${f.img}) center/cover`:(f.swatch||f.fill);};
+
+function paint(){
+  // fill every panel shape
+  PANELS.forEach(p=>{
+    document.querySelectorAll(`[data-panel="${p.id}"]`).forEach(el=>{
+      const f=fabOf(build[p.id]);
+      el.setAttribute('fill', f.img ? `url(#tex-${f.id})` : f.fill);
+      el.classList.toggle('active', p.id===active);
+    });
+  });
+}
+function renderPanels(){
+  document.getElementById('panels').innerHTML = PANELS.map(p=>`
+    <button class="pchip ${p.id===active?'active':''}" onclick="selectPanel('${p.id}')">
+      <span class="sw" style="background:${swOf(build[p.id])}"></span>${p.name}
+    </button>`).join('');
+  document.getElementById('active-name').textContent = '— '+PANELS.find(p=>p.id===active).name;
+}
+function renderFabrics(){
+  document.getElementById('fabrics').innerHTML = FABRICS.map(f=>`
+    <button class="fab ${build[active]===f.id?'sel':''}" onclick="pick('${f.id}')">
+      <span class="sw" style="background:${f.img?`url(${f.img}) center/cover`:(f.swatch||f.fill)}"></span>
+      <span><span class="fn">${f.name}</span><br><span class="fu">${f.note}${f.up?' · +$'+f.up:''}</span></span>
+    </button>`).join('');
+}
+function renderSpec(){
+  document.getElementById('specrows').innerHTML = PANELS.map(p=>{
+    const f=fabOf(build[p.id]);
+    return `<div class="spec-row"><span class="k">${p.name}</span>
+      <span class="val"><span class="sw" style="background:${f.swatch||f.fill}"></span>${f.name}${f.up?' (+$'+f.up+')':''}</span></div>`;
+  }).join('');
+}
+function priceBuild(){
+  const used = new Set(Object.values(build));
+  const patch = tierFee(used.size);
+  const premium = [...used].reduce((s,id)=>s+fabOf(id).up,0);
+  const total = BASE+patch+premium;
+  document.getElementById('price').textContent = '$'+total;
+  document.getElementById('breakdown').innerHTML =
+    `Base $${BASE}<br>${used.size} cloth${used.size>1?'s':''} · ` + (patch?`+$${patch}`:'included') + (premium?`<br>premium cloth +$${premium}`:'');
+  return total;
+}
+function refresh(){ paint(); renderPanels(); renderFabrics(); renderSpec(); priceBuild(); }
+
+function selectPanel(id){
+  // switch to the view that shows this panel
+  if(id==='bodyBack' && view!=='back') setView('back');
+  if(id==='bodyFront' && view!=='front') setView('front');
+  if(id==='pocket' && view!=='front') setView('front');
+  active=id; refresh();
+}
+function pick(fid){ build[active]=fid; refresh(); }
+function setView(v){
+  view=v;
+  document.getElementById('front').style.display = v==='front'?'':'none';
+  document.getElementById('back').style.display  = v==='back'?'':'none';
+  document.getElementById('btn-front').classList.toggle('on', v==='front');
+  document.getElementById('btn-back').classList.toggle('on', v==='back');
+  if(v==='back' && (active==='pocket'||active==='bodyFront')) active='bodyBack';
+  if(v==='front' && active==='bodyBack') active='bodyFront';
+  refresh();
+}
+function resetBuild(){
+  build={hood:'hw-terry-black',bodyFront:'hw-terry-black',bodyBack:'hw-terry-black',sleeveL:'hw-terry-black',sleeveR:'hw-terry-black',pocket:'hw-terry-black'};
+  active='bodyFront'; setView('front'); toast('Build reset');
+}
+function addBag(){
+  const total=priceBuild();
+  const used=new Set(Object.values(build)).size;
+  const spec=PANELS.map(p=>p.name+': '+fabOf(build[p.id]).name).join(' · ');
+  const key='custom-hoodie::'+PANELS.map(p=>p.id+':'+build[p.id]).join('|');
+  if(window.DPBag){
+    DPBag.add(key,{slug:'custom-crown-hoodie',id:null,name:'Custom hoodie (made to order)',
+                   price:total,image:null,options:{Build:spec},qty:1,custom:true});
+    toast(`Added · ${used} cloth${used>1?'s':''} · $${total} · made to order`);
+  } else {
+    toast(`Custom hoodie · ${used} cloths · $${total}`);
+  }
+}
+// click panels on the garment
+document.querySelectorAll('.panel-shape').forEach(el=>{
+  el.addEventListener('click',()=>selectPanel(el.dataset.panel));
+});
+let tt; function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600);}
+
+// texture defs for photographed swatches
+(function(){
+  const svg=document.getElementById('hoodie'); const defs=svg.querySelector('defs');
+  FABRICS.filter(f=>f.img).forEach(f=>{
+    defs.insertAdjacentHTML('beforeend',`<pattern id="tex-${f.id}" patternUnits="userSpaceOnUse" width="120" height="120"><image href="${f.img}" width="120" height="120" preserveAspectRatio="xMidYMid slice"/></pattern>`);
+  });
+})();
+refresh();
+</script>
+<script>
+function dpBag(){
+  if(typeof openCart==='function'){ openCart(); }
+  else { window.location.href='shop.html#bag'; }
+}
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

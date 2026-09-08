@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAMNPIGEON — NEW YORK</title>
+<meta name="description" content="DVMN PIGEON. Independent label and design studio. New York on the label, Los Angeles on the table. Clothes, custom hoodies, classes, development.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Crect width='64' height='34' fill='%230A0A0A'/%3E%3Cpath d='M32 18 C24 6 12 2 0 0 C12 8 18 14 26 18 C18 20 10 24 4 32 C14 26 24 22 32 20 Z' fill='%231E63FF'/%3E%3Cpath d='M32 18 C40 6 52 2 64 0 C52 8 46 14 38 18 C46 20 54 24 60 32 C50 26 40 22 32 20 Z' fill='%23F4F2ED'/%3E%3C/svg%3E">
+<meta property="og:title" content="DAMNPIGEON — NEW YORK">
+<meta property="og:description" content="I make clothes. I develop clothes for other brands. I teach people how clothes get made.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://YOUR-DOMAIN.vercel.app/assets/photos/knoxx-portrait.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.vercel.app/assets/photos/knoxx-portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0A0A0A;--concrete:#161616;--concrete-2:#1E1E1E;--bone:#F4F2ED;--pigeon:#9A9CA1;--cobalt:#1E63FF;--heat:#FF5A1F;--line:rgba(244,242,237,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--bone);font-family:'Raleway',system-ui,sans-serif;font-weight:500;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace}
+  .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 28px}
+  .v{color:var(--cobalt)}
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---- shared chrome ---- */
+  .bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line)}
+  .bar .mark{display:flex;flex-direction:column;line-height:.82}
+  .bar .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+  .bar .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+  .bar nav.links{display:flex;gap:28px;align-items:center}
+  .bar nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+  .bar nav.links a:hover,.bar nav.links a.active{opacity:1;color:var(--cobalt)}
+  .bar .navright{display:flex;gap:12px;align-items:center}
+  .bar .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;padding:8px 13px;color:var(--bone);cursor:pointer;background:none;transition:.2s;display:flex;gap:8px;align-items:center}
+  .bar .bag:hover{border-color:var(--cobalt)}
+  .bar .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+  .menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer;line-height:1}
+  #mobilenav{display:none;position:sticky;top:64px;z-index:99;background:rgba(10,10,10,.98);border-bottom:1px solid var(--line);padding:6px 20px 14px}
+  #mobilenav.open{display:block}
+  #mobilenav a{display:block;padding:13px 4px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(244,242,237,.07)}
+  #mobilenav a:last-child{border-bottom:0}
+
+  /* ---- hero ---- */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.08) 40%,rgba(10,10,10,.88) 100%),radial-gradient(120% 90% at 80% 20%,rgba(30,99,255,.22),transparent 55%)}
+  .hero-copy{position:relative;z-index:2;padding-bottom:7vh;width:100%}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--bone);margin-bottom:22px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--heat);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,31,.6)}70%{box-shadow:0 0 0 9px rgba(255,90,31,0)}100%{box-shadow:0 0 0 0 rgba(255,90,31,0)}}
+  h1.hero-h{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(58px,12vw,168px);line-height:.86;letter-spacing:-.5px;text-transform:uppercase;text-shadow:0 6px 40px rgba(0,0,0,.4)}
+  .hero-sub{max-width:560px;margin:26px 0 34px;font-size:17px;color:#d9d8d2;line-height:1.55}
+  .hero-sub b{color:var(--bone);font-weight:800}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .15s,background .2s,color .2s}
+  .btn-primary{background:var(--cobalt);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:#3b78ff}
+  .btn-ghost{border:1px solid var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--bone);transform:translateY(-2px)}
+  .hero-chip{position:absolute;right:28px;bottom:7vh;z-index:2;text-align:right;font-family:'Space Mono',monospace}
+  .hero-chip .lbl{font-size:10px;letter-spacing:.3em;color:var(--pigeon)}
+  .hero-chip .date{font-size:13px;color:var(--bone);margin-top:4px}
+
+  /* ---- doors ---- */
+  .section{padding:104px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px;flex-wrap:wrap}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;color:var(--cobalt);text-transform:uppercase}
+  .sec-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(34px,5vw,64px);line-height:.92;text-transform:uppercase;letter-spacing:-.5px;margin-top:12px}
+  .sec-head p{max-width:380px;color:var(--pigeon);font-size:15px}
+  .doors{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}
+  .door{position:relative;background:var(--concrete);padding:0;min-height:420px;display:flex;flex-direction:column;overflow:hidden;transition:background .35s}
+  .door:hover{background:var(--concrete-2)}
+  .door .pic{height:200px;background-size:cover;background-position:center;filter:grayscale(.15) contrast(1.05);transition:.4s}
+  .door:hover .pic{filter:grayscale(0) contrast(1.05);transform:scale(1.02)}
+  .door .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .door .num{font-family:'Space Mono',monospace;font-size:12px;color:var(--pigeon);letter-spacing:.1em}
+  .door h3{font-family:'Anton',sans-serif;font-weight:400;font-size:32px;text-transform:uppercase;line-height:.95;margin:10px 0 10px}
+  .door p{color:var(--pigeon);font-size:14.5px;margin-bottom:20px;flex:1}
+  .door .go{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
+  .door .go .arr{transition:transform .25s}
+  .door:hover .go .arr{transform:translateX(6px)}
+  .door:hover .go{color:var(--cobalt)}
+
+  /* ---- studio ---- */
+  .studio{display:grid;grid-template-columns:1fr 1.05fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .studio-img{min-height:520px;background-size:cover;background-position:center 30%}
+  .studio-txt{padding:84px 60px;display:flex;flex-direction:column;justify-content:center}
+  .studio-txt h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:.95;text-transform:uppercase;margin:16px 0 20px}
+  .studio-txt p{color:#d9d8d2;font-size:16.5px;max-width:52ch;margin-bottom:14px;line-height:1.6}
+  .studio-txt .stamp{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--bone);margin-top:18px;border-left:2px solid var(--cobalt);padding-left:14px;line-height:1.8}
+
+  /* ---- photo strip ---- */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}
+  .strip div{aspect-ratio:4/5;background-size:cover;background-position:center;background-color:var(--concrete)}
+  .strip div:nth-child(2){grid-row:span 1}
+
+  /* ---- press ---- */
+  .press{padding:80px 0;border-top:1px solid var(--line)}
+  .press-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:34px}
+  .press-grid div{aspect-ratio:16/9;background-size:cover;background-position:center}
+
+  /* ---- newsletter ---- */
+  .drop{padding:120px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
+  .drop::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 50% 0%,rgba(30,99,255,.16),transparent 60%)}
+  .drop .inner{position:relative;z-index:1}
+  .drop h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,96px);text-transform:uppercase;line-height:.88;letter-spacing:-1px;margin-top:14px}
+  .drop p{color:var(--pigeon);margin:18px auto 34px;max-width:38ch;font-size:16px}
+  .signup{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .signup input{flex:1;min-width:220px;background:var(--concrete);border:1px solid var(--line);color:var(--bone);padding:16px 18px;border-radius:2px;font-family:'Space Mono',monospace;font-size:14px}
+  .signup input::placeholder{color:#6c6c6c}
+  .signup input:focus{outline:none;border-color:var(--cobalt)}
+  .signup-status{margin-top:16px;font-size:13px;letter-spacing:.06em;min-height:18px;color:var(--cobalt);font-family:'Space Mono',monospace}
+  .signup-status.err{color:var(--heat)}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:56px 0 40px}
+  footer .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  footer .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+  footer .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+  footer .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);text-transform:uppercase;margin-bottom:14px}
+  footer .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+  footer .foot-col a:hover{opacity:1;color:var(--cobalt)}
+  footer .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  @media(max-width:1200px){.hero-chip{display:none}}
+  @media(max-width:1000px){.doors{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:880px){.bar nav.links{display:none}.menu-btn{display:block}}
+  @media(max-width:900px){
+    .studio{grid-template-columns:1fr}.studio-img{min-height:320px}.studio-txt{padding:54px 28px}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .press-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){.doors{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a href="index.html" class="mark" aria-label="Damn Pigeon home">
+    <span class="top">D<span class="v">V</span>MNPIGEON</span>
+    <span class="sub">NEW&nbsp;YORK</span>
+  </a>
+  <nav class="links">
+    <a href="shop.html">Shop</a>
+    <a href="build.html">Custom</a>
+    <a href="classes.html">Classes</a>
+    <a href="index.html#brand">Start your brand</a>
+    <a href="index.html#studio">Studio</a>
+  </nav>
+  <div class="navright">
+    <button class="bag" onclick="dpBag()">BAG <span class="cnt" data-bagcount>0</span></button>
+    <button class="menu-btn" aria-label="Menu">&#8801;</button>
+  </div>
+</header>
+<div id="mobilenav">
+  <a href="shop.html">Shop</a><a href="build.html">Custom</a><a href="classes.html">Classes</a>
+  <a href="index.html#brand">Start your brand</a><a href="index.html#studio">Studio</a><a href="index.html">Home</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-media"><img src="assets/photos/hero-machine.jpg" alt="Knoxx at the machine"></div>
+  <div class="wrap hero-copy">
+    <span class="eyebrow"><span class="dot"></span> 112 W 9TH — LOS ANGELES — NEW YORK ON THE LABEL</span>
+    <h1 class="hero-h">I SET<br>SHIT <span class="v">OFF</span></h1>
+    <p class="hero-sub">I make clothes. I make clothes for other brands. I teach people how clothes actually get made. <b>All under one roof, downtown LA.</b></p>
+    <div class="cta-row">
+      <a href="#doors" class="btn btn-primary">Pick your lane ↓</a>
+    </div>
+  </div>
+  <div class="hero-chip"><div class="lbl">DVMN PIGEON</div><div class="date">MAKE · DEVELOP · TEACH · SELL</div></div>
+</section>
+
+<!-- FOUR DOORS -->
+<section class="section" id="doors">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">// What's going on here</span><h2>Pick your<br>lane.</h2></div>
+      <p>Cop something. Build your own. Come learn in the studio. Bring me your idea and I'll develop it. That type shit.</p>
+    </div>
+    <div class="doors">
+      <a class="door" href="shop.html">
+        <div class="pic" style="background-image:url('assets/photos/street-walk-2.jpg')"></div>
+        <div class="body"><span class="num">01 — SHOP</span><h3>The<br>clothes</h3><p>One of ones. Scrap hoodies, leather varsities, bombers, fitteds. No restocks.</p><span class="go">Shop <span class="arr">→</span></span></div>
+      </a>
+      <a class="door" href="build.html">
+        <div class="pic" style="background-image:url('assets/photos/patchwork-jacket.jpg')"></div>
+        <div class="body"><span class="num">02 — CUSTOM</span><h3>Build your<br>own hoodie</h3><p>Pick the cloth for every panel. My pattern, your combination. Cut and sewn in 4 to 6 weeks.</p><span class="go">Build it <span class="arr">→</span></span></div>
+      </a>
+      <a class="door" href="classes.html">
+        <div class="pic" style="background-image:url('assets/photos/sewing.jpg')"></div>
+        <div class="body"><span class="num">03 — CLASSES</span><h3>Learn how<br>it's made</h3><p>Three hours in the studio, two or three people, one hoodie start to finish. You'll get it.</p><span class="go">Book a class <span class="arr">→</span></span></div>
+      </a>
+      <a class="door" href="#brand">
+        <div class="pic" style="background-image:url('assets/photos/table-group.jpg')"></div>
+        <div class="body"><span class="num">04 — DEVELOPMENT</span><h3>Start your<br>brand</h3><p>Got an idea and no idea how to make it? Patterns, samples, production. I'll get you there.</p><span class="go">Talk to me <span class="arr">→</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="strip">
+  <div style="background-image:url('assets/photos/red-wall.jpg')"></div>
+  <div style="background-image:url('assets/photos/cutting-table.jpg')"></div>
+  <div style="background-image:url('assets/photos/shearling.jpg')"></div>
+  <div style="background-image:url('assets/photos/studio-hanging.jpg')"></div>
+</div>
+
+<!-- STUDIO / ABOUT -->
+<section class="studio" id="studio">
+  <div class="studio-img" style="background-image:url('assets/photos/knoxx-portrait.jpg')"></div>
+  <div class="studio-txt">
+    <span class="kicker">// The studio</span>
+    <h2>Clothes, development,<br>manufacturing, education.<br>Same roof.</h2>
+    <p>DVMN PIGEON is an independent fashion label and design studio built between New York influence and Los Angeles production. After 15 years in fashion, I wanted to build a place where clothing, development, manufacturing and education could exist under the same roof.</p>
+    <p>We don't just sell clothes here. We make them, break them down, rebuild them and teach other creatives how the process actually works.</p>
+    <div class="stamp">112 W 9TH · LOS ANGELES<br>DAMNPIGEON ART &amp; DESIGN STUDIO · BROOKLYN, NEW YORK</div>
+  </div>
+</section>
+
+<!-- START YOUR BRAND -->
+<section class="section" id="brand" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">// Development</span><h2>Start your<br>brand.</h2></div>
+      <p>The part nobody gives you access to. Bring the idea. I'll get it to a sample you can hold, wear and sell.</p>
+    </div>
+  </div>
+  <div class="studio" style="border-bottom:0">
+    <div class="studio-txt" style="padding-top:60px;padding-bottom:60px">
+      <p style="font-size:15.5px"><b style="color:var(--bone)">01 — Talk it through.</b> Bring references, sketches, whatever you got. We figure out what it actually takes to make it.</p>
+      <p style="font-size:15.5px"><b style="color:var(--bone)">02 — Make the first one.</b> Pattern, cloth, and a real sample cut and sewn in the studio.</p>
+      <p style="font-size:15.5px"><b style="color:var(--bone)">03 — Run it.</b> Specs, blanks, the plan to make more than one without getting burned.</p>
+      <div class="cta-row" style="margin-top:22px">
+        <a href="mailto:damnpcs@gmail.com?subject=Development" class="btn btn-primary">Talk to me →</a>
+        <a href="classes.html" class="btn btn-ghost">Or learn to do it yourself</a>
+      </div>
+    </div>
+    <div class="studio-img" style="background-image:url('assets/photos/studio-wide.jpg');min-height:460px"></div>
+  </div>
+</section>
+
+<!-- PRESS / AS SEEN -->
+<section class="press">
+  <div class="wrap">
+    <span class="kicker">// As seen</span>
+    <div class="press-grid">
+      <div style="background-image:url('assets/photos/press-tamron-1.jpg')"></div>
+      <div style="background-image:url('assets/photos/red-wall-group.jpg')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BE THE MOVEMENT / NEWSLETTER -->
+<section class="drop" id="drop">
+  <div class="wrap inner">
+    <span class="kicker">// Be the movement</span>
+    <h2>First to know<br>when I set it <span class="v">off</span>.</h2>
+    <p>Drops, classes, custom slots. Get on the list.</p>
+    <form class="signup" id="signup" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required>
+      <button class="btn btn-primary" type="submit">Notify me</button>
+    </form>
+    <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img alt="damnpigeon" src="assets/logo-graffiti.png"></div>
+      <div class="foot-cols">
+        <div class="foot-col"><h4>Shop</h4><a href="shop.html">All pieces</a><a href="build.html">Build your own</a></div>
+        <div class="foot-col"><h4>Studio</h4><a href="classes.html">Classes</a><a href="index.html#brand">Start your brand</a><a href="index.html#studio">About</a></div>
+        <div class="foot-col"><h4>Find us</h4><a href="https://www.instagram.com/dvmnpigeon" target="_blank" rel="noopener">@dvmnpigeon</a><a href="mailto:damnpcs@gmail.com">damnpcs@gmail.com</a><a href="https://maps.google.com/?q=112+W+9th+St+Los+Angeles" target="_blank" rel="noopener">112 W 9th, Los Angeles</a></div>
+      </div>
+    </div>
+    <div class="legal"><span>&copy; DAMNPIGEON LLC</span><span>NEW YORK ON THE LABEL · LOS ANGELES ON THE TABLE</span></div>
+  </div>
+</footer>
+
+<script>
+function dpBag(){ if(typeof openCart==='function'){openCart();} else {window.location.href='shop.html#bag';} }
+const form=document.getElementById('signup'), status=document.getElementById('signup-status');
+form.addEventListener('submit',async(e)=>{
+  e.preventDefault(); status.classList.remove('err');
+  if(form.action.includes('YOUR_FORM_ID')){status.textContent='// form not connected yet';status.classList.add('err');return;}
+  status.textContent='// sending...';
+  try{const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+    if(r.ok){form.reset();status.textContent='// you\u2019re on the list.';} else {status.textContent='// try again';status.classList.add('err');}
+  }catch(err){status.textContent='// network error';status.classList.add('err');}
+});
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
