@@ -1,4 +1,31 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/_api/:path*",
+      "destination": "https://damnpigeonny.wixsite.com/_api/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/__ecom/:path*",
+      "destination": "https://damnpigeonny.wixsite.com/dpny/__ecom/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/checkout",
+      "destination": "https://damnpigeonny.wixsite.com/dpny/checkout",
+      "permanent": false
+    },
+    {
+      "source": "/booking-calendar/:path*",
+      "destination": "https://damnpigeonny.wixsite.com/dpny/booking-calendar/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/product-page/:path*",
+      "destination": "https://damnpigeonny.wixsite.com/dpny/product-page/:path*",
+      "permanent": false
+    }
+  ]
 }
