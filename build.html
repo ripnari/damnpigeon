@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K3F8RYD8LS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K3F8RYD8LS', { linker: { domains: ['damnpigeon.nyc', 'damnpigeonny.wixsite.com'] } });
+  // safe wrapper used by the site's own events
+  window.dpTrack = function(name, params){ try{ gtag('event', name, params||{}); }catch(e){} };
+</script>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://damnpigeon.nyc/build.html">
+<meta property="og:url" content="https://damnpigeon.nyc/build.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Own Hoodie | Custom Made in LA | DVMN PIGEON</title>
+<meta name="description" content="Design your own Damn Pigeon hoodie. Pick the cloth for six panels: fleece, cheetah, silk or denim. Cut and sewn to order in Los Angeles in 4 to 6 weeks.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 34'%3E%3Crect width='64' height='34' fill='%230A0A0A'/%3E%3Cpath d='M32 18 C24 6 12 2 0 0 C12 8 18 14 26 18 C18 20 10 24 4 32 C14 26 24 22 32 20 Z' fill='%231E63FF'/%3E%3Cpath d='M32 18 C40 6 52 2 64 0 C52 8 46 14 38 18 C46 20 54 24 60 32 C50 26 40 22 32 20 Z' fill='%23F4F2ED'/%3E%3C/svg%3E">
+<meta property="og:title" content="Build Your Own Hoodie | Custom Made in LA | DVMN PIGEON">
+<meta property="og:description" content="Design your own Damn Pigeon hoodie. Pick the cloth for six panels: fleece, cheetah, silk or denim. Cut and sewn to order in Los Angeles in 4 to 6 weeks.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://damnpigeon.nyc/assets/photos/knoxx-portrait.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://damnpigeon.nyc/assets/photos/knoxx-portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway:wght@400;500;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0A0A0A;--concrete:#161616;--concrete-2:#1E1E1E;--bone:#F4F2ED;--pigeon:#9A9CA1;--cobalt:#1E63FF;--heat:#FF5A1F;--line:rgba(244,242,237,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--bone);font-family:'Raleway',system-ui,sans-serif;font-weight:500;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace}
+  .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 28px}
+  .v{color:var(--cobalt)}
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---- shared chrome ---- */
+  .bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(10,10,10,.96);border-bottom:1px solid var(--line)}
+  .bar .mark{display:flex;flex-direction:column;line-height:.82}
+  .bar .mark .top{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px}
+  .bar .mark .sub{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.62em;padding-left:2px;color:var(--pigeon);margin-top:4px}
+  .bar nav.links{display:flex;gap:28px;align-items:center}
+  .bar nav.links a{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.8;transition:.2s}
+  .bar nav.links a:hover,.bar nav.links a.active{opacity:1;color:var(--cobalt)}
+  .bar .navright{display:flex;gap:12px;align-items:center}
+  .bar .bag{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:2px;padding:8px 13px;color:var(--bone);cursor:pointer;background:none;transition:.2s;display:flex;gap:8px;align-items:center}
+  .bar .bag:hover{border-color:var(--cobalt)}
+  .bar .bag .cnt{background:var(--cobalt);color:#fff;border-radius:10px;padding:0 7px;font-size:11px;min-width:18px;text-align:center}
+  .menu-btn{display:none;background:none;border:0;color:var(--bone);font-size:24px;cursor:pointer;line-height:1}
+  #mobilenav{display:none;position:sticky;top:64px;z-index:99;background:rgba(10,10,10,.98);border-bottom:1px solid var(--line);padding:6px 20px 14px}
+  #mobilenav.open{display:block}
+  #mobilenav a{display:block;padding:13px 4px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(244,242,237,.07)}
+  #mobilenav a:last-child{border-bottom:0}
+
+  /* ---- hero ---- */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.08) 40%,rgba(10,10,10,.88) 100%),radial-gradient(120% 90% at 80% 20%,rgba(30,99,255,.22),transparent 55%)}
+  .hero-copy{position:relative;z-index:2;padding-bottom:7vh;width:100%}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--bone);margin-bottom:22px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--heat);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,31,.6)}70%{box-shadow:0 0 0 9px rgba(255,90,31,0)}100%{box-shadow:0 0 0 0 rgba(255,90,31,0)}}
+  h1.hero-h{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(58px,12vw,168px);line-height:.86;letter-spacing:-.5px;text-transform:uppercase;text-shadow:0 6px 40px rgba(0,0,0,.4)}
+  .hero-sub{max-width:560px;margin:26px 0 34px;font-size:17px;color:#d9d8d2;line-height:1.55}
+  .hero-sub b{color:var(--bone);font-weight:800}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .15s,background .2s,color .2s}
+  .btn-primary{background:var(--cobalt);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:#3b78ff}
+  .btn-ghost{border:1px solid var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--bone);transform:translateY(-2px)}
+  .hero-chip{position:absolute;right:28px;bottom:7vh;z-index:2;text-align:right;font-family:'Space Mono',monospace}
+  .hero-chip .lbl{font-size:10px;letter-spacing:.3em;color:var(--pigeon)}
+  .hero-chip .date{font-size:13px;color:var(--bone);margin-top:4px}
+
+  /* ---- doors ---- */
+  .section{padding:104px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px;flex-wrap:wrap}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;color:var(--cobalt);text-transform:uppercase}
+  .sec-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(34px,5vw,64px);line-height:.92;text-transform:uppercase;letter-spacing:-.5px;margin-top:12px}
+  .sec-head p{max-width:380px;color:var(--pigeon);font-size:15px}
+  .doors{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}
+  .door{position:relative;background:var(--concrete);padding:0;min-height:420px;display:flex;flex-direction:column;overflow:hidden;transition:background .35s}
+  .door:hover{background:var(--concrete-2)}
+  .door .pic{height:200px;background-size:cover;background-position:center;filter:grayscale(.15) contrast(1.05);transition:.4s}
+  .door:hover .pic{filter:grayscale(0) contrast(1.05);transform:scale(1.02)}
+  .door .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .door .num{font-family:'Space Mono',monospace;font-size:12px;color:var(--pigeon);letter-spacing:.1em}
+  .door h3{font-family:'Anton',sans-serif;font-weight:400;font-size:32px;text-transform:uppercase;line-height:.95;margin:10px 0 10px}
+  .door p{color:var(--pigeon);font-size:14.5px;margin-bottom:20px;flex:1}
+  .door .go{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
+  .door .go .arr{transition:transform .25s}
+  .door:hover .go .arr{transform:translateX(6px)}
+  .door:hover .go{color:var(--cobalt)}
+
+  /* ---- studio ---- */
+  .studio{display:grid;grid-template-columns:1fr 1.05fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .studio-img{min-height:520px;background-size:cover;background-position:center 30%}
+  .studio-txt{padding:84px 60px;display:flex;flex-direction:column;justify-content:center}
+  .studio-txt h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,4vw,52px);line-height:.95;text-transform:uppercase;margin:16px 0 20px}
+  .studio-txt p{color:#d9d8d2;font-size:16.5px;max-width:52ch;margin-bottom:14px;line-height:1.6}
+  .studio-txt .stamp{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--bone);margin-top:18px;border-left:2px solid var(--cobalt);padding-left:14px;line-height:1.8}
+
+  /* ---- photo strip ---- */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}
+  .strip div{aspect-ratio:4/5;background-size:cover;background-position:center;background-color:var(--concrete)}
+  .strip div:nth-child(2){grid-row:span 1}
+
+  /* ---- press ---- */
+  .press{padding:80px 0;border-top:1px solid var(--line)}
+  .press-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:34px}
+  .press-grid div{aspect-ratio:16/9;background-size:cover;background-position:center}
+
+  /* ---- newsletter ---- */
+  .drop{padding:120px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
+  .drop::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 50% 0%,rgba(30,99,255,.16),transparent 60%)}
+  .drop .inner{position:relative;z-index:1}
+  .drop h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,96px);text-transform:uppercase;line-height:.88;letter-spacing:-1px;margin-top:14px}
+  .drop p{color:var(--pigeon);margin:18px auto 34px;max-width:38ch;font-size:16px}
+  .signup{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .signup input{flex:1;min-width:220px;background:var(--concrete);border:1px solid var(--line);color:var(--bone);padding:16px 18px;border-radius:2px;font-family:'Space Mono',monospace;font-size:14px}
+  .signup input::placeholder{color:#6c6c6c}
+  .signup input:focus{outline:none;border-color:var(--cobalt)}
+  .signup-status{margin-top:16px;font-size:13px;letter-spacing:.06em;min-height:18px;color:var(--cobalt);font-family:'Space Mono',monospace}
+  .signup-status.err{color:var(--heat)}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:56px 0 40px}
+  footer .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  footer .foot-logo img{height:28px;filter:invert(1) brightness(1.6);opacity:.9}
+  footer .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+  footer .foot-col h4{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--pigeon);text-transform:uppercase;margin-bottom:14px}
+  footer .foot-col a{display:block;font-size:13px;opacity:.75;margin-bottom:9px;transition:.2s}
+  footer .foot-col a:hover{opacity:1;color:var(--cobalt)}
+  footer .legal{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:#6c6c6c}
+
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  @media(max-width:1200px){.hero-chip{display:none}}
+  @media(max-width:1000px){.doors{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:880px){.bar nav.links{display:none}.menu-btn{display:block}}
+  @media(max-width:900px){
+    .studio{grid-template-columns:1fr}.studio-img{min-height:320px}.studio-txt{padding:54px 28px}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .press-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){.doors{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+</style>
+
+<style>
+  .bhead{padding:64px 0 28px;text-align:center}
+  .bhead h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(44px,8vw,96px);text-transform:uppercase;line-height:.9;margin-top:12px}
+  .bhead p{color:var(--pigeon);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;margin-top:16px;text-transform:uppercase}
+  .studio-grid{max-width:1280px;margin:0 auto;padding:10px 28px 90px;display:grid;grid-template-columns:1.05fr 1fr;gap:30px;align-items:start}
+  .stage-wrap{position:sticky;top:92px}
+  .toggle{display:flex;gap:6px;background:var(--concrete);border:1px solid var(--line);border-radius:4px;padding:5px;width:fit-content;margin:0 auto 16px}
+  .toggle button{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:9px 22px;border:0;border-radius:3px;background:none;color:var(--pigeon);cursor:pointer;transition:.2s}
+  .toggle button.on{background:var(--bone);color:var(--ink);font-weight:700}
+  .stage{background:#e9e6df;border-radius:6px;padding:28px;position:relative;overflow:hidden}
+  .stage::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 30%,rgba(255,255,255,.55),transparent 70%);pointer-events:none}
+  .stage svg{display:block;width:100%;height:auto;position:relative;z-index:1}
+  .watermark{position:absolute;bottom:14px;right:18px;font-family:'Anton',sans-serif;font-size:13px;color:rgba(10,10,10,.16);letter-spacing:2px;z-index:2}
+  .hint{text-align:center;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;margin-top:14px}
+  .panel-shape{cursor:pointer;transition:opacity .15s;stroke:#0A0A0A;stroke-opacity:.35;stroke-width:2;stroke-linejoin:round}
+  .panel-shape:hover{opacity:.88}
+  .panel-shape.active{stroke:#1E63FF;stroke-opacity:1;stroke-width:4.5}
+  .fixed{fill:#26251f;stroke:#0A0A0A;stroke-width:2;stroke-linejoin:round}
+  .stitch{fill:none;stroke:#0A0A0A;stroke-opacity:.3;stroke-width:1.4;stroke-dasharray:3 4}
+
+  .cfg{padding-top:6px}
+  .cfg .step{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--pigeon);text-transform:uppercase}
+  .cfg h2{font-family:'Anton',sans-serif;font-weight:400;font-size:38px;text-transform:uppercase;line-height:.95;margin:8px 0 6px}
+  .cfg .sub{color:var(--pigeon);font-size:14px;margin-bottom:22px}
+  .lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--pigeon);text-transform:uppercase;margin:22px 0 12px}
+  .lbl b{color:var(--cobalt);font-weight:400}
+  .panels{display:flex;flex-wrap:wrap;gap:8px}
+  .pchip{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:3px;padding:8px 12px 8px 8px;background:var(--concrete);cursor:pointer;transition:.2s;font-size:13px;font-weight:700;color:var(--bone)}
+  .pchip:hover{border-color:var(--pigeon)}
+  .pchip.active{border-color:var(--cobalt);background:var(--concrete-2)}
+  .pchip .sw{width:22px;height:22px;border-radius:3px;border:1px solid rgba(255,255,255,.25);flex-shrink:0;background-size:cover}
+  .fabrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .fab{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:3px;padding:8px;background:var(--concrete);cursor:pointer;transition:.2s;color:var(--bone);text-align:left}
+  .fab:hover{border-color:var(--pigeon)}
+  .fab.sel{border-color:var(--bone)}
+  .fab .sw{width:56px;height:56px;border-radius:3px;flex-shrink:0;border:1px solid rgba(255,255,255,.22);background-size:220px 220px}
+  .fab .fn{font-size:13.5px;font-weight:700;line-height:1.2}
+  .fab .fu{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--pigeon);margin-top:3px}
+  .fab .fu b{color:var(--heat);font-weight:400}
+  .spec{margin-top:26px;border-top:1px solid var(--line);padding-top:20px}
+  .spec .lbl{margin-top:0}
+  .spec-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(244,242,237,.07);font-size:13.5px}
+  .spec-row .k{color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .spec-row .val{display:flex;align-items:center;gap:8px;font-weight:600}
+  .spec-row .val .sw{width:16px;height:16px;border-radius:2px;border:1px solid rgba(255,255,255,.25);background-size:cover}
+  .price{margin-top:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+  .price .amt{font-family:'Anton',sans-serif;font-size:48px;line-height:1}
+  .price .brk{font-family:'Space Mono',monospace;font-size:11px;color:var(--pigeon);text-align:right;line-height:1.7}
+  .sizes{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .sizes button{font-family:'Space Mono',monospace;font-size:12px;padding:9px 14px;border:1px solid var(--line);border-radius:2px;background:var(--concrete);color:var(--bone);cursor:pointer}
+  .sizes button.on{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:700}
+  .addbtn{width:100%;margin-top:18px;background:var(--cobalt);color:#fff;border:0;font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:14px;padding:18px;border-radius:3px;cursor:pointer;transition:.2s}
+  .addbtn:hover{background:#3b78ff}
+  .mto{font-family:'Space Mono',monospace;font-size:11px;color:#6c6c6c;text-align:center;margin-top:14px;line-height:1.6}
+  .reset{background:none;border:0;color:var(--pigeon);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin:14px auto 0;text-decoration:underline;display:block}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:300;background:var(--bone);color:var(--ink);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:14px 22px;border-radius:3px;opacity:0;pointer-events:none;transition:.28s;max-width:88vw;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .proof{max-width:1280px;margin:0 auto;padding:0 28px 90px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+  .proof img{width:100%;height:100%;object-fit:cover;display:block}
+  .proof .txt{background:var(--concrete);padding:48px 44px;display:flex;flex-direction:column;justify-content:center}
+  .proof h3{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,4vw,48px);text-transform:uppercase;line-height:.95}
+  .proof p{color:var(--pigeon);font-size:15px;margin-top:16px;max-width:44ch}
+  @media(max-width:880px){.studio-grid{grid-template-columns:1fr;gap:20px}.stage-wrap{position:static}.proof{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a href="index.html" class="mark" aria-label="Damn Pigeon home">
+    <span class="top">D<span class="v">V</span>MNPIGEON</span>
+    <span class="sub">NEW&nbsp;YORK</span>
+  </a>
+  <nav class="links">
+    <a href="shop.html">Shop</a>
+    <a href="build.html" class="active">Custom</a>
+    <a href="classes.html">Classes</a>
+    <a href="index.html#brand">Start your brand</a>
+    <a href="index.html#studio">Studio</a>
+  </nav>
+  <div class="navright">
+    <button class="bag" onclick="dpBag()">BAG <span class="cnt" data-bagcount>0</span></button>
+    <button class="menu-btn" aria-label="Menu">&#8801;</button>
+  </div>
+</header>
+<div id="mobilenav">
+  <a href="shop.html">Shop</a><a href="build.html">Custom</a><a href="classes.html">Classes</a>
+  <a href="index.html#brand">Start your brand</a><a href="index.html#studio">Studio</a><a href="index.html">Home</a>
+</div>
+
+<div class="bhead">
+  <span class="kicker">// Custom</span>
+  <h1>Build your<br>own hoodie</h1>
+  <p>My pattern · your cloth · cut and sewn at 112 W 9th · 4 to 6 weeks</p>
+</div>
+
+<div class="studio-grid">
+  <div class="stage-wrap">
+    <div class="toggle" role="tablist">
+      <button class="on" id="btn-front" onclick="setView('front');dpTrack('toggle_view',{view:'front'})">Front</button>
+      <button id="btn-back" onclick="setView('back');dpTrack('toggle_view',{view:'back'})">Back</button>
+    </div>
+    <div class="stage">
+      <div class="watermark">DVMN</div>
+      <svg id="hoodie" viewBox="0 0 560 640" xmlns="http://www.w3.org/2000/svg">
+        <defs id="texdefs"></defs>
+        <g id="front">
+          <path class="panel-shape" data-panel="hood" d="M186 176 C176 78 226 40 280 40 C334 40 384 78 374 176 L332 176 C340 108 316 84 280 84 C244 84 220 108 228 176 Z"/>
+          <path class="panel-shape" data-panel="sleeveL" d="M206 176 L120 214 L92 470 L158 480 L200 292 Z"/>
+          <path class="panel-shape" data-panel="sleeveR" d="M354 176 L440 214 L468 470 L402 480 L360 292 Z"/>
+          <path class="fixed" d="M92 470 L158 480 L152 512 L86 500 Z"/>
+          <path class="fixed" d="M468 470 L402 480 L408 512 L474 500 Z"/>
+          <path class="panel-shape" data-panel="bodyFront" d="M206 176 C240 176 250 206 280 206 C310 206 320 176 354 176 L372 300 L360 556 L200 556 L188 300 Z"/>
+          <path class="panel-shape" data-panel="pocket" d="M214 396 L346 396 Q356 396 356 408 L356 474 L204 474 L204 408 Q204 396 214 396 Z"/>
+          <path class="stitch" d="M214 398 L204 430 M346 398 L356 430"/>
+          <path class="fixed" d="M200 556 L360 556 L358 594 L202 594 Z"/>
+          <path class="stitch" d="M262 208 L258 250 M298 208 L302 250 M206 178 L192 300 M354 178 L368 300"/>
+        </g>
+        <g id="back" style="display:none">
+          <path class="panel-shape" data-panel="hood" d="M198 172 C196 74 236 44 280 44 C324 44 364 74 362 172 Z"/>
+          <path class="panel-shape" data-panel="sleeveL" d="M206 176 L120 214 L92 470 L158 480 L200 292 Z"/>
+          <path class="panel-shape" data-panel="sleeveR" d="M354 176 L440 214 L468 470 L402 480 L360 292 Z"/>
+          <path class="fixed" d="M92 470 L158 480 L152 512 L86 500 Z"/>
+          <path class="fixed" d="M468 470 L402 480 L408 512 L474 500 Z"/>
+          <path class="panel-shape" data-panel="bodyBack" d="M206 172 L354 172 L372 300 L360 556 L200 556 L188 300 Z"/>
+          <path class="stitch" d="M280 176 L280 556"/>
+          <path class="fixed" d="M200 556 L360 556 L358 594 L202 594 Z"/>
+        </g>
+      </svg>
+    </div>
+    <p class="hint">Tap a panel on the hoodie · cuffs and waistband stay black rib, that's the construction</p>
+  </div>
+
+  <div class="cfg">
+    <span class="step">Six panels · seven cloths</span>
+    <h2>Pick your panels</h2>
+    <p class="sub">Tap a panel, pick the cloth. Do it six times or once. Every panel can be its own material.</p>
+
+    <div class="lbl">1 · Panel <b id="active-name">— Front body</b></div>
+    <div class="panels" id="panels"></div>
+
+    <div class="lbl">2 · Cloth</div>
+    <div class="fabrics" id="fabrics"></div>
+
+    <div class="lbl">3 · Size <span style="color:#6c6c6c;letter-spacing:0;text-transform:none;font-family:'Raleway';font-size:12px"> · finished garment chart at checkout</span></div>
+    <div class="sizes" id="sizes"></div>
+
+    <div class="spec">
+      <div class="lbl">Your build so far</div>
+      <div id="specrows"></div>
+    </div>
+
+    <div class="price">
+      <div class="amt" id="price">$350</div>
+      <div class="brk" id="breakdown"></div>
+    </div>
+    <button class="addbtn" onclick="addBag()">Add to bag · made to order →</button>
+    <p class="mto">Paid in full at checkout. Once your combination is cut, that hoodie is yours.<br>4 to 6 weeks. Final sale unless I made it wrong.</p>
+    <button class="reset" onclick="resetBuild()">Reset build</button>
+  </div>
+</div>
+
+<div class="proof">
+  <img src="assets/photos/patchwork-jacket.jpg" alt="Panelled jacket">
+  <div class="txt">
+    <span class="kicker">// Already how I work</span>
+    <h3>Different cloth,<br>every panel.</h3>
+    <p>This is how I build already. Leather, denim, terry, whatever's on the table. The builder just lets you pick the combination before I cut it.</p>
+    <a href="shop.html" class="btn btn-ghost" style="align-self:flex-start;margin-top:24px">See what's in the shop →</a>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img alt="damnpigeon" src="assets/logo-graffiti.png"></div>
+      <div class="foot-cols">
+        <div class="foot-col"><h4>Shop</h4><a href="shop.html">All pieces</a><a href="build.html">Build your own</a></div>
+        <div class="foot-col"><h4>Studio</h4><a href="classes.html">Classes</a><a href="index.html#brand">Start your brand</a><a href="index.html#studio">About</a></div>
+        <div class="foot-col"><h4>Find us</h4><a href="https://www.instagram.com/dvmnpigeon" target="_blank" rel="noopener">@dvmnpigeon</a><a href="https://dvmnpigeon.substack.com/subscribe" target="_blank" rel="noopener">Turning $100 into a new brand</a><a href="mailto:damnpcs@gmail.com">damnpcs@gmail.com</a><a href="https://maps.google.com/?q=112+W+9th+St+Los+Angeles" target="_blank" rel="noopener">112 W 9th, Los Angeles</a></div>
+      </div>
+    </div>
+    <div class="legal"><span>&copy; DAMNPIGEON LLC</span><span>NEW YORK ON THE LABEL · LOS ANGELES ON THE TABLE</span></div>
+  </div>
+</footer>
+
+<script>
+const FABRICS = [
+  {id:'black-fleece', name:'Black fleece',  note:'Heavyweight · brushed',           img:'assets/swatches/black-fleece.jpg', up:0},
+  {id:'grey-fleece',  name:'Grey fleece',   note:'Heavyweight · heather',           img:'assets/swatches/grey-fleece.jpg',  up:0},
+  {id:'red-fleece',   name:'Red fleece',    note:'Heavyweight · brushed',           img:'assets/swatches/red-fleece.jpg',   up:0},
+  {id:'cheetah',      name:'Cheetah',       note:'Printed · short pile',            img:'assets/swatches/cheetah.jpg',      up:0},
+  {id:'black-silk',   name:'Black silk',    note:'Lined · dry clean only',          img:'assets/swatches/black-silk.jpg',   up:0},
+  {id:'blue-denim',   name:'Blue denim',    note:'Raw &amp; stonewashed',           img:'assets/swatches/blue-denim.jpg',   up:60},
+  {id:'black-denim',  name:'Black denim',   note:'Raw &amp; stonewashed',           img:'assets/swatches/black-denim.jpg',  up:60},
+];
+const PANELS = [
+  {id:'hood',name:'Hood'},{id:'bodyFront',name:'Front body'},{id:'bodyBack',name:'Back body'},
+  {id:'sleeveL',name:'Left sleeve'},{id:'sleeveR',name:'Right sleeve'},{id:'pocket',name:'Kangaroo pocket'},
+];
+const SIZES=['XS','S','M','L','XL','XXL'];
+const BASE=350;
+const tierFee=n=>n<=2?0:n<=4?50:100;
+
+let build={hood:'black-fleece',bodyFront:'grey-fleece',bodyBack:'grey-fleece',sleeveL:'black-fleece',sleeveR:'black-fleece',pocket:'red-fleece'};
+let active='bodyFront', view='front', size='M';
+const fabOf=id=>FABRICS.find(f=>f.id===id);
+const swCss=id=>`background-image:url('${fabOf(id).img}')`;
+
+// one texture pattern per cloth; tile scale tuned so weave/nap reads at hoodie size
+(function(){
+  const d=document.getElementById('texdefs');
+  FABRICS.forEach(f=>{
+    d.insertAdjacentHTML('beforeend',`<pattern id="tex-${f.id}" patternUnits="userSpaceOnUse" width="160" height="160"><image href="${f.img}" width="160" height="160" preserveAspectRatio="xMidYMid slice"/></pattern>`);
+  });
+})();
+
+function paint(){
+  PANELS.forEach(p=>document.querySelectorAll(`[data-panel="${p.id}"]`).forEach(el=>{
+    el.setAttribute('fill',`url(#tex-${build[p.id]})`); el.classList.toggle('active',p.id===active);
+  }));
+}
+function renderPanels(){
+  document.getElementById('panels').innerHTML=PANELS.map(p=>`
+    <button class="pchip ${p.id===active?'active':''}" onclick="selectPanel('${p.id}')"><span class="sw" style="${swCss(build[p.id])}"></span>${p.name}</button>`).join('');
+  document.getElementById('active-name').textContent='— '+PANELS.find(p=>p.id===active).name;
+}
+function renderFabrics(){
+  document.getElementById('fabrics').innerHTML=FABRICS.map(f=>`
+    <button class="fab ${build[active]===f.id?'sel':''}" onclick="pick('${f.id}')">
+      <span class="sw" style="${swCss(f.id)}"></span>
+      <span><span class="fn">${f.name}</span><br><span class="fu">${f.note}${f.up?' · <b>+$'+f.up+'</b>':''}</span></span></button>`).join('');
+}
+function renderSizes(){
+  document.getElementById('sizes').innerHTML=SIZES.map(s=>`<button class="${s===size?'on':''}" onclick="size='${s}';renderSizes()">${s}</button>`).join('');
+}
+function renderSpec(){
+  document.getElementById('specrows').innerHTML=PANELS.map(p=>{const f=fabOf(build[p.id]);
+    return `<div class="spec-row"><span class="k">${p.name}</span><span class="val"><span class="sw" style="${swCss(f.id)}"></span>${f.name}${f.up?' (+$'+f.up+')':''}</span></div>`;}).join('');
+}
+function priceBuild(){
+  const used=new Set(Object.values(build)); const patch=tierFee(used.size);
+  const premium=[...used].reduce((s,id)=>s+fabOf(id).up,0); const total=BASE+patch+premium;
+  document.getElementById('price').textContent='$'+total;
+  document.getElementById('breakdown').innerHTML=`Base $${BASE}<br>${used.size} cloth${used.size>1?'s':''} · ${patch?'+$'+patch:'included'}`+(premium?`<br>denim +$${premium}`:'');
+  return total;
+}
+function refresh(){paint();renderPanels();renderFabrics();renderSizes();renderSpec();priceBuild();}
+function selectPanel(id){
+  if(id==='bodyBack'&&view!=='back')setView('back');
+  if((id==='bodyFront'||id==='pocket')&&view!=='front')setView('front');
+  active=id;refresh();dpTrack('select_panel',{panel:id});
+}
+function pick(fid){build[active]=fid;refresh();dpTrack('select_cloth',{panel:active,cloth:fid});}
+function setView(v){
+  view=v; document.getElementById('front').style.display=v==='front'?'':'none'; document.getElementById('back').style.display=v==='back'?'':'none';
+  document.getElementById('btn-front').classList.toggle('on',v==='front'); document.getElementById('btn-back').classList.toggle('on',v==='back');
+  if(v==='back'&&(active==='pocket'||active==='bodyFront'))active='bodyBack';
+  if(v==='front'&&active==='bodyBack')active='bodyFront';
+  refresh();
+}
+function resetBuild(){dpTrack('reset_build',{});build={hood:'black-fleece',bodyFront:'black-fleece',bodyBack:'black-fleece',sleeveL:'black-fleece',sleeveR:'black-fleece',pocket:'black-fleece'};active='bodyFront';setView('front');toast('Build reset');}
+function addBag(){
+  const total=priceBuild();
+  const used=new Set(Object.values(build));
+  const cloths=used.size;
+  const denim=Object.values(build).filter(id=>fabOf(id).id.includes('denim')).length;
+  const spec=PANELS.map(p=>p.name+': '+fabOf(build[p.id]).name).join(' · ');
+  const key='custom-hoodie::'+size+'::'+PANELS.map(p=>p.id+':'+build[p.id]).join('|');
+  const item={slug:'custom-hoodie',id:null,name:'Custom hoodie · '+size+' (made to order)',price:total,
+              image:'assets/photos/patchwork-jacket.jpg',options:{Size:size,Build:spec},qty:1,
+              custom:{size, cloths, denim, spec:`Size ${size} · ${spec}`}};
+  if(window.DPBag){DPBag.add(key,item);toast(`Added · ${size} · ${cloths} cloth${cloths>1?'s':''} · $${total}`);}
+  else toast(`Custom hoodie · ${size} · $${total}`);
+  dpTrack('add_to_cart',{currency:'USD',value:total,items:[{item_id:'custom-hoodie',item_name:'Custom hoodie',price:total,quantity:1,item_variant:`${size} · ${cloths} cloths · ${denim} denim`}]});
+}
+document.querySelectorAll('.panel-shape').forEach(el=>el.addEventListener('click',()=>selectPanel(el.dataset.panel)));
+let tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600);}
+function dpBag(){ if(typeof openCart==='function'){openCart();} else {window.location.href='shop.html#bag';} }
+refresh();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
